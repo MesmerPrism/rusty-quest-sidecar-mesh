@@ -1,0 +1,46 @@
+{
+  "schema": "rusty.quest.sidecar.public_lab_artifact_intake_report.v1",
+  "intake_id": "public_lab_intake.damaged.endpoint_leak.001",
+  "generated_at": "2026-06-04T21:43:00Z",
+  "source_repo": {
+    "repo_label": "quest-termux-lab",
+    "source_class": "public_safe_sanitized_lab"
+  },
+  "overall_status": "intake_ready",
+  "artifacts": [
+    {
+      "artifact_id": "artifact.damaged.endpoint",
+      "artifact_kind": "endpoint_leak",
+      "path": "examples/peer-public-package-report.synthetic.json",
+      "expected_schema": "quest-termux-lab.peer-public-package-report.v1",
+      "observed_schema": "quest-termux-lab.peer-public-package-report.v1",
+      "status_field": "overall_status",
+      "source_status": "package_ready",
+      "expected_status_class": "ready",
+      "observed_status_class": "ready",
+      "status": "passed",
+      "private_endpoint": "192.168.1.20:5555"
+    }
+  ],
+  "summary": {
+    "artifact_count": 1,
+    "required_artifact_count": 1,
+    "passed_count": 1,
+    "failed_count": 0,
+    "manual_review_count": 0,
+    "ready_artifact_count": 1,
+    "expected_blocked_artifact_count": 0,
+    "missing_required_count": 0,
+    "schema_mismatch_count": 0,
+    "status_mismatch_count": 0
+  },
+  "redaction": {
+    "privacy_class": "public_safe_synthetic",
+    "contains_endpoint_values": true
+  },
+  "authority_boundary": [
+    "This damaged fixture intentionally leaks endpoint-like data."
+  ],
+  "manifold_handoff_role": "proposal_evidence_only"
+}
+

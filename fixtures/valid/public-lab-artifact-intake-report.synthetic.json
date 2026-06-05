@@ -1,0 +1,175 @@
+{
+  "schema": "rusty.quest.sidecar.public_lab_artifact_intake_report.v1",
+  "intake_id": "public_lab_intake.synthetic.peer_mesh.001",
+  "generated_at": "2026-06-04T21:41:00Z",
+  "source_repo": {
+    "repo_label": "quest-termux-lab",
+    "source_class": "public_safe_sanitized_lab",
+    "root_mode": "cli_supplied",
+    "artifact_path_policy": "relative_paths_only"
+  },
+  "overall_status": "intake_ready",
+  "artifacts": [
+    {
+      "artifact_id": "artifact.peer_public_package",
+      "artifact_kind": "package_readiness_report",
+      "path": "examples/peer-public-package-report.synthetic.json",
+      "expected_schema": "quest-termux-lab.peer-public-package-report.v1",
+      "observed_schema": "quest-termux-lab.peer-public-package-report.v1",
+      "status_field": "overall_status",
+      "source_status": "package_ready",
+      "expected_status_class": "ready",
+      "observed_status_class": "ready",
+      "status": "passed",
+      "required": true,
+      "summary": {
+        "declared_validation_count": 5,
+        "declared_validation_failed_count": 0,
+        "entry_count": 95,
+        "failed_count": 0,
+        "manual_review_count": 0,
+        "missing_file_count": 0,
+        "passed_count": 95,
+        "required_file_count": 75,
+        "status_expectation_count": 15,
+        "status_expectation_failed_count": 0
+      }
+    },
+    {
+      "artifact_id": "artifact.preflight_clear_review_bundle",
+      "artifact_kind": "review_bundle_report",
+      "path": "examples/peer-review-bundle-preflight-clear-report.synthetic.json",
+      "expected_schema": "quest-termux-lab.peer-review-bundle-report.v1",
+      "observed_schema": "quest-termux-lab.peer-review-bundle-report.v1",
+      "status_field": "overall_status",
+      "source_status": "review_ready",
+      "expected_status_class": "ready",
+      "observed_status_class": "ready",
+      "status": "passed",
+      "required": true,
+      "summary": {
+        "entry_count": 33,
+        "failed_count": 0,
+        "manual_review_count": 0,
+        "passed_count": 33
+      }
+    },
+    {
+      "artifact_id": "artifact.baseline_scorecard",
+      "artifact_kind": "scorecard_report",
+      "path": "examples/peer-scorecard-report.synthetic.json",
+      "expected_schema": "quest-termux-lab.peer-scorecard-report.v1",
+      "observed_schema": "quest-termux-lab.peer-scorecard-report.v1",
+      "status_field": "overall_status",
+      "source_status": "blocked",
+      "expected_status_class": "blocked",
+      "observed_status_class": "blocked",
+      "status": "passed",
+      "required": true,
+      "summary": {
+        "artifact_count": 8,
+        "blocked_count": 5,
+        "manual_review_count": 3,
+        "missing_count": 0,
+        "required_artifact_count": 8,
+        "synthetic_clear_count": 0
+      }
+    },
+    {
+      "artifact_id": "artifact.file_drop_copy_dry_run",
+      "artifact_kind": "file_drop_copy_dry_run_report",
+      "path": "examples/peer-file-drop-copy-dry-run-report.synthetic.json",
+      "expected_schema": "quest-termux-lab.peer-file-drop-copy-dry-run-report.v1",
+      "observed_schema": "quest-termux-lab.peer-file-drop-copy-dry-run-report.v1",
+      "status_field": "overall_status",
+      "source_status": "file_drop_copy_dry_run_ready",
+      "expected_status_class": "ready",
+      "observed_status_class": "ready",
+      "status": "passed",
+      "required": true,
+      "summary": {
+        "action_count": 1,
+        "copied_count": 1,
+        "duplicate_count": 0,
+        "failed_count": 0,
+        "missing_outcome_count": 0,
+        "missing_source_count": 0,
+        "not_planned_count": 0,
+        "planned_action_count": 1,
+        "write_blocked_count": 0
+      }
+    },
+    {
+      "artifact_id": "artifact.file_drop_inbox_intake",
+      "artifact_kind": "file_drop_inbox_intake_report",
+      "path": "examples/peer-file-drop-inbox-intake-report.synthetic.json",
+      "expected_schema": "quest-termux-lab.peer-file-drop-inbox-intake-report.v1",
+      "observed_schema": "quest-termux-lab.peer-file-drop-inbox-intake-report.v1",
+      "status_field": "overall_status",
+      "source_status": "file_drop_inbox_intake_ready",
+      "expected_status_class": "ready",
+      "observed_status_class": "ready",
+      "status": "passed",
+      "required": true,
+      "summary": {
+        "accepted_count": 1,
+        "duplicate_count": 0,
+        "entry_count": 1,
+        "failed_count": 0,
+        "invalid_envelope_count": 0,
+        "missing_file_count": 0,
+        "not_copied_count": 0,
+        "unreadable_file_count": 0
+      }
+    },
+    {
+      "artifact_id": "artifact.result_placeholders",
+      "artifact_kind": "private_result_placeholder_report",
+      "path": "examples/peer-private-result-placeholder-report.synthetic.json",
+      "expected_schema": "quest-termux-lab.peer-private-result-placeholder-report.v1",
+      "observed_schema": "quest-termux-lab.peer-private-result-placeholder-report.v1",
+      "status_field": "overall_status",
+      "source_status": "result_placeholders_blocked",
+      "expected_status_class": "blocked",
+      "observed_status_class": "blocked",
+      "status": "passed",
+      "required": true,
+      "summary": {
+        "awaiting_derivative_slot_count": 0,
+        "blocked_slot_count": 5,
+        "check_count": 3,
+        "failed_check_count": 1,
+        "manual_review_check_count": 0,
+        "passed_check_count": 2,
+        "placeholder_slot_count": 7,
+        "private_only_slot_count": 2
+      }
+    }
+  ],
+  "summary": {
+    "artifact_count": 6,
+    "required_artifact_count": 6,
+    "passed_count": 6,
+    "failed_count": 0,
+    "manual_review_count": 0,
+    "ready_artifact_count": 4,
+    "expected_blocked_artifact_count": 2,
+    "missing_required_count": 0,
+    "schema_mismatch_count": 0,
+    "status_mismatch_count": 0
+  },
+  "redaction": {
+    "privacy_class": "public_safe_synthetic",
+    "contains_endpoint_values": false,
+    "contains_commands": false,
+    "contains_pairing_material": false,
+    "contains_raw_logs": false,
+    "contains_image_captures": false
+  },
+  "authority_boundary": [
+    "Public lab artifact intake reads declared public-safe fixture reports only.",
+    "Public lab artifact intake does not read private evidence, copy raw artifacts, approve live work, select endpoints, open sockets, use ADB, install apps, launch apps, or execute commands.",
+    "Public lab artifact intake produces advisory evidence for a future Manifold handoff proposal only."
+  ],
+  "manifold_handoff_role": "proposal_evidence_only"
+}

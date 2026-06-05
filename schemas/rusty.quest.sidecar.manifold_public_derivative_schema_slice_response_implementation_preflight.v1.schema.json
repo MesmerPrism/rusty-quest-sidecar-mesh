@@ -1,0 +1,81 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "rusty.quest.sidecar.manifold_public_derivative_schema_slice_response_implementation_preflight.v1",
+  "title": "Rusty Quest Sidecar Manifold Public Derivative Schema Slice Response Implementation Preflight",
+  "type": "object",
+  "required": [
+    "schema",
+    "preflight_id",
+    "generated_at",
+    "preflight_status",
+    "source_manifold_public_derivative_schema_slice_response_expectation",
+    "implementation_preflight_scope",
+    "authority",
+    "manifold_repo_slice_response_requirements",
+    "hostess_boundary_preflight",
+    "validation_evidence",
+    "privacy_boundary",
+    "checks",
+    "summary",
+    "authority_boundary",
+    "next_gate"
+  ],
+  "properties": {
+    "schema": {
+      "const": "rusty.quest.sidecar.manifold_public_derivative_schema_slice_response_implementation_preflight.v1"
+    },
+    "preflight_id": {
+      "type": "string"
+    },
+    "generated_at": {
+      "type": "string"
+    },
+    "preflight_status": {
+      "enum": [
+        "ready_for_manifold_public_derivative_schema_slice_response_planning",
+        "manual_review",
+        "blocked"
+      ]
+    },
+    "source_manifold_public_derivative_schema_slice_response_expectation": {
+      "type": "object"
+    },
+    "implementation_preflight_scope": {
+      "type": "object"
+    },
+    "authority": {
+      "type": "object"
+    },
+    "manifold_repo_slice_response_requirements": {
+      "type": "object"
+    },
+    "hostess_boundary_preflight": {
+      "type": "object"
+    },
+    "validation_evidence": {
+      "type": "object"
+    },
+    "privacy_boundary": {
+      "type": "object"
+    },
+    "checks": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "summary": {
+      "type": "object"
+    },
+    "authority_boundary": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "next_gate": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}

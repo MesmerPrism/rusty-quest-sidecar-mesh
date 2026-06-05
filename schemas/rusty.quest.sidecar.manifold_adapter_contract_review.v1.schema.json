@@ -1,0 +1,88 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "rusty.quest.sidecar.manifold_adapter_contract_review.v1",
+  "title": "Rusty Quest Sidecar Manifold Adapter Contract Review",
+  "type": "object",
+  "required": [
+    "schema",
+    "review_id",
+    "generated_at",
+    "review_status",
+    "source_peer_rehearsal_plan",
+    "integration_status",
+    "contract_scope",
+    "authority",
+    "proposed_manifold_contract",
+    "hostess_boundary",
+    "validation_slots",
+    "rollback_policy",
+    "checks",
+    "summary",
+    "authority_boundary",
+    "next_gate"
+  ],
+  "properties": {
+    "schema": {
+      "const": "rusty.quest.sidecar.manifold_adapter_contract_review.v1"
+    },
+    "review_id": {
+      "type": "string"
+    },
+    "generated_at": {
+      "type": "string"
+    },
+    "review_status": {
+      "enum": [
+        "contract_ready",
+        "manual_review",
+        "blocked"
+      ]
+    },
+    "source_peer_rehearsal_plan": {
+      "type": "object"
+    },
+    "integration_status": {
+      "type": "object"
+    },
+    "contract_scope": {
+      "type": "object"
+    },
+    "authority": {
+      "type": "object"
+    },
+    "proposed_manifold_contract": {
+      "type": "object"
+    },
+    "hostess_boundary": {
+      "type": "object"
+    },
+    "validation_slots": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "rollback_policy": {
+      "type": "object"
+    },
+    "checks": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "summary": {
+      "type": "object"
+    },
+    "authority_boundary": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "next_gate": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}

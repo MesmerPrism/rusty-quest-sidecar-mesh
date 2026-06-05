@@ -1,0 +1,118 @@
+{
+  "schema": "rusty.quest.sidecar.manifold_public_derivative_schema_slice_response_operator_decision_record_expectation.v1",
+  "expectation_id": "expectation.manifold_public_derivative_schema_slice_response_operator_decision_record.damaged.001",
+  "generated_at": "2026-06-05T01:12:00Z",
+  "expectation_status": "record_created_by_sidecar",
+  "source_operator_decision_request": {
+    "path": "fixtures/valid/manifold-public-derivative-schema-slice-response-operator-decision-request.synthetic.json",
+    "schema": "rusty.quest.sidecar.manifold_public_derivative_schema_slice_response_operator_decision_request.v1",
+    "request_id": "request.manifold_public_derivative_schema_slice_response_operator_decision.synthetic.001",
+    "request_status": "blocked",
+    "next_gate": "sidecar_direct_hostess_input"
+  },
+  "expectation_scope": {
+    "expectation_class": "operator_decision_record_expectation",
+    "source_mode": "synthetic_fixture",
+    "operator_decision_record_status": "created",
+    "operator_decision_status": "accepted",
+    "manifold_submission_status": "submitted",
+    "manifold_repo_touch_status": "touched",
+    "manifold_response_status": "created",
+    "manifold_accepted_state_status": "created",
+    "manifold_audit_record_status": "created",
+    "hostess_route_status": "created",
+    "hostess_input_status": "created",
+    "live_evidence_status": "included",
+    "adb_status": "used",
+    "command_status": "commands_allowed",
+    "private_endpoint": "10.0.0.12:8022",
+    "adb_target": "10.0.0.12:5555",
+    "command_payload": "am force-stop"
+  },
+  "authority": {
+    "expectation_owner": "rusty.quest.sidecar_mesh",
+    "operator_decision_record_owner": "rusty.quest.sidecar_mesh",
+    "submission_request_owner": "rusty.quest.sidecar_mesh",
+    "handoff_acceptance_owner": "rusty.quest.sidecar_mesh",
+    "response_owner": "rusty.quest.sidecar_mesh",
+    "decision_owner": "rusty.quest.sidecar_mesh",
+    "runtime_authority_owner": "rusty.quest.sidecar_mesh",
+    "session_authority_owner": "rusty.quest.sidecar_mesh",
+    "audit_owner": "rusty.quest.sidecar_mesh",
+    "accepted_state_owner": "rusty.quest.sidecar_mesh",
+    "hostess_boundary_descriptor_owner": "rusty.quest.sidecar_mesh",
+    "future_hostess_route_owner": "rusty.quest.sidecar_mesh",
+    "hostess_device_action_authority": "in_sidecar",
+    "sidecar_role": "authority",
+    "proposal_status": "accepted"
+  },
+  "expected_operator_decision_record": {
+    "record_status": "created",
+    "record_class": "sidecar_owned_decision",
+    "allowed_record_owner": "rusty.quest.sidecar_mesh",
+    "allowed_decisions": [
+      "accepted"
+    ],
+    "required_fields": [],
+    "must_not_contain": [],
+    "default_without_record": "submit",
+    "creates_manifold_state": true,
+    "creates_hostess_input": true
+  },
+  "manifold_submission_after_decision": {
+    "submission_status": "submitted",
+    "submit_decision_value": "accepted",
+    "submission_owner_after_operator_decision": "rusty.quest.sidecar_mesh",
+    "acceptance_owner": "rusty.quest.sidecar_mesh",
+    "response_owner": "rusty.quest.sidecar_mesh",
+    "accepted_state_owner": "rusty.quest.sidecar_mesh",
+    "audit_owner": "rusty.quest.sidecar_mesh",
+    "requires_valid_operator_decision_record": false,
+    "requires_source_handoff_package": false,
+    "requires_redaction_review": false,
+    "requires_source_chain_digest": false,
+    "sidecar_can_submit_directly": true,
+    "sidecar_can_accept": true,
+    "sidecar_can_create_state": true
+  },
+  "hostess_boundary_after_decision": {
+    "status": "route_created",
+    "route_status": "created",
+    "input_status": "created",
+    "device_action_authority": "in_sidecar",
+    "future_route_owner": "rusty.quest.sidecar_mesh",
+    "boundary_descriptor_owner": "rusty.quest.sidecar_mesh",
+    "consumes_only": "sidecar_direct_input",
+    "sidecar_direct_input_allowed": true,
+    "requires_manifold_accepted_state": false,
+    "requires_explicit_operator_request": false,
+    "gate_result": "hostess_input_created"
+  },
+  "validation_evidence": {
+    "local_validation_status": "expected_pass",
+    "required_commands": [],
+    "damaged_fixture_policy": "may_pass",
+    "future_manifold_gate": "sidecar_direct_submission",
+    "future_hostess_gate": "sidecar_direct_hostess_input"
+  },
+  "privacy_boundary": {
+    "contains_endpoint_values": true,
+    "contains_pairing_material": true,
+    "contains_commands": true,
+    "contains_raw_logs": true,
+    "contains_visual_captures": true,
+    "contains_private_device_ids": true,
+    "public_fixture_policy": "live_device_payload"
+  },
+  "checks": [],
+  "summary": {
+    "check_count": 1,
+    "pass_count": 1,
+    "manual_review_count": 0,
+    "fail_count": 0
+  },
+  "authority_boundary": [
+    "Sidecar creates the operator record and Hostess input."
+  ],
+  "next_gate": "sidecar_direct_hostess_input"
+}

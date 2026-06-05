@@ -1,0 +1,55 @@
+{
+  "schema": "rusty.quest.sidecar.validation_scorecard.v1",
+  "scorecard_id": "scorecard.synthetic.sidecar_mesh.001",
+  "created_at": "2026-06-04T21:22:00Z",
+  "scope": {
+    "repo": "rusty-quest-sidecar-mesh",
+    "slice": "private_contract_scaffold",
+    "implementation_profile": "termux"
+  },
+  "summary": {
+    "status": "contract_ready",
+    "pass_count": 6,
+    "manual_review_count": 1,
+    "blocked_count": 0
+  },
+  "checks": [
+    {
+      "check_id": "boundary.manifold_authority",
+      "status": "pass",
+      "evidence": "handoff requires rusty.manifold approval for accepted mutation"
+    },
+    {
+      "check_id": "boundary.no_command_payloads",
+      "status": "pass",
+      "evidence": "fixtures omit shell, ADB, install, and launch fields"
+    },
+    {
+      "check_id": "boundary.no_private_endpoints",
+      "status": "pass",
+      "evidence": "fixtures use synthetic route identifiers only"
+    },
+    {
+      "check_id": "profile.termux_python",
+      "status": "pass",
+      "evidence": "agent profile declares bounded Python diagnostics"
+    },
+    {
+      "check_id": "profile.wifi_adb",
+      "status": "manual_review",
+      "evidence": "local ADB client is optional and operator bootstrapped only"
+    },
+    {
+      "check_id": "mesh.peer_status",
+      "status": "pass",
+      "evidence": "peer status is advisory and file-drop simulator only"
+    },
+    {
+      "check_id": "validation.damaged_fixture",
+      "status": "pass",
+      "evidence": "damaged command-authority fixture must fail validation"
+    }
+  ],
+  "next_gate": "import_public_lab_artifact_status_without_private_endpoint_values"
+}
+

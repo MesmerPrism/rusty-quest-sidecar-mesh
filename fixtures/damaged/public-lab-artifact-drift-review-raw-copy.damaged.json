@@ -1,0 +1,95 @@
+{
+  "schema": "rusty.quest.sidecar.public_lab_artifact_drift_review.v1",
+  "review_id": "review.public_lab_artifact_drift.damaged.001",
+  "generated_at": "2026-06-04T21:44:00Z",
+  "drift_status": "drift_clear",
+  "source_manifest": {
+    "path": "fixtures/valid/public-lab-artifact-intake-manifest.synthetic.json",
+    "schema": "rusty.quest.sidecar.public_lab_artifact_intake_manifest.v1",
+    "intake_id": "public_lab_intake.synthetic.peer_mesh.001",
+    "artifact_count": 1
+  },
+  "source_report": {
+    "path": "fixtures/valid/public-lab-artifact-intake-report.synthetic.json",
+    "schema": "rusty.quest.sidecar.public_lab_artifact_intake_report.v1",
+    "intake_id": "public_lab_intake.synthetic.peer_mesh.001",
+    "overall_status": "intake_ready",
+    "generated_at": "2026-06-04T21:41:00Z"
+  },
+  "source_access_policy": {
+    "source_root_mode": "cli_supplied",
+    "read_declared_public_artifacts": true,
+    "copy_raw_artifact": true,
+    "execute_source_validation": true,
+    "read_private_evidence": true,
+    "import_private_values": true
+  },
+  "authority": {
+    "review_owner": "sidecar_agent",
+    "source_truth_owner": "quest-termux-lab.public_artifacts",
+    "handoff_acceptance_owner": "sidecar_agent",
+    "audit_owner": "sidecar_agent",
+    "sidecar_role": "manifold_authority",
+    "proposal_status": "accepted"
+  },
+  "artifact_comparisons": [
+    {
+      "artifact_id": "artifact.private_raw_copy",
+      "path": "private/raw-live-result.json",
+      "source_path_exists": true,
+      "expected_schema": "quest-termux-lab.raw-live-result.v1",
+      "stored_schema": "quest-termux-lab.raw-live-result.v1",
+      "current_schema": "quest-termux-lab.raw-live-result.v1",
+      "stored_status": "ready",
+      "current_status": "ready",
+      "expected_status_class": "ready",
+      "stored_status_class": "ready",
+      "current_status_class": "ready",
+      "stored_result": "passed",
+      "current_result": "passed",
+      "schema_match": true,
+      "status_class_match": true,
+      "source_status_match": true,
+      "result_match": true,
+      "summary_match": true,
+      "drift_status": "drift_clear",
+      "command_payload": "execute_shell"
+    }
+  ],
+  "validation_evidence": {
+    "local_validation_status": "skipped",
+    "required_commands": [],
+    "damaged_fixture_policy": "ignored"
+  },
+  "privacy_boundary": {
+    "contains_endpoint_values": true,
+    "contains_pairing_material": true,
+    "contains_commands": true,
+    "contains_raw_logs": true,
+    "contains_visual_captures": true,
+    "contains_private_device_ids": true,
+    "public_fixture_policy": "raw_private_evidence"
+  },
+  "checks": [
+    {
+      "check_id": "public_lab_drift.damaged_raw_copy",
+      "status": "pass",
+      "observed": "raw copy allowed",
+      "expected": "descriptor only",
+      "evidence": "damaged fixture"
+    }
+  ],
+  "summary": {
+    "artifact_count": 1,
+    "drifted_artifact_count": 0,
+    "expected_blocked_artifact_count": 0,
+    "check_count": 1,
+    "pass_count": 1,
+    "manual_review_count": 0,
+    "fail_count": 0
+  },
+  "authority_boundary": [
+    "Sidecar owns accepted state."
+  ],
+  "next_gate": "raw_copy_ready"
+}

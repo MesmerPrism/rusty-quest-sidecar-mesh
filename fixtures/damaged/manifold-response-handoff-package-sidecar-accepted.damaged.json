@@ -1,0 +1,134 @@
+{
+  "schema": "rusty.quest.sidecar.manifold_response_handoff_package.v1",
+  "package_id": "package.manifold_response_slice_handoff.damaged.001",
+  "generated_at": "2026-06-04T23:36:00Z",
+  "package_status": "accepted_by_sidecar",
+  "source_manifold_response_implementation_preflight": {
+    "path": "fixtures/valid/manifold-response-implementation-preflight.synthetic.json",
+    "schema": "rusty.quest.sidecar.manifold_response_implementation_preflight.v1",
+    "preflight_id": "preflight.manifold_response_implementation.synthetic.001",
+    "preflight_status": "implemented_by_sidecar",
+    "next_gate": "sidecar_response_route"
+  },
+  "package_scope": {
+    "package_class": "sidecar_created_response_package",
+    "source_mode": "synthetic_fixture",
+    "target_repo": "rusty.manifold",
+    "repo_touch_status": "touched",
+    "branch_status": "created",
+    "implementation_status": "created",
+    "response_status": "created",
+    "decision_status": "accepted",
+    "route_status": "created",
+    "accepted_state_status": "created",
+    "audit_record_status": "created",
+    "hostess_route_status": "created",
+    "live_evidence_status": "included"
+  },
+  "authority": {
+    "package_owner": "rusty.quest.sidecar_mesh",
+    "handoff_acceptance_owner": "rusty.quest.sidecar_mesh",
+    "implementation_plan_owner": "rusty.quest.sidecar_mesh",
+    "response_owner": "rusty.quest.sidecar_mesh",
+    "decision_owner": "rusty.quest.sidecar_mesh",
+    "route_implementation_owner": "rusty.quest.sidecar_mesh",
+    "request_acceptance_owner": "rusty.quest.sidecar_mesh",
+    "runtime_authority_owner": "rusty.quest.sidecar_mesh",
+    "session_authority_owner": "rusty.quest.sidecar_mesh",
+    "audit_owner": "rusty.quest.sidecar_mesh",
+    "accepted_state_owner": "rusty.quest.sidecar_mesh",
+    "rollback_owner": "rusty.quest.sidecar_mesh",
+    "hostess_device_action_authority": "sidecar",
+    "sidecar_role": "command_authority",
+    "proposal_status": "accepted"
+  },
+  "handoff_manifest": {
+    "manifest_id": "manifest.manifold_response_slice_handoff.damaged.001",
+    "status": "accepted",
+    "target_repo": "rusty.manifold",
+    "source_chain_artifacts": [
+      {
+        "artifact_id": "artifact.sidecar_created_route",
+        "path": "fixtures/valid/manifold-response-implementation-preflight.synthetic.json",
+        "schema": "rusty.quest.sidecar.manifold_response_implementation_preflight.v1",
+        "role": "sidecar_route",
+        "required_for_handoff": true
+      }
+    ],
+    "required_downstream_artifacts": [
+      {
+        "artifact_id": "artifact.sidecar_created_route",
+        "artifact_kind": "route_handler",
+        "owner": "rusty.quest.sidecar_mesh",
+        "status": "created_by_sidecar",
+        "evidence_source": "sidecar route"
+      }
+    ],
+    "required_downstream_validation_slots": [],
+    "required_downstream_decisions": [
+      "accepted_for_manifold_slice"
+    ],
+    "required_downstream_rejection_terms": [],
+    "required_route_boundaries": {
+      "input_payload_class": "device_action",
+      "allows_endpoint_values": true,
+      "allows_commands": true,
+      "allows_adb": true,
+      "allows_high_rate_payloads": true,
+      "allows_sidecar_direct_hostess_input": true
+    },
+    "rollback_policy": "sidecar_rolls_back",
+    "handoff_acceptance_status": "accepted",
+    "downstream_implementation_status": "created"
+  },
+  "hostess_boundary_handoff": {
+    "status": "created",
+    "route_status": "created",
+    "device_action_authority": "sidecar",
+    "consumes_only": "sidecar_peer_message",
+    "sidecar_direct_input_allowed": true,
+    "requires_manifold_accepted_state": false,
+    "requires_explicit_operator_request": false,
+    "downstream_descriptor_owner": "rusty.quest.sidecar_mesh",
+    "allowed_action_class": "device_action",
+    "handoff_result": "hostess_direct_from_sidecar"
+  },
+  "validation_evidence": {
+    "local_validation_status": "skipped",
+    "required_commands": [],
+    "damaged_fixture_policy": "may_pass_validation",
+    "future_manifold_gate": "sidecar_owns_response_slice",
+    "future_hostess_gate": "sidecar_direct_hostess"
+  },
+  "privacy_boundary": {
+    "contains_endpoint_values": true,
+    "contains_pairing_material": true,
+    "contains_commands": true,
+    "contains_raw_logs": true,
+    "contains_visual_captures": true,
+    "contains_private_device_ids": true,
+    "public_fixture_policy": "raw_evidence"
+  },
+  "private_endpoint": "10.0.0.88:5555",
+  "adb_target": "quest-serial",
+  "command_payload": "am start package.name",
+  "checks": [
+    {
+      "check_id": "manifold_response_handoff.sidecar_created",
+      "status": "pass",
+      "observed": "created_by_sidecar",
+      "expected": "created_by_sidecar",
+      "evidence": "damaged fixture"
+    }
+  ],
+  "summary": {
+    "check_count": 1,
+    "pass_count": 1,
+    "manual_review_count": 0,
+    "fail_count": 0
+  },
+  "authority_boundary": [
+    "Sidecar accepts the response, creates the Manifold route, accepted state, and Hostess route directly."
+  ],
+  "next_gate": "sidecar_created_route"
+}

@@ -1,0 +1,32 @@
+{
+  "schema": "rusty.quest.sidecar.no_network_agent_recipe_review.v1",
+  "review_id": "review.no_network_termux_agent.damaged.runtime_authority.001",
+  "generated_at": "2026-06-04T22:06:00Z",
+  "source_recipe": {
+    "path": "fixtures/valid/no-network-agent-recipe.synthetic.json",
+    "recipe_id": "recipe.no_network_termux_agent.synthetic.001",
+    "recipe_schema": "rusty.quest.sidecar.no_network_agent_recipe.v1",
+    "profile_status": "runtime_ready"
+  },
+  "review_status": "ready_for_no_network_prototype",
+  "checks": [
+    {
+      "check_id": "recipe.no_network_no_adb_no_commands",
+      "status": "fail",
+      "observed": "transport_or_command_present",
+      "expected": "no_network_no_adb_no_commands",
+      "evidence": "damaged report tries to mark a failed boundary as ready"
+    }
+  ],
+  "summary": {
+    "check_count": 1,
+    "pass_count": 0,
+    "manual_review_count": 0,
+    "fail_count": 1
+  },
+  "authority_boundary": [
+    "Sidecar review can approve runtime work directly."
+  ],
+  "next_gate": "live_network_agent"
+}
+

@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "rusty.quest.sidecar.manifold_adapter_proposal.v1",
+  "title": "Rusty Quest Sidecar Manifold Adapter Proposal",
+  "type": "object",
+  "required": [
+    "schema",
+    "proposal_id",
+    "created_at",
+    "source",
+    "authority",
+    "adapter_surfaces",
+    "rejection_vocabulary",
+    "validation_slots",
+    "limits"
+  ],
+  "properties": {
+    "schema": {
+      "const": "rusty.quest.sidecar.manifold_adapter_proposal.v1"
+    },
+    "proposal_id": {
+      "type": "string"
+    },
+    "created_at": {
+      "type": "string"
+    },
+    "source": {
+      "type": "object"
+    },
+    "authority": {
+      "type": "object"
+    },
+    "adapter_surfaces": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "rejection_vocabulary": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "validation_slots": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "limits": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "additionalProperties": false
+}
+

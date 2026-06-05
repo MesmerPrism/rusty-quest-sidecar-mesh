@@ -1,0 +1,93 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "rusty.quest.sidecar.private_rehearsal_evidence_expectation.v1",
+  "title": "Rusty Quest Sidecar Private Rehearsal Evidence Expectation",
+  "type": "object",
+  "required": [
+    "schema",
+    "expectation_id",
+    "generated_at",
+    "expectation_status",
+    "source_private_rehearsal_approval_request",
+    "source_hostess_boundary_descriptor_expectation",
+    "evidence_scope",
+    "authority",
+    "private_evidence_requirements",
+    "public_derivative_requirements",
+    "manifold_handoff_expectation",
+    "hostess_escalation_boundary",
+    "validation_evidence",
+    "privacy_boundary",
+    "checks",
+    "summary",
+    "authority_boundary",
+    "next_gate"
+  ],
+  "properties": {
+    "schema": {
+      "const": "rusty.quest.sidecar.private_rehearsal_evidence_expectation.v1"
+    },
+    "expectation_id": {
+      "type": "string"
+    },
+    "generated_at": {
+      "type": "string"
+    },
+    "expectation_status": {
+      "enum": [
+        "ready_for_operator_approved_private_evidence_plan",
+        "manual_review",
+        "blocked"
+      ]
+    },
+    "source_private_rehearsal_approval_request": {
+      "type": "object"
+    },
+    "source_hostess_boundary_descriptor_expectation": {
+      "type": "object"
+    },
+    "evidence_scope": {
+      "type": "object"
+    },
+    "authority": {
+      "type": "object"
+    },
+    "private_evidence_requirements": {
+      "type": "object"
+    },
+    "public_derivative_requirements": {
+      "type": "object"
+    },
+    "manifold_handoff_expectation": {
+      "type": "object"
+    },
+    "hostess_escalation_boundary": {
+      "type": "object"
+    },
+    "validation_evidence": {
+      "type": "object"
+    },
+    "privacy_boundary": {
+      "type": "object"
+    },
+    "checks": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "summary": {
+      "type": "object"
+    },
+    "authority_boundary": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "next_gate": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}

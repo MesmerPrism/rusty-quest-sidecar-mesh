@@ -1,0 +1,86 @@
+{
+  "schema": "rusty.quest.sidecar.public_lab_artifact_intake_manifest.v1",
+  "intake_id": "public_lab_intake.synthetic.peer_mesh.001",
+  "created_at": "2026-06-04T21:40:00Z",
+  "source_repo": {
+    "repo_label": "quest-termux-lab",
+    "source_class": "public_safe_sanitized_lab",
+    "root_mode": "cli_supplied",
+    "artifact_path_policy": "relative_paths_only"
+  },
+  "artifact_refs": [
+    {
+      "artifact_id": "artifact.peer_public_package",
+      "artifact_kind": "package_readiness_report",
+      "path": "examples/peer-public-package-report.synthetic.json",
+      "expected_schema": "quest-termux-lab.peer-public-package-report.v1",
+      "status_field": "overall_status",
+      "expected_status_class": "ready",
+      "required": true
+    },
+    {
+      "artifact_id": "artifact.preflight_clear_review_bundle",
+      "artifact_kind": "review_bundle_report",
+      "path": "examples/peer-review-bundle-preflight-clear-report.synthetic.json",
+      "expected_schema": "quest-termux-lab.peer-review-bundle-report.v1",
+      "status_field": "overall_status",
+      "expected_status_class": "ready",
+      "required": true
+    },
+    {
+      "artifact_id": "artifact.baseline_scorecard",
+      "artifact_kind": "scorecard_report",
+      "path": "examples/peer-scorecard-report.synthetic.json",
+      "expected_schema": "quest-termux-lab.peer-scorecard-report.v1",
+      "status_field": "overall_status",
+      "expected_status_class": "blocked",
+      "required": true
+    },
+    {
+      "artifact_id": "artifact.file_drop_copy_dry_run",
+      "artifact_kind": "file_drop_copy_dry_run_report",
+      "path": "examples/peer-file-drop-copy-dry-run-report.synthetic.json",
+      "expected_schema": "quest-termux-lab.peer-file-drop-copy-dry-run-report.v1",
+      "status_field": "overall_status",
+      "expected_status_class": "ready",
+      "required": true
+    },
+    {
+      "artifact_id": "artifact.file_drop_inbox_intake",
+      "artifact_kind": "file_drop_inbox_intake_report",
+      "path": "examples/peer-file-drop-inbox-intake-report.synthetic.json",
+      "expected_schema": "quest-termux-lab.peer-file-drop-inbox-intake-report.v1",
+      "status_field": "overall_status",
+      "expected_status_class": "ready",
+      "required": true
+    },
+    {
+      "artifact_id": "artifact.result_placeholders",
+      "artifact_kind": "private_result_placeholder_report",
+      "path": "examples/peer-private-result-placeholder-report.synthetic.json",
+      "expected_schema": "quest-termux-lab.peer-private-result-placeholder-report.v1",
+      "status_field": "overall_status",
+      "expected_status_class": "blocked",
+      "required": true
+    }
+  ],
+  "extraction_policy": {
+    "allowed_fields": [
+      "schema",
+      "overall_status",
+      "summary",
+      "authority_boundary",
+      "observed_at"
+    ],
+    "copy_raw_artifact": false,
+    "execute_source_validation": false,
+    "accept_expected_blocked_status": true,
+    "contains_endpoint_values": false
+  },
+  "authority_boundary": [
+    "Public lab artifact intake reads declared public-safe fixture reports only.",
+    "Public lab artifact intake does not read private evidence, copy raw artifacts, approve live work, select endpoints, open sockets, use ADB, install apps, launch apps, or execute commands.",
+    "Public lab artifact intake produces advisory evidence for a future Manifold handoff proposal only."
+  ]
+}
+

@@ -1,0 +1,273 @@
+{
+  "schema": "rusty.quest.sidecar.manifold_contract_intake_request.v1",
+  "request_id": "request.sidecar_mesh_manifold_contract_intake.synthetic.001",
+  "generated_at": "2026-06-04T22:48:00Z",
+  "request_status": "ready_for_manifold_contract_intake",
+  "source_handoff_package": {
+    "path": "fixtures/valid/manifold-handoff-package.synthetic.json",
+    "schema": "rusty.quest.sidecar.manifold_handoff_package.v1",
+    "package_id": "package.sidecar_mesh_manifold_handoff.synthetic.001",
+    "package_status": "handoff_package_ready",
+    "next_gate": "manifold_repo_contract_intake_or_operator_approved_private_rehearsal_evidence"
+  },
+  "request_scope": {
+    "request_class": "manifold_contract_intake_descriptor",
+    "source_mode": "synthetic_fixture",
+    "target_repo": "rusty.manifold",
+    "repo_touch_status": "not_touched",
+    "implementation_status": "not_implemented",
+    "route_status": "not_created",
+    "accepted_state_status": "not_created",
+    "live_evidence_status": "not_included"
+  },
+  "authority": {
+    "request_owner": "rusty.quest.sidecar_mesh",
+    "intake_acceptance_owner": "rusty.manifold",
+    "runtime_authority_owner": "rusty.manifold",
+    "session_authority_owner": "rusty.manifold",
+    "audit_owner": "rusty.manifold.audit",
+    "accepted_state_owner": "rusty.manifold",
+    "sidecar_role": "observer_proposer",
+    "proposal_status": "not_accepted"
+  },
+  "proposed_contract_intake": {
+    "intake_id": "intake.sidecar_mesh_contract.synthetic.001",
+    "status": "candidate",
+    "target_repo": "rusty.manifold",
+    "requested_request_type": "open_sidecar_mesh_contract_intake",
+    "candidate_surfaces": [
+      "sidecar_peer_status_source",
+      "sidecar_peer_status_intake",
+      "sidecar_peer_rehearsal_audit"
+    ],
+    "candidate_validation_slots": [
+      "slot.schema_and_fixture_validation",
+      "slot.damaged_boundary_fixtures",
+      "slot.future_manifold_contract_gate"
+    ],
+    "required_rejection_terms": [
+      "operator_approval_missing",
+      "endpoint_values_rejected",
+      "commands_rejected",
+      "adb_rejected",
+      "stale_peer_status",
+      "untrusted_sidecar",
+      "redaction_incomplete",
+      "high_rate_payload_rejected",
+      "unsupported_transport"
+    ],
+    "required_acceptance_owner": "rusty.manifold",
+    "required_audit_owner": "rusty.manifold.audit",
+    "accepted_state_status": "not_created",
+    "hostess_escalation_input": "manifold_accepted_state_or_operator_request"
+  },
+  "hostess_boundary": {
+    "status": "future_lane_not_requested",
+    "route_status": "not_created",
+    "device_action_authority": "not_in_sidecar",
+    "input_role": "manifold_accepted_state_or_operator_request",
+    "allowed_action_class": "operator_recovery_request_descriptor"
+  },
+  "validation_evidence": {
+    "local_validation_status": "expected_pass",
+    "required_commands": [
+      "python tools/prepare_manifold_contract_intake.py --handoff-package fixtures/valid/manifold-handoff-package.synthetic.json --now 2026-06-04T22:48:00Z --output fixtures/valid/manifold-contract-intake-request.synthetic.json",
+      "python tools/evaluate_integration_acceptance.py --repo-root . --now 2026-06-04T21:46:00Z --output fixtures/valid/integration-acceptance-scorecard.synthetic.json",
+      "python tools/validate_repo.py --repo-root .",
+      "python -m unittest discover -s tests -p test_*.py",
+      "git diff --check"
+    ],
+    "damaged_fixture_policy": "must_fail_validation",
+    "future_manifold_gate": "manifold_repo_owns_schema_route_acceptance_and_audit"
+  },
+  "privacy_boundary": {
+    "contains_endpoint_values": false,
+    "contains_pairing_material": false,
+    "contains_commands": false,
+    "contains_raw_logs": false,
+    "contains_visual_captures": false,
+    "contains_private_device_ids": false,
+    "public_fixture_policy": "synthetic_descriptor_only"
+  },
+  "checks": [
+    {
+      "check_id": "contract_intake.source_package_ready",
+      "status": "pass",
+      "observed": {
+        "schema": "rusty.quest.sidecar.manifold_handoff_package.v1",
+        "package_status": "handoff_package_ready",
+        "next_gate": "manifold_repo_contract_intake_or_operator_approved_private_rehearsal_evidence"
+      },
+      "expected": {
+        "schema": "rusty.quest.sidecar.manifold_handoff_package.v1",
+        "package_status": "handoff_package_ready",
+        "next_gate": "manifold_repo_contract_intake_or_operator_approved_private_rehearsal_evidence"
+      },
+      "evidence": "fixtures/valid/manifold-handoff-package.synthetic.json"
+    },
+    {
+      "check_id": "contract_intake.no_repo_route_or_state",
+      "status": "pass",
+      "observed": {
+        "repo_touch_status": "not_touched",
+        "route_status": "not_created",
+        "accepted_state_status": "not_created",
+        "live_evidence_status": "not_included",
+        "intake_accepted_state_status": "not_created"
+      },
+      "expected": {
+        "repo_touch_status": "not_touched",
+        "route_status": "not_created",
+        "accepted_state_status": "not_created",
+        "live_evidence_status": "not_included",
+        "intake_accepted_state_status": "not_created"
+      },
+      "evidence": "contract intake request does not touch Manifold or create route/state"
+    },
+    {
+      "check_id": "contract_intake.manifold_authority",
+      "status": "pass",
+      "observed": {
+        "intake_acceptance_owner": "rusty.manifold",
+        "runtime_authority_owner": "rusty.manifold",
+        "session_authority_owner": "rusty.manifold",
+        "audit_owner": "rusty.manifold.audit",
+        "accepted_state_owner": "rusty.manifold",
+        "sidecar_role": "observer_proposer"
+      },
+      "expected": {
+        "intake_acceptance_owner": "rusty.manifold",
+        "runtime_authority_owner": "rusty.manifold",
+        "session_authority_owner": "rusty.manifold",
+        "audit_owner": "rusty.manifold.audit",
+        "accepted_state_owner": "rusty.manifold",
+        "sidecar_role": "observer_proposer"
+      },
+      "evidence": "Manifold remains intake acceptance, runtime, session, accepted-state, and audit authority"
+    },
+    {
+      "check_id": "contract_intake.surfaces_slots_and_rejections",
+      "status": "pass",
+      "observed": {
+        "candidate_surfaces": [
+          "sidecar_peer_status_source",
+          "sidecar_peer_status_intake",
+          "sidecar_peer_rehearsal_audit"
+        ],
+        "candidate_validation_slots": [
+          "slot.schema_and_fixture_validation",
+          "slot.damaged_boundary_fixtures",
+          "slot.future_manifold_contract_gate"
+        ],
+        "required_rejection_terms": [
+          "operator_approval_missing",
+          "endpoint_values_rejected",
+          "commands_rejected",
+          "adb_rejected",
+          "stale_peer_status",
+          "untrusted_sidecar",
+          "redaction_incomplete",
+          "high_rate_payload_rejected",
+          "unsupported_transport"
+        ]
+      },
+      "expected": {
+        "required_surfaces": [
+          "sidecar_peer_rehearsal_audit",
+          "sidecar_peer_status_intake",
+          "sidecar_peer_status_source"
+        ],
+        "required_validation_slots": [
+          "slot.damaged_boundary_fixtures",
+          "slot.future_manifold_contract_gate",
+          "slot.schema_and_fixture_validation"
+        ],
+        "required_rejection_terms": [
+          "adb_rejected",
+          "commands_rejected",
+          "endpoint_values_rejected",
+          "operator_approval_missing",
+          "redaction_incomplete",
+          "stale_peer_status",
+          "untrusted_sidecar"
+        ]
+      },
+      "evidence": "contract intake request carries the candidate Manifold surfaces, validation slots, and rejection terms"
+    },
+    {
+      "check_id": "contract_intake.hostess_boundary",
+      "status": "pass",
+      "observed": {
+        "status": "future_lane_not_requested",
+        "route_status": "not_created",
+        "device_action_authority": "not_in_sidecar",
+        "input_role": "manifold_accepted_state_or_operator_request",
+        "allowed_action_class": "operator_recovery_request_descriptor"
+      },
+      "expected": {
+        "status": "future_lane_not_requested",
+        "route_status": "not_created",
+        "device_action_authority": "not_in_sidecar",
+        "input_role": "manifold_accepted_state_or_operator_request"
+      },
+      "evidence": "Hostess remains descriptor-only and cannot be driven by sidecar authority"
+    },
+    {
+      "check_id": "contract_intake.privacy_boundary",
+      "status": "pass",
+      "observed": {
+        "contains_endpoint_values": false,
+        "contains_pairing_material": false,
+        "contains_commands": false,
+        "contains_raw_logs": false,
+        "contains_visual_captures": false,
+        "contains_private_device_ids": false,
+        "public_fixture_policy": "synthetic_descriptor_only"
+      },
+      "expected": {
+        "contains_endpoint_values": false,
+        "contains_pairing_material": false,
+        "contains_commands": false,
+        "contains_raw_logs": false,
+        "contains_visual_captures": false,
+        "contains_private_device_ids": false,
+        "public_fixture_policy": "synthetic_descriptor_only"
+      },
+      "evidence": "contract intake request remains public-safe synthetic descriptor evidence"
+    },
+    {
+      "check_id": "contract_intake.validation_gate",
+      "status": "pass",
+      "observed": {
+        "local_validation_status": "expected_pass",
+        "required_commands": [
+          "python tools/prepare_manifold_contract_intake.py --handoff-package fixtures/valid/manifold-handoff-package.synthetic.json --now 2026-06-04T22:48:00Z --output fixtures/valid/manifold-contract-intake-request.synthetic.json",
+          "python tools/evaluate_integration_acceptance.py --repo-root . --now 2026-06-04T21:46:00Z --output fixtures/valid/integration-acceptance-scorecard.synthetic.json",
+          "python tools/validate_repo.py --repo-root .",
+          "python -m unittest discover -s tests -p test_*.py",
+          "git diff --check"
+        ],
+        "damaged_fixture_policy": "must_fail_validation",
+        "future_manifold_gate": "manifold_repo_owns_schema_route_acceptance_and_audit"
+      },
+      "expected": {
+        "local_validation_status": "expected_pass",
+        "damaged_fixture_policy": "must_fail_validation",
+        "future_manifold_gate": "manifold_repo_owns_schema_route_acceptance_and_audit"
+      },
+      "evidence": "contract intake request records validation and future Manifold ownership gates"
+    }
+  ],
+  "summary": {
+    "check_count": 7,
+    "pass_count": 7,
+    "manual_review_count": 0,
+    "fail_count": 0
+  },
+  "authority_boundary": [
+    "The Manifold contract intake request is descriptor evidence only; it does not touch the Manifold repo, create a Manifold route, create accepted Manifold state, touch Hostess, start a live Quest run, use ADB, open sockets, select endpoints, install, launch, recover, copy files, or execute commands.",
+    "Manifold remains the future command/session/audit and accepted-state authority for sidecar peer status intake.",
+    "Hostess remains a future operator-recovery lane after Manifold accepted state or explicit operator request; sidecar agents cannot perform device actions."
+  ],
+  "next_gate": "manifold_repo_owned_contract_schema_or_operator_approved_private_rehearsal_evidence"
+}

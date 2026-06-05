@@ -1,0 +1,85 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "rusty.quest.sidecar.manifold_public_derivative_schema_slice_response_operator_decision_record_expectation.v1",
+  "title": "Rusty Quest Sidecar Manifold Public Derivative Schema Slice Response Operator Decision Record Expectation",
+  "type": "object",
+  "required": [
+    "schema",
+    "expectation_id",
+    "generated_at",
+    "expectation_status",
+    "source_operator_decision_request",
+    "expectation_scope",
+    "authority",
+    "expected_operator_decision_record",
+    "manifold_submission_after_decision",
+    "hostess_boundary_after_decision",
+    "validation_evidence",
+    "privacy_boundary",
+    "checks",
+    "summary",
+    "authority_boundary",
+    "next_gate"
+  ],
+  "properties": {
+    "schema": {
+      "const": "rusty.quest.sidecar.manifold_public_derivative_schema_slice_response_operator_decision_record_expectation.v1"
+    },
+    "expectation_id": {
+      "type": "string"
+    },
+    "generated_at": {
+      "type": "string"
+    },
+    "expectation_status": {
+      "enum": [
+        "ready_for_operator_decision_record",
+        "manual_review",
+        "blocked"
+      ]
+    },
+    "source_operator_decision_request": {
+      "type": "object"
+    },
+    "expectation_scope": {
+      "type": "object"
+    },
+    "authority": {
+      "type": "object"
+    },
+    "expected_operator_decision_record": {
+      "type": "object"
+    },
+    "manifold_submission_after_decision": {
+      "type": "object"
+    },
+    "hostess_boundary_after_decision": {
+      "type": "object"
+    },
+    "validation_evidence": {
+      "type": "object"
+    },
+    "privacy_boundary": {
+      "type": "object"
+    },
+    "checks": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "summary": {
+      "type": "object"
+    },
+    "authority_boundary": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "next_gate": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}

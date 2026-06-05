@@ -1,0 +1,106 @@
+{
+  "schema": "rusty.quest.sidecar.hostess_boundary_descriptor_expectation.v1",
+  "expectation_id": "expectation.hostess_boundary_descriptor.damaged.001",
+  "generated_at": "2026-06-04T23:44:00Z",
+  "expectation_status": "hostess_route_created_by_sidecar",
+  "source_manifold_response_handoff_package": {
+    "path": "fixtures/valid/manifold-response-handoff-package.synthetic.json",
+    "schema": "rusty.quest.sidecar.manifold_response_handoff_package.v1",
+    "package_id": "package.manifold_response_slice_handoff.synthetic.001",
+    "package_status": "accepted_by_sidecar",
+    "next_gate": "sidecar_hostess_route"
+  },
+  "expectation_scope": {
+    "expectation_class": "sidecar_hostess_route_expectation",
+    "source_mode": "synthetic_fixture",
+    "target_descriptor_owner": "rusty.quest.sidecar_mesh",
+    "future_consumer": "rusty.hostess",
+    "manifold_repo_touch_status": "touched",
+    "hostess_repo_touch_status": "touched",
+    "hostess_route_status": "created",
+    "manifold_accepted_state_status": "created",
+    "operator_request_status": "recorded",
+    "live_evidence_status": "included"
+  },
+  "authority": {
+    "expectation_owner": "rusty.quest.sidecar_mesh",
+    "boundary_descriptor_owner": "rusty.quest.sidecar_mesh",
+    "source_of_truth_owner": "rusty.quest.sidecar_mesh",
+    "response_decision_owner": "rusty.quest.sidecar_mesh",
+    "accepted_state_owner": "rusty.quest.sidecar_mesh",
+    "audit_owner": "rusty.quest.sidecar_mesh",
+    "future_hostess_route_owner": "rusty.quest.sidecar_mesh",
+    "future_hostess_route_enablement_owner": "rusty.quest.sidecar_mesh",
+    "hostess_device_action_authority": "sidecar",
+    "sidecar_role": "command_authority",
+    "proposal_status": "accepted"
+  },
+  "expected_hostess_boundary_descriptor": {
+    "descriptor_status": "created",
+    "descriptor_kind": "sidecar_hostess_device_control",
+    "input_source_policy": "sidecar_peer_message_direct",
+    "sidecar_direct_input_allowed": true,
+    "requires_manifold_accepted_state": false,
+    "requires_explicit_operator_request": false,
+    "allows_endpoint_values": true,
+    "allows_commands": true,
+    "allows_adb": true,
+    "allows_high_rate_payloads": true,
+    "allowed_action_classes": [
+      "device_action"
+    ],
+    "disallowed_input_classes": [],
+    "required_descriptor_fields": [],
+    "required_hostess_validation_slots": [],
+    "safe_to_create_hostess_route": true
+  },
+  "manifold_acceptance_gate": {
+    "handoff_acceptance_status": "accepted",
+    "response_decision_status": "accepted",
+    "accepted_state_status": "created",
+    "audit_record_status": "created",
+    "required_response_decision": "accepted_for_manifold_slice",
+    "hostess_boundary_descriptor_status": "created",
+    "hostess_route_status": "created",
+    "hostess_enablement_status": "enabled",
+    "gate_result": "hostess_route_created"
+  },
+  "validation_evidence": {
+    "local_validation_status": "skipped",
+    "required_commands": [],
+    "damaged_fixture_policy": "may_pass_validation",
+    "future_manifold_gate": "sidecar_accepts_response",
+    "future_hostess_gate": "sidecar_direct_hostess"
+  },
+  "privacy_boundary": {
+    "contains_endpoint_values": true,
+    "contains_pairing_material": true,
+    "contains_commands": true,
+    "contains_raw_logs": true,
+    "contains_visual_captures": true,
+    "contains_private_device_ids": true,
+    "public_fixture_policy": "raw_evidence"
+  },
+  "private_endpoint": "10.0.0.91:5555",
+  "adb_target": "quest-serial",
+  "command_payload": "am start package.name",
+  "checks": [
+    {
+      "check_id": "hostess_boundary_expectation.sidecar_route_created",
+      "status": "pass",
+      "observed": "created_by_sidecar",
+      "expected": "created_by_sidecar",
+      "evidence": "damaged fixture"
+    }
+  ],
+  "summary": {
+    "check_count": 1,
+    "pass_count": 1,
+    "manual_review_count": 0,
+    "fail_count": 0
+  },
+  "authority_boundary": [
+    "Sidecar creates the Hostess route and drives device actions directly."
+  ],
+  "next_gate": "sidecar_hostess_control"
+}

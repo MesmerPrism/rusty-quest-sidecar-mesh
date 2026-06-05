@@ -1,0 +1,270 @@
+{
+  "schema": "rusty.quest.sidecar.manifold_handoff_package.v1",
+  "package_id": "package.sidecar_mesh_manifold_handoff.synthetic.001",
+  "generated_at": "2026-06-04T22:40:00Z",
+  "package_status": "handoff_package_ready",
+  "source_contract_review": {
+    "path": "fixtures/valid/manifold-adapter-contract-review.synthetic.json",
+    "schema": "rusty.quest.sidecar.manifold_adapter_contract_review.v1",
+    "review_id": "review.manifold_adapter_contract.synthetic.001",
+    "review_status": "contract_ready",
+    "next_gate": "manifold_owned_adapter_contract_or_operator_approved_private_rehearsal_evidence"
+  },
+  "package_scope": {
+    "package_class": "manifold_handoff_descriptor",
+    "source_mode": "synthetic_fixture",
+    "implementation_status": "not_implemented",
+    "route_status": "not_created",
+    "accepted_state_status": "not_created",
+    "live_evidence_status": "not_included"
+  },
+  "authority": {
+    "package_owner": "rusty.quest.sidecar_mesh",
+    "handoff_acceptance_owner": "rusty.manifold",
+    "runtime_authority_owner": "rusty.manifold",
+    "session_authority_owner": "rusty.manifold",
+    "audit_owner": "rusty.manifold.audit",
+    "accepted_state_owner": "rusty.manifold",
+    "sidecar_role": "observer_proposer",
+    "proposal_status": "not_accepted"
+  },
+  "artifact_set": [
+    {
+      "artifact_id": "artifact.public_lab_intake_report",
+      "path": "fixtures/valid/public-lab-artifact-intake-report.synthetic.json",
+      "schema": "rusty.quest.sidecar.public_lab_artifact_intake_report.v1",
+      "role": "sanitized_source_evidence",
+      "required_for_handoff": true
+    },
+    {
+      "artifact_id": "artifact.no_network_agent_recipe",
+      "path": "fixtures/valid/no-network-agent-recipe.synthetic.json",
+      "schema": "rusty.quest.sidecar.no_network_agent_recipe.v1",
+      "role": "sidecar_runtime_boundary",
+      "required_for_handoff": true
+    },
+    {
+      "artifact_id": "artifact.no_network_prototype_run",
+      "path": "fixtures/valid/no-network-agent-run.synthetic.json",
+      "schema": "rusty.quest.sidecar.no_network_agent_run.v1",
+      "role": "offline_generation_evidence",
+      "required_for_handoff": true
+    },
+    {
+      "artifact_id": "artifact.no_network_handoff_review",
+      "path": "fixtures/valid/no-network-prototype-handoff-review.synthetic.json",
+      "schema": "rusty.quest.sidecar.no_network_prototype_handoff_review.v1",
+      "role": "manifold_hostess_mapping_evidence",
+      "required_for_handoff": true
+    },
+    {
+      "artifact_id": "artifact.configured_peer_rehearsal_plan",
+      "path": "fixtures/valid/configured-peer-rehearsal-plan.synthetic.json",
+      "schema": "rusty.quest.sidecar.configured_peer_rehearsal_plan.v1",
+      "role": "future_peer_status_rehearsal_descriptor",
+      "required_for_handoff": true
+    },
+    {
+      "artifact_id": "artifact.manifold_adapter_contract_review",
+      "path": "fixtures/valid/manifold-adapter-contract-review.synthetic.json",
+      "schema": "rusty.quest.sidecar.manifold_adapter_contract_review.v1",
+      "role": "future_manifold_adapter_contract_descriptor",
+      "required_for_handoff": true
+    },
+    {
+      "artifact_id": "artifact.integration_acceptance_scorecard",
+      "path": "fixtures/valid/integration-acceptance-scorecard.synthetic.json",
+      "schema": "rusty.quest.sidecar.integration_acceptance_scorecard.v1",
+      "role": "local_acceptance_evidence",
+      "required_for_handoff": true
+    }
+  ],
+  "proposed_manifold_handoff": {
+    "handoff_id": "handoff.sidecar_mesh_to_manifold.synthetic.001",
+    "status": "candidate",
+    "target_repo": "rusty.manifold",
+    "target_surfaces": [
+      "sidecar_peer_status_source",
+      "sidecar_peer_status_intake",
+      "sidecar_peer_rehearsal_audit"
+    ],
+    "required_acceptance_owner": "rusty.manifold",
+    "required_audit_owner": "rusty.manifold.audit",
+    "accepted_state_status": "not_created",
+    "required_rejection_terms": [
+      "operator_approval_missing",
+      "endpoint_values_rejected",
+      "commands_rejected",
+      "adb_rejected",
+      "stale_peer_status",
+      "untrusted_sidecar",
+      "redaction_incomplete",
+      "high_rate_payload_rejected",
+      "unsupported_transport"
+    ],
+    "required_validation_slots": [
+      "slot.schema_and_fixture_validation",
+      "slot.damaged_boundary_fixtures",
+      "slot.future_manifold_contract_gate"
+    ]
+  },
+  "hostess_boundary": {
+    "status": "future_lane_not_requested",
+    "route_status": "not_created",
+    "device_action_authority": "not_in_sidecar",
+    "input_role": "manifold_accepted_state_or_operator_request",
+    "allowed_action_class": "operator_recovery_request_descriptor"
+  },
+  "validation_evidence": {
+    "local_validation_status": "expected_pass",
+    "required_commands": [
+      "python tools/package_manifold_handoff.py --contract-review fixtures/valid/manifold-adapter-contract-review.synthetic.json --now 2026-06-04T22:40:00Z --output fixtures/valid/manifold-handoff-package.synthetic.json",
+      "python tools/evaluate_integration_acceptance.py --repo-root . --now 2026-06-04T21:46:00Z --output fixtures/valid/integration-acceptance-scorecard.synthetic.json",
+      "python tools/validate_repo.py --repo-root .",
+      "python -m unittest discover -s tests -p test_*.py",
+      "git diff --check"
+    ],
+    "damaged_fixture_policy": "must_fail_validation",
+    "future_manifold_gate": "reject_endpoint_command_adb_stale_untrusted_inputs_before_acceptance"
+  },
+  "privacy_boundary": {
+    "contains_endpoint_values": false,
+    "contains_pairing_material": false,
+    "contains_commands": false,
+    "contains_raw_logs": false,
+    "contains_visual_captures": false,
+    "contains_private_device_ids": false,
+    "public_fixture_policy": "synthetic_descriptor_only"
+  },
+  "checks": [
+    {
+      "check_id": "handoff_package.contract_review_ready",
+      "status": "pass",
+      "observed": {
+        "schema": "rusty.quest.sidecar.manifold_adapter_contract_review.v1",
+        "review_status": "contract_ready",
+        "next_gate": "manifold_owned_adapter_contract_or_operator_approved_private_rehearsal_evidence"
+      },
+      "expected": {
+        "schema": "rusty.quest.sidecar.manifold_adapter_contract_review.v1",
+        "review_status": "contract_ready",
+        "next_gate": "manifold_owned_adapter_contract_or_operator_approved_private_rehearsal_evidence"
+      },
+      "evidence": "fixtures/valid/manifold-adapter-contract-review.synthetic.json"
+    },
+    {
+      "check_id": "handoff_package.artifact_set_complete",
+      "status": "pass",
+      "observed": [
+        "artifact.public_lab_intake_report",
+        "artifact.no_network_agent_recipe",
+        "artifact.no_network_prototype_run",
+        "artifact.no_network_handoff_review",
+        "artifact.configured_peer_rehearsal_plan",
+        "artifact.manifold_adapter_contract_review",
+        "artifact.integration_acceptance_scorecard"
+      ],
+      "expected": [
+        "artifact.public_lab_intake_report",
+        "artifact.no_network_agent_recipe",
+        "artifact.no_network_prototype_run",
+        "artifact.no_network_handoff_review",
+        "artifact.configured_peer_rehearsal_plan",
+        "artifact.manifold_adapter_contract_review",
+        "artifact.integration_acceptance_scorecard"
+      ],
+      "evidence": "handoff package names the generated sidecar evidence chain"
+    },
+    {
+      "check_id": "handoff_package.no_live_or_accepted_state",
+      "status": "pass",
+      "observed": {
+        "route_status": "not_created",
+        "accepted_state_status": "not_created",
+        "live_evidence_status": "not_included",
+        "handoff_accepted_state_status": "not_created"
+      },
+      "expected": {
+        "route_status": "not_created",
+        "accepted_state_status": "not_created",
+        "live_evidence_status": "not_included",
+        "handoff_accepted_state_status": "not_created"
+      },
+      "evidence": "handoff package does not create routes, live evidence, or accepted state"
+    },
+    {
+      "check_id": "handoff_package.manifold_authority",
+      "status": "pass",
+      "observed": {
+        "handoff_acceptance_owner": "rusty.manifold",
+        "runtime_authority_owner": "rusty.manifold",
+        "session_authority_owner": "rusty.manifold",
+        "audit_owner": "rusty.manifold.audit",
+        "accepted_state_owner": "rusty.manifold",
+        "sidecar_role": "observer_proposer"
+      },
+      "expected": {
+        "handoff_acceptance_owner": "rusty.manifold",
+        "runtime_authority_owner": "rusty.manifold",
+        "session_authority_owner": "rusty.manifold",
+        "audit_owner": "rusty.manifold.audit",
+        "accepted_state_owner": "rusty.manifold",
+        "sidecar_role": "observer_proposer"
+      },
+      "evidence": "Manifold remains the handoff acceptance and runtime authority"
+    },
+    {
+      "check_id": "handoff_package.privacy_boundary",
+      "status": "pass",
+      "observed": {
+        "contains_endpoint_values": false,
+        "contains_pairing_material": false,
+        "contains_commands": false,
+        "contains_raw_logs": false,
+        "contains_visual_captures": false,
+        "contains_private_device_ids": false,
+        "public_fixture_policy": "synthetic_descriptor_only"
+      },
+      "expected": {
+        "contains_endpoint_values": false,
+        "contains_pairing_material": false,
+        "contains_commands": false,
+        "contains_raw_logs": false,
+        "contains_visual_captures": false,
+        "contains_private_device_ids": false,
+        "public_fixture_policy": "synthetic_descriptor_only"
+      },
+      "evidence": "handoff package remains public-safe synthetic descriptor evidence"
+    },
+    {
+      "check_id": "handoff_package.hostess_boundary",
+      "status": "pass",
+      "observed": {
+        "status": "future_lane_not_requested",
+        "route_status": "not_created",
+        "device_action_authority": "not_in_sidecar",
+        "input_role": "manifold_accepted_state_or_operator_request",
+        "allowed_action_class": "operator_recovery_request_descriptor"
+      },
+      "expected": {
+        "status": "future_lane_not_requested",
+        "route_status": "not_created",
+        "device_action_authority": "not_in_sidecar",
+        "input_role": "manifold_accepted_state_or_operator_request"
+      },
+      "evidence": "Hostess remains descriptor-only and cannot be driven by sidecar authority"
+    }
+  ],
+  "summary": {
+    "check_count": 6,
+    "pass_count": 6,
+    "manual_review_count": 0,
+    "fail_count": 0
+  },
+  "authority_boundary": [
+    "The Manifold handoff package is descriptor evidence only; it does not create a Manifold route, Hostess route, live Quest run, ADB path, socket, endpoint discovery, install, launch, recovery path, remote desktop path, file copy path, or command execution path.",
+    "Manifold remains the future command/session/audit and accepted-state authority for sidecar peer status intake.",
+    "Hostess remains a future operator-recovery lane after Manifold acceptance or explicit operator request; sidecar agents cannot perform device actions."
+  ],
+  "next_gate": "manifold_repo_contract_intake_or_operator_approved_private_rehearsal_evidence"
+}

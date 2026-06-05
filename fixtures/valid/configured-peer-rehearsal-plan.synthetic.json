@@ -1,0 +1,259 @@
+{
+  "schema": "rusty.quest.sidecar.configured_peer_rehearsal_plan.v1",
+  "plan_id": "plan.configured_peer_rehearsal.synthetic.001",
+  "generated_at": "2026-06-04T22:25:00Z",
+  "plan_status": "operator_approval_required",
+  "source_handoff_review": {
+    "path": "fixtures/valid/no-network-prototype-handoff-review.synthetic.json",
+    "schema": "rusty.quest.sidecar.no_network_prototype_handoff_review.v1",
+    "review_id": "review.no_network_prototype_handoff.synthetic.001",
+    "review_status": "handoff_review_ready",
+    "next_gate": "private_configured_peer_rehearsal_requires_operator_approval"
+  },
+  "rehearsal_scope": {
+    "scope_class": "configured_peer_status_rehearsal",
+    "source_mode": "synthetic_fixture",
+    "live_exchange_status": "not_started",
+    "status_payload_class": "low_rate_advisory_status",
+    "peer_count": 3,
+    "operator_approval_required_before_route_start": true
+  },
+  "authority": {
+    "sidecar_role": "observer_proposer",
+    "acceptance_owner": "rusty.manifold",
+    "audit_owner": "rusty.manifold.audit",
+    "operator_approval_required": true,
+    "proposal_status": "not_accepted",
+    "sidecar_device_action_authority": "forbidden",
+    "sidecar_command_authority": "forbidden"
+  },
+  "peer_set": [
+    {
+      "peer_id": "peer.quest_sidecar.synthetic_alpha",
+      "role": "local_rehearsal_subject",
+      "configured_material_status": "private_evidence_required_not_in_fixture",
+      "contains_endpoint_values": false,
+      "status_payload_class": "low_rate_advisory_status"
+    },
+    {
+      "peer_id": "peer.quest_sidecar.synthetic_beta",
+      "role": "configured_status_peer",
+      "configured_material_status": "private_evidence_required_not_in_fixture",
+      "contains_endpoint_values": false,
+      "status_payload_class": "low_rate_advisory_status"
+    },
+    {
+      "peer_id": "peer.quest_sidecar.synthetic_gamma",
+      "role": "configured_status_peer",
+      "configured_material_status": "private_evidence_required_not_in_fixture",
+      "contains_endpoint_values": false,
+      "status_payload_class": "low_rate_advisory_status"
+    }
+  ],
+  "transport_policy": {
+    "route_policy": "operator_approval_before_transport",
+    "status_payload_only": true,
+    "commands_allowed": false,
+    "adb_allowed": false,
+    "remote_desktop_allowed": false,
+    "file_transfer_allowed": false,
+    "fixture_contains_endpoint_values": false,
+    "network_binding_created": false,
+    "route_started": false,
+    "cleanup_evidence_required": true
+  },
+  "manifold_readiness": {
+    "status": "candidate",
+    "target_surface": "sidecar_peer_status_intake",
+    "authority_owner": "rusty.manifold",
+    "audit_owner": "rusty.manifold.audit",
+    "source_role": "proposal_input",
+    "acceptance_status": "not_implemented",
+    "accepted_state_owner": "rusty.manifold",
+    "rejection_terms": [
+      "operator_approval_missing",
+      "endpoint_values_rejected",
+      "commands_rejected",
+      "adb_rejected",
+      "stale_peer_status",
+      "redaction_incomplete"
+    ]
+  },
+  "hostess_readiness": {
+    "status": "future_lane_not_requested",
+    "role": "operator_recovery_after_manifold_acceptance",
+    "device_action_authority": "not_in_sidecar",
+    "input_role": "manifold_accepted_state_or_operator_request",
+    "route_status": "not_implemented",
+    "request_descriptor_fields": {
+      "required_authority": "rusty.manifold_or_operator",
+      "allowed_action_class": "operator_recovery_request_descriptor",
+      "implementation_status": "not_implemented"
+    },
+    "rejection_terms": [
+      "manifold_acceptance_missing",
+      "operator_request_missing",
+      "sidecar_device_action_forbidden"
+    ]
+  },
+  "evidence_policy": {
+    "contains_endpoint_values": false,
+    "contains_pairing_material": false,
+    "contains_commands": false,
+    "contains_raw_logs": false,
+    "contains_visual_captures": false,
+    "private_evidence_required_before_live_run": true,
+    "sanitized_derivative_required": true,
+    "public_fixture_policy": "synthetic_descriptor_only"
+  },
+  "steps": [
+    {
+      "step_id": "approval.collect_operator_approval",
+      "status": "planned",
+      "owner": "operator",
+      "output_class": "private_rehearsal_authorization"
+    },
+    {
+      "step_id": "config.prepare_private_peer_material",
+      "status": "planned",
+      "owner": "operator",
+      "output_class": "private_evidence_not_in_fixture"
+    },
+    {
+      "step_id": "exchange.status_only_peer_rehearsal",
+      "status": "planned",
+      "owner": "sidecar_agents",
+      "output_class": "low_rate_advisory_status"
+    },
+    {
+      "step_id": "evidence.emit_sanitized_route_health",
+      "status": "planned",
+      "owner": "sidecar_agents",
+      "output_class": "sanitized_derivative_fixture"
+    },
+    {
+      "step_id": "handoff.submit_manifold_candidate",
+      "status": "planned",
+      "owner": "future_manifold_adapter",
+      "output_class": "candidate_intake_not_accepted_state"
+    },
+    {
+      "step_id": "hostess.keep_recovery_descriptor_only",
+      "status": "planned",
+      "owner": "future_hostess_lane",
+      "output_class": "operator_recovery_request_descriptor"
+    }
+  ],
+  "checks": [
+    {
+      "check_id": "peer_rehearsal.source_handoff_ready",
+      "status": "pass",
+      "observed": {
+        "schema": "rusty.quest.sidecar.no_network_prototype_handoff_review.v1",
+        "review_status": "handoff_review_ready",
+        "next_gate": "private_configured_peer_rehearsal_requires_operator_approval"
+      },
+      "expected": {
+        "schema": "rusty.quest.sidecar.no_network_prototype_handoff_review.v1",
+        "review_status": "handoff_review_ready",
+        "next_gate": "private_configured_peer_rehearsal_requires_operator_approval"
+      },
+      "evidence": "fixtures/valid/no-network-prototype-handoff-review.synthetic.json"
+    },
+    {
+      "check_id": "peer_rehearsal.operator_approval_required",
+      "status": "pass",
+      "observed": {
+        "operator_approval_required": true,
+        "operator_approval_required_before_route_start": true,
+        "route_started": false
+      },
+      "expected": {
+        "operator_approval_required": true,
+        "operator_approval_required_before_route_start": true,
+        "route_started": false
+      },
+      "evidence": "configured peer rehearsal is planned but not started"
+    },
+    {
+      "check_id": "peer_rehearsal.no_endpoint_or_runtime_payloads",
+      "status": "pass",
+      "observed": {
+        "fixture_contains_endpoint_values": false,
+        "contains_endpoint_values": false,
+        "contains_pairing_material": false,
+        "contains_commands": false
+      },
+      "expected": {
+        "fixture_contains_endpoint_values": false,
+        "contains_endpoint_values": false,
+        "contains_pairing_material": false,
+        "contains_commands": false
+      },
+      "evidence": "repository fixture remains a sanitized derivative descriptor"
+    },
+    {
+      "check_id": "peer_rehearsal.status_only_transport",
+      "status": "pass",
+      "observed": {
+        "status_payload_only": true,
+        "commands_allowed": false,
+        "adb_allowed": false,
+        "remote_desktop_allowed": false
+      },
+      "expected": {
+        "status_payload_only": true,
+        "commands_allowed": false,
+        "adb_allowed": false,
+        "remote_desktop_allowed": false
+      },
+      "evidence": "configured peer rehearsal only permits status gossip descriptors"
+    },
+    {
+      "check_id": "peer_rehearsal.manifold_candidate_only",
+      "status": "pass",
+      "observed": {
+        "authority_owner": "rusty.manifold",
+        "audit_owner": "rusty.manifold.audit",
+        "acceptance_status": "not_implemented",
+        "accepted_state_owner": "rusty.manifold"
+      },
+      "expected": {
+        "authority_owner": "rusty.manifold",
+        "audit_owner": "rusty.manifold.audit",
+        "acceptance_status": "not_implemented",
+        "accepted_state_owner": "rusty.manifold"
+      },
+      "evidence": "future Manifold intake remains candidate-only"
+    },
+    {
+      "check_id": "peer_rehearsal.hostess_descriptor_only",
+      "status": "pass",
+      "observed": {
+        "status": "future_lane_not_requested",
+        "device_action_authority": "not_in_sidecar",
+        "input_role": "manifold_accepted_state_or_operator_request",
+        "route_status": "not_implemented"
+      },
+      "expected": {
+        "status": "future_lane_not_requested",
+        "device_action_authority": "not_in_sidecar",
+        "input_role": "manifold_accepted_state_or_operator_request",
+        "route_status": "not_implemented"
+      },
+      "evidence": "Hostess recovery remains future descriptor-only integration"
+    }
+  ],
+  "summary": {
+    "check_count": 6,
+    "pass_count": 6,
+    "manual_review_count": 0,
+    "fail_count": 0
+  },
+  "authority_boundary": [
+    "The configured peer rehearsal plan is a descriptor only; it does not start routes, bind network ports, use ADB, open remote desktop, copy files, install apps, launch apps, recover devices, execute commands, or mutate Manifold state.",
+    "Manifold remains the future owner of acceptance, rejection, revision, lease, topology, and audit records.",
+    "Hostess remains a future operator-recovery lane after Manifold acceptance or explicit operator request; sidecar agents cannot perform device actions."
+  ],
+  "next_gate": "operator_approved_private_rehearsal_evidence_or_manifold_adapter_contract"
+}

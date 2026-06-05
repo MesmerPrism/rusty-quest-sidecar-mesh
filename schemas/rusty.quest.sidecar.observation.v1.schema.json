@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "rusty.quest.sidecar.observation.v1",
+  "title": "Rusty Quest Sidecar Observation",
+  "type": "object",
+  "required": [
+    "schema",
+    "observation_id",
+    "source_agent_id",
+    "observed_agent_id",
+    "observed_at",
+    "sequence",
+    "status",
+    "transport",
+    "health",
+    "advisory",
+    "redaction"
+  ],
+  "properties": {
+    "schema": {
+      "const": "rusty.quest.sidecar.observation.v1"
+    },
+    "observation_id": {
+      "type": "string"
+    },
+    "source_agent_id": {
+      "type": "string"
+    },
+    "observed_agent_id": {
+      "type": "string"
+    },
+    "observed_at": {
+      "type": "string"
+    },
+    "sequence": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "status": {
+      "enum": [
+        "available",
+        "degraded",
+        "unavailable",
+        "unknown"
+      ]
+    },
+    "transport": {
+      "type": "object"
+    },
+    "health": {
+      "type": "object"
+    },
+    "advisory": {
+      "type": "object"
+    },
+    "redaction": {
+      "type": "object"
+    }
+  },
+  "additionalProperties": false
+}
+

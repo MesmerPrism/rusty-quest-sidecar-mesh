@@ -1,0 +1,30 @@
+{
+  "schema": "rusty.quest.sidecar.integration_acceptance_scorecard.v1",
+  "scorecard_id": "scorecard.sidecar_integration.damaged.live_authority.001",
+  "generated_at": "2026-06-04T21:47:00Z",
+  "scope": {
+    "repo": "rusty-quest-sidecar-mesh",
+    "slice": "damaged_live_authority"
+  },
+  "overall_status": "acceptance_ready",
+  "checks": [
+    {
+      "check_id": "damaged.live_route",
+      "status": "pass",
+      "observed": "accepted_command",
+      "expected": "forbidden",
+      "launch_package": "private.app"
+    }
+  ],
+  "summary": {
+    "check_count": 1,
+    "pass_count": 1,
+    "manual_review_count": 0,
+    "fail_count": 0
+  },
+  "authority_boundary": [
+    "This damaged fixture intentionally tries to treat live authority as accepted."
+  ],
+  "next_gate": "invalid_live_authority"
+}
+

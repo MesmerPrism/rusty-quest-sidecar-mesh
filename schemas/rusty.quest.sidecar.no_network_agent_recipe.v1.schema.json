@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "rusty.quest.sidecar.no_network_agent_recipe.v1",
+  "title": "Rusty Quest Sidecar No-Network Agent Recipe",
+  "type": "object",
+  "required": [
+    "schema",
+    "recipe_id",
+    "created_at",
+    "implementation_profile",
+    "authority",
+    "execution",
+    "local_files",
+    "emissions",
+    "forbidden_surfaces",
+    "validation_slots"
+  ],
+  "properties": {
+    "schema": {
+      "const": "rusty.quest.sidecar.no_network_agent_recipe.v1"
+    },
+    "recipe_id": {
+      "type": "string"
+    },
+    "created_at": {
+      "type": "string"
+    },
+    "implementation_profile": {
+      "type": "object"
+    },
+    "authority": {
+      "type": "object"
+    },
+    "execution": {
+      "type": "object"
+    },
+    "local_files": {
+      "type": "object"
+    },
+    "emissions": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "forbidden_surfaces": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "validation_slots": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    }
+  },
+  "additionalProperties": false
+}
+

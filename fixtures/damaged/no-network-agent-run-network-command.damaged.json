@@ -1,0 +1,74 @@
+{
+  "schema": "rusty.quest.sidecar.no_network_agent_run.v1",
+  "run_id": "run.no_network_termux_agent.damaged.network_command.001",
+  "generated_at": "2026-06-04T22:13:00Z",
+  "prototype_status": "prototype_complete",
+  "source_recipe": {
+    "path": "fixtures/valid/no-network-agent-recipe.synthetic.json",
+    "recipe_id": "recipe.no_network_termux_agent.synthetic.001",
+    "recipe_schema": "rusty.quest.sidecar.no_network_agent_recipe.v1"
+  },
+  "source_review": {
+    "path": "fixtures/valid/no-network-agent-recipe-review.synthetic.json",
+    "review_id": "review.no_network_termux_agent.synthetic.001",
+    "review_schema": "rusty.quest.sidecar.no_network_agent_recipe_review.v1",
+    "review_status": "ready_for_no_network_prototype"
+  },
+  "runtime": {
+    "implementation_profile": "termux_python_standard_library",
+    "execution_mode": "network_agent",
+    "network_policy": "inbound_listener",
+    "outbound_transport_policy": "enabled",
+    "adb_policy": "adb_allowed",
+    "adb_target": "192.168.1.40:5555",
+    "command_policy": "commands_allowed",
+    "shell_command": "input keyevent 3"
+  },
+  "authority": {
+    "role": "sidecar_observer",
+    "mutation_policy": "execute_shell",
+    "acceptance_owner": "sidecar_agent",
+    "audit_owner": "sidecar_agent",
+    "proposal_status": "accepted_command"
+  },
+  "handoff_readiness": {
+    "manifold_observation_intake": {
+      "status": "accepted",
+      "authority_owner": "sidecar_agent",
+      "audit_owner": "sidecar_agent",
+      "input_schema": "rusty.quest.sidecar.observation.v1",
+      "input_role": "accepted_state"
+    },
+    "hostess_operator_recovery": {
+      "status": "active",
+      "role": "sidecar_recovery",
+      "device_action_authority": "sidecar_agent",
+      "input_role": "sidecar_request"
+    }
+  },
+  "outputs": {
+    "observation_path": "fixtures/valid/no-network-agent-observation.synthetic.json",
+    "observation_schema": "rusty.quest.sidecar.observation.v1",
+    "observation_id": "observation.no_network.synthetic.002",
+    "emission_rate_class": "high_rate"
+  },
+  "checks": [
+    {
+      "check_id": "prototype.no_network_no_adb_no_commands",
+      "status": "fail",
+      "observed": "network_and_command_present",
+      "expected": "no_network_no_adb_no_commands",
+      "evidence": "damaged run tries to mark a network command route complete"
+    }
+  ],
+  "summary": {
+    "check_count": 1,
+    "pass_count": 0,
+    "manual_review_count": 0,
+    "fail_count": 1
+  },
+  "authority_boundary": [
+    "Sidecar can run commands directly."
+  ],
+  "next_gate": "configured_peer_rehearsal"
+}

@@ -1,0 +1,496 @@
+{
+  "schema": "rusty.quest.sidecar.private_rehearsal_public_derivative_expectation.v1",
+  "expectation_id": "expectation.private_rehearsal_public_derivative.synthetic.001",
+  "generated_at": "2026-06-05T00:00:00Z",
+  "expectation_status": "ready_for_sanitized_public_derivative_contract",
+  "source_private_rehearsal_evidence_expectation": {
+    "path": "fixtures/valid/private-rehearsal-evidence-expectation.synthetic.json",
+    "schema": "rusty.quest.sidecar.private_rehearsal_evidence_expectation.v1",
+    "expectation_id": "expectation.private_rehearsal_evidence.synthetic.001",
+    "expectation_status": "ready_for_operator_approved_private_evidence_plan",
+    "next_gate": "operator_decision_or_manifold_response_slice"
+  },
+  "derivative_scope": {
+    "expectation_class": "private_rehearsal_public_derivative_contract_expectation",
+    "source_mode": "synthetic_fixture",
+    "operator_approval_status": "not_recorded",
+    "private_evidence_status": "not_collected",
+    "public_derivative_status": "not_created",
+    "derivative_schema_status": "not_created",
+    "manifold_intake_status": "not_submitted",
+    "hostess_route_status": "not_created",
+    "live_evidence_status": "not_included",
+    "raw_artifact_status": "not_included",
+    "endpoint_material_status": "not_included",
+    "adb_status": "not_used",
+    "command_status": "no_commands"
+  },
+  "authority": {
+    "expectation_owner": "rusty.quest.sidecar_mesh",
+    "derivative_contract_owner": "rusty.quest.sidecar_mesh",
+    "redaction_review_owner": "operator",
+    "handoff_acceptance_owner": "rusty.manifold",
+    "runtime_authority_owner": "rusty.manifold",
+    "session_authority_owner": "rusty.manifold",
+    "audit_owner": "rusty.manifold.audit",
+    "accepted_state_owner": "rusty.manifold",
+    "hostess_device_action_authority": "not_in_sidecar",
+    "sidecar_role": "observer_proposer",
+    "proposal_status": "not_accepted"
+  },
+  "expected_public_derivative": {
+    "candidate_schema": "rusty.quest.sidecar.private_rehearsal_public_derivative.v1",
+    "schema_status": "not_created",
+    "artifact_status": "not_created",
+    "source_private_evidence_policy": "operator_approved_private_store_only",
+    "input_policy": "sanitized_summary_only",
+    "allowed_message_class": "status_only",
+    "allowed_payload_class": "low_rate_advisory_status",
+    "public_fixture_policy": "synthetic_descriptor_only",
+    "contains_private_values": false,
+    "allowed_fields": [
+      "derivative_id",
+      "source_expectation_id",
+      "approval_record_id",
+      "rehearsal_id",
+      "generated_at",
+      "participant_count",
+      "message_class",
+      "route_health_summary",
+      "sanitized_peer_status_summary",
+      "stale_peer_count",
+      "cleanup_status",
+      "redaction_status",
+      "rejected_input_classes",
+      "privacy_boundary",
+      "manifold_handoff_hint",
+      "hostess_escalation_boundary",
+      "validation_evidence",
+      "summary"
+    ],
+    "prohibited_fields": [
+      "endpoint_values",
+      "commands",
+      "adb",
+      "pairing_material",
+      "raw_logs",
+      "visual_captures",
+      "private_device_ids",
+      "package_ids",
+      "screenshots",
+      "logcat",
+      "shell_text"
+    ],
+    "required_redaction_results": [
+      "endpoint_values_removed",
+      "pairing_material_removed",
+      "commands_absent",
+      "adb_absent",
+      "raw_logs_not_copied",
+      "visual_captures_not_copied",
+      "private_device_ids_removed"
+    ],
+    "accepted_summary_classes": [
+      "aggregate_counts",
+      "health_status",
+      "stale_peer_count",
+      "cleanup_result_summary",
+      "rejection_terms"
+    ],
+    "rejects_direct_hostess_input": true,
+    "rejects_manifold_accepted_state": true
+  },
+  "manifold_handoff_gate": {
+    "target_repo": "rusty.manifold",
+    "submission_status": "not_submitted",
+    "requires_operator_approval": true,
+    "requires_public_derivative_schema": true,
+    "requires_redaction_review": true,
+    "requires_validation_report": true,
+    "acceptance_owner": "rusty.manifold",
+    "audit_owner": "rusty.manifold.audit",
+    "accepted_state_status": "not_created",
+    "allowed_decisions": [
+      "accepted_for_manifold_slice",
+      "revision_requested",
+      "rejected"
+    ],
+    "required_rejection_terms": [
+      "operator_approval_missing",
+      "public_derivative_schema_missing",
+      "endpoint_values_rejected",
+      "commands_rejected",
+      "adb_rejected",
+      "stale_peer_status",
+      "untrusted_sidecar",
+      "redaction_incomplete",
+      "cleanup_incomplete"
+    ]
+  },
+  "hostess_escalation_boundary": {
+    "status": "future_lane_not_requested",
+    "route_status": "not_created",
+    "recovery_request_status": "not_created",
+    "device_action_authority": "not_in_sidecar",
+    "input_role": "manifold_accepted_state_or_operator_request",
+    "allowed_action_class": "operator_recovery_request_descriptor",
+    "sidecar_direct_input_allowed": false,
+    "requires_manifold_accepted_state": true,
+    "requires_explicit_operator_request": true
+  },
+  "validation_evidence": {
+    "local_validation_status": "expected_pass",
+    "required_commands": [
+      "python tools/prepare_private_rehearsal_public_derivative_expectation.py --evidence-expectation fixtures/valid/private-rehearsal-evidence-expectation.synthetic.json --now 2026-06-05T00:00:00Z --output fixtures/valid/private-rehearsal-public-derivative-expectation.synthetic.json",
+      "python tools/evaluate_integration_acceptance.py --repo-root . --now 2026-06-04T21:46:00Z --output fixtures/valid/integration-acceptance-scorecard.synthetic.json",
+      "python tools/validate_repo.py --repo-root .",
+      "python -m unittest discover -s tests -p test_*.py",
+      "git diff --check"
+    ],
+    "damaged_fixture_policy": "must_fail_validation",
+    "future_manifold_gate": "manifold_accepts_only_sanitized_public_derivative",
+    "future_hostess_gate": "hostess_route_requires_manifold_state_or_operator_request"
+  },
+  "privacy_boundary": {
+    "contains_endpoint_values": false,
+    "contains_pairing_material": false,
+    "contains_commands": false,
+    "contains_raw_logs": false,
+    "contains_visual_captures": false,
+    "contains_private_device_ids": false,
+    "public_fixture_policy": "synthetic_descriptor_only"
+  },
+  "checks": [
+    {
+      "check_id": "private_rehearsal_public_derivative.source_evidence_expectation_ready",
+      "status": "pass",
+      "observed": {
+        "schema": "rusty.quest.sidecar.private_rehearsal_evidence_expectation.v1",
+        "expectation_status": "ready_for_operator_approved_private_evidence_plan",
+        "next_gate": "operator_decision_or_manifold_response_slice"
+      },
+      "expected": {
+        "schema": "rusty.quest.sidecar.private_rehearsal_evidence_expectation.v1",
+        "expectation_status": "ready_for_operator_approved_private_evidence_plan",
+        "next_gate": "operator_decision_or_manifold_response_slice"
+      },
+      "evidence": "fixtures/valid/private-rehearsal-evidence-expectation.synthetic.json"
+    },
+    {
+      "check_id": "private_rehearsal_public_derivative.no_derivative_or_intake_created",
+      "status": "pass",
+      "observed": {
+        "expectation_class": "private_rehearsal_public_derivative_contract_expectation",
+        "source_mode": "synthetic_fixture",
+        "operator_approval_status": "not_recorded",
+        "private_evidence_status": "not_collected",
+        "public_derivative_status": "not_created",
+        "derivative_schema_status": "not_created",
+        "manifold_intake_status": "not_submitted",
+        "hostess_route_status": "not_created",
+        "live_evidence_status": "not_included",
+        "raw_artifact_status": "not_included",
+        "endpoint_material_status": "not_included",
+        "adb_status": "not_used",
+        "command_status": "no_commands"
+      },
+      "expected": {
+        "operator_approval_status": "not_recorded",
+        "private_evidence_status": "not_collected",
+        "public_derivative_status": "not_created",
+        "derivative_schema_status": "not_created",
+        "manifold_intake_status": "not_submitted",
+        "hostess_route_status": "not_created",
+        "live_evidence_status": "not_included",
+        "endpoint_material_status": "not_included",
+        "adb_status": "not_used",
+        "command_status": "no_commands"
+      },
+      "evidence": "public derivative expectation is contract-only and does not create derivative evidence or intake"
+    },
+    {
+      "check_id": "private_rehearsal_public_derivative.authority_split",
+      "status": "pass",
+      "observed": {
+        "expectation_owner": "rusty.quest.sidecar_mesh",
+        "derivative_contract_owner": "rusty.quest.sidecar_mesh",
+        "redaction_review_owner": "operator",
+        "handoff_acceptance_owner": "rusty.manifold",
+        "runtime_authority_owner": "rusty.manifold",
+        "session_authority_owner": "rusty.manifold",
+        "audit_owner": "rusty.manifold.audit",
+        "accepted_state_owner": "rusty.manifold",
+        "hostess_device_action_authority": "not_in_sidecar",
+        "sidecar_role": "observer_proposer",
+        "proposal_status": "not_accepted"
+      },
+      "expected": {
+        "redaction_review_owner": "operator",
+        "handoff_acceptance_owner": "rusty.manifold",
+        "runtime_authority_owner": "rusty.manifold",
+        "session_authority_owner": "rusty.manifold",
+        "audit_owner": "rusty.manifold.audit",
+        "accepted_state_owner": "rusty.manifold",
+        "hostess_device_action_authority": "not_in_sidecar",
+        "sidecar_role": "observer_proposer",
+        "proposal_status": "not_accepted"
+      },
+      "evidence": "operator owns redaction review; Manifold owns acceptance/state/audit; Hostess cannot consume sidecar-direct input"
+    },
+    {
+      "check_id": "private_rehearsal_public_derivative.sanitized_shape",
+      "status": "pass",
+      "observed": {
+        "candidate_schema": "rusty.quest.sidecar.private_rehearsal_public_derivative.v1",
+        "schema_status": "not_created",
+        "artifact_status": "not_created",
+        "source_private_evidence_policy": "operator_approved_private_store_only",
+        "input_policy": "sanitized_summary_only",
+        "allowed_message_class": "status_only",
+        "allowed_payload_class": "low_rate_advisory_status",
+        "public_fixture_policy": "synthetic_descriptor_only",
+        "contains_private_values": false,
+        "allowed_fields": [
+          "derivative_id",
+          "source_expectation_id",
+          "approval_record_id",
+          "rehearsal_id",
+          "generated_at",
+          "participant_count",
+          "message_class",
+          "route_health_summary",
+          "sanitized_peer_status_summary",
+          "stale_peer_count",
+          "cleanup_status",
+          "redaction_status",
+          "rejected_input_classes",
+          "privacy_boundary",
+          "manifold_handoff_hint",
+          "hostess_escalation_boundary",
+          "validation_evidence",
+          "summary"
+        ],
+        "prohibited_fields": [
+          "endpoint_values",
+          "commands",
+          "adb",
+          "pairing_material",
+          "raw_logs",
+          "visual_captures",
+          "private_device_ids",
+          "package_ids",
+          "screenshots",
+          "logcat",
+          "shell_text"
+        ],
+        "required_redaction_results": [
+          "endpoint_values_removed",
+          "pairing_material_removed",
+          "commands_absent",
+          "adb_absent",
+          "raw_logs_not_copied",
+          "visual_captures_not_copied",
+          "private_device_ids_removed"
+        ],
+        "accepted_summary_classes": [
+          "aggregate_counts",
+          "health_status",
+          "stale_peer_count",
+          "cleanup_result_summary",
+          "rejection_terms"
+        ],
+        "rejects_direct_hostess_input": true,
+        "rejects_manifold_accepted_state": true
+      },
+      "expected": {
+        "schema_status": "not_created",
+        "artifact_status": "not_created",
+        "source_private_evidence_policy": "operator_approved_private_store_only",
+        "input_policy": "sanitized_summary_only",
+        "allowed_message_class": "status_only",
+        "allowed_payload_class": "low_rate_advisory_status",
+        "public_fixture_policy": "synthetic_descriptor_only",
+        "contains_private_values": false,
+        "allowed_fields": [
+          "approval_record_id",
+          "cleanup_status",
+          "derivative_id",
+          "generated_at",
+          "hostess_escalation_boundary",
+          "manifold_handoff_hint",
+          "message_class",
+          "participant_count",
+          "privacy_boundary",
+          "redaction_status",
+          "rehearsal_id",
+          "rejected_input_classes",
+          "route_health_summary",
+          "sanitized_peer_status_summary",
+          "source_expectation_id",
+          "stale_peer_count",
+          "summary",
+          "validation_evidence"
+        ],
+        "prohibited_fields": [
+          "adb",
+          "commands",
+          "endpoint_values",
+          "logcat",
+          "package_ids",
+          "pairing_material",
+          "private_device_ids",
+          "raw_logs",
+          "screenshots",
+          "shell_text",
+          "visual_captures"
+        ],
+        "required_redaction_results": [
+          "adb_absent",
+          "commands_absent",
+          "endpoint_values_removed",
+          "pairing_material_removed",
+          "private_device_ids_removed",
+          "raw_logs_not_copied",
+          "visual_captures_not_copied"
+        ],
+        "rejects_direct_hostess_input": true,
+        "rejects_manifold_accepted_state": true
+      },
+      "evidence": "future public derivative shape is sanitized summary-only and cannot act as accepted state or Hostess input"
+    },
+    {
+      "check_id": "private_rehearsal_public_derivative.manifold_handoff_gated",
+      "status": "pass",
+      "observed": {
+        "target_repo": "rusty.manifold",
+        "submission_status": "not_submitted",
+        "requires_operator_approval": true,
+        "requires_public_derivative_schema": true,
+        "requires_redaction_review": true,
+        "requires_validation_report": true,
+        "acceptance_owner": "rusty.manifold",
+        "audit_owner": "rusty.manifold.audit",
+        "accepted_state_status": "not_created",
+        "allowed_decisions": [
+          "accepted_for_manifold_slice",
+          "revision_requested",
+          "rejected"
+        ],
+        "required_rejection_terms": [
+          "operator_approval_missing",
+          "public_derivative_schema_missing",
+          "endpoint_values_rejected",
+          "commands_rejected",
+          "adb_rejected",
+          "stale_peer_status",
+          "untrusted_sidecar",
+          "redaction_incomplete",
+          "cleanup_incomplete"
+        ]
+      },
+      "expected": {
+        "submission_status": "not_submitted",
+        "requires_operator_approval": true,
+        "requires_public_derivative_schema": true,
+        "requires_redaction_review": true,
+        "requires_validation_report": true,
+        "acceptance_owner": "rusty.manifold",
+        "audit_owner": "rusty.manifold.audit",
+        "accepted_state_status": "not_created",
+        "allowed_decisions": [
+          "accepted_for_manifold_slice",
+          "revision_requested",
+          "rejected"
+        ],
+        "required_rejection_terms": [
+          "adb_rejected",
+          "cleanup_incomplete",
+          "commands_rejected",
+          "endpoint_values_rejected",
+          "operator_approval_missing",
+          "public_derivative_schema_missing",
+          "redaction_incomplete",
+          "stale_peer_status",
+          "untrusted_sidecar"
+        ]
+      },
+      "evidence": "Manifold intake remains gated behind operator approval, redaction review, derivative schema, and validation report"
+    },
+    {
+      "check_id": "private_rehearsal_public_derivative.hostess_deferred",
+      "status": "pass",
+      "observed": {
+        "status": "future_lane_not_requested",
+        "route_status": "not_created",
+        "recovery_request_status": "not_created",
+        "device_action_authority": "not_in_sidecar",
+        "input_role": "manifold_accepted_state_or_operator_request",
+        "allowed_action_class": "operator_recovery_request_descriptor",
+        "sidecar_direct_input_allowed": false,
+        "requires_manifold_accepted_state": true,
+        "requires_explicit_operator_request": true
+      },
+      "expected": {
+        "status": "future_lane_not_requested",
+        "route_status": "not_created",
+        "recovery_request_status": "not_created",
+        "device_action_authority": "not_in_sidecar",
+        "input_role": "manifold_accepted_state_or_operator_request",
+        "sidecar_direct_input_allowed": false,
+        "requires_manifold_accepted_state": true,
+        "requires_explicit_operator_request": true
+      },
+      "evidence": "Hostess escalation remains deferred and requires Manifold state or explicit operator request"
+    },
+    {
+      "check_id": "private_rehearsal_public_derivative.privacy_and_validation_boundary",
+      "status": "pass",
+      "observed": {
+        "validation_evidence": {
+          "local_validation_status": "expected_pass",
+          "required_commands": [
+            "python tools/prepare_private_rehearsal_public_derivative_expectation.py --evidence-expectation fixtures/valid/private-rehearsal-evidence-expectation.synthetic.json --now 2026-06-05T00:00:00Z --output fixtures/valid/private-rehearsal-public-derivative-expectation.synthetic.json",
+            "python tools/evaluate_integration_acceptance.py --repo-root . --now 2026-06-04T21:46:00Z --output fixtures/valid/integration-acceptance-scorecard.synthetic.json",
+            "python tools/validate_repo.py --repo-root .",
+            "python -m unittest discover -s tests -p test_*.py",
+            "git diff --check"
+          ],
+          "damaged_fixture_policy": "must_fail_validation",
+          "future_manifold_gate": "manifold_accepts_only_sanitized_public_derivative",
+          "future_hostess_gate": "hostess_route_requires_manifold_state_or_operator_request"
+        },
+        "privacy_boundary": {
+          "contains_endpoint_values": false,
+          "contains_pairing_material": false,
+          "contains_commands": false,
+          "contains_raw_logs": false,
+          "contains_visual_captures": false,
+          "contains_private_device_ids": false,
+          "public_fixture_policy": "synthetic_descriptor_only"
+        }
+      },
+      "expected": {
+        "local_validation_status": "expected_pass",
+        "damaged_fixture_policy": "must_fail_validation",
+        "future_manifold_gate": "manifold_accepts_only_sanitized_public_derivative",
+        "future_hostess_gate": "hostess_route_requires_manifold_state_or_operator_request",
+        "privacy_flags_all_false": true,
+        "public_fixture_policy": "synthetic_descriptor_only"
+      },
+      "evidence": "public derivative expectation remains descriptor-only and public-safe"
+    }
+  ],
+  "summary": {
+    "check_count": 7,
+    "pass_count": 7,
+    "manual_review_count": 0,
+    "fail_count": 0
+  },
+  "authority_boundary": [
+    "The private rehearsal public derivative expectation is descriptor evidence only; it does not record operator approval, collect private evidence, create a derivative artifact, submit to Manifold, touch Hostess, start live Quest work, use ADB, open sockets, select endpoints, install, launch, recover, copy files, or execute commands.",
+    "Future public derivatives may contain sanitized summaries only after operator approval, private evidence capture, cleanup, and redaction review.",
+    "Manifold remains the future command/session/audit, handoff acceptance, and accepted-state authority for any sanitized public derivative.",
+    "Hostess remains a future operator-recovery lane after Manifold accepted state or explicit operator request; public derivative fixtures cannot directly drive Hostess device actions."
+  ],
+  "next_gate": "operator_decision_or_manifold_public_derivative_schema_slice"
+}

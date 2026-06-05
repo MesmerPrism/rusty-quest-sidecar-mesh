@@ -1,0 +1,90 @@
+{
+  "schema": "rusty.quest.sidecar.manifold_contract_intake_request.v1",
+  "request_id": "request.sidecar_mesh_manifold_contract_intake.damaged.001",
+  "generated_at": "2026-06-04T22:49:00Z",
+  "request_status": "ready_for_manifold_contract_intake",
+  "source_handoff_package": {
+    "path": "fixtures/valid/manifold-handoff-package.synthetic.json",
+    "schema": "rusty.quest.sidecar.manifold_handoff_package.v1",
+    "package_id": "package.sidecar_mesh_manifold_handoff.synthetic.001",
+    "package_status": "handoff_package_ready",
+    "next_gate": "manifold_repo_contract_intake_or_operator_approved_private_rehearsal_evidence"
+  },
+  "request_scope": {
+    "request_class": "manifold_contract_intake_descriptor",
+    "source_mode": "private_live_route",
+    "target_repo": "rusty.manifold",
+    "repo_touch_status": "touched",
+    "implementation_status": "implemented",
+    "route_status": "created",
+    "accepted_state_status": "created",
+    "live_evidence_status": "included"
+  },
+  "authority": {
+    "request_owner": "sidecar_agent",
+    "intake_acceptance_owner": "sidecar_agent",
+    "runtime_authority_owner": "sidecar_agent",
+    "session_authority_owner": "sidecar_agent",
+    "audit_owner": "sidecar_agent",
+    "accepted_state_owner": "sidecar_agent",
+    "sidecar_role": "manifold_authority",
+    "proposal_status": "accepted"
+  },
+  "proposed_contract_intake": {
+    "intake_id": "intake.sidecar_mesh_contract.damaged.001",
+    "status": "accepted",
+    "target_repo": "rusty.manifold",
+    "requested_request_type": "execute_sidecar_command_relay",
+    "candidate_surfaces": [
+      "sidecar_command_relay"
+    ],
+    "candidate_validation_slots": [],
+    "required_rejection_terms": [],
+    "required_acceptance_owner": "sidecar_agent",
+    "required_audit_owner": "sidecar_agent",
+    "accepted_state_status": "created",
+    "hostess_escalation_input": "sidecar_request",
+    "command_payload": "execute_shell"
+  },
+  "hostess_boundary": {
+    "status": "active",
+    "route_status": "created",
+    "device_action_authority": "sidecar_agent",
+    "input_role": "sidecar_request",
+    "allowed_action_class": "execute_shell"
+  },
+  "validation_evidence": {
+    "local_validation_status": "skipped",
+    "required_commands": [],
+    "damaged_fixture_policy": "ignored",
+    "future_manifold_gate": "not_required"
+  },
+  "privacy_boundary": {
+    "contains_endpoint_values": true,
+    "contains_pairing_material": true,
+    "contains_commands": true,
+    "contains_raw_logs": true,
+    "contains_visual_captures": true,
+    "contains_private_device_ids": true,
+    "public_fixture_policy": "raw_private_evidence"
+  },
+  "checks": [
+    {
+      "check_id": "contract_intake.damaged_live_route",
+      "status": "fail",
+      "observed": "accepted route",
+      "expected": "descriptor only",
+      "evidence": "damaged fixture asserts sidecar-owned live route"
+    }
+  ],
+  "summary": {
+    "check_count": 1,
+    "pass_count": 0,
+    "manual_review_count": 0,
+    "fail_count": 1
+  },
+  "authority_boundary": [
+    "Sidecar owns accepted state."
+  ],
+  "next_gate": "live_sidecar_contract_route"
+}

@@ -1,0 +1,32 @@
+{
+  "schema": "rusty.quest.sidecar.observation.v1",
+  "observation_id": "observation.synthetic.alpha.001",
+  "source_agent_id": "agent.quest_sidecar.alpha",
+  "observed_agent_id": "agent.quest_sidecar.alpha",
+  "observed_at": "2026-06-04T21:20:00Z",
+  "sequence": 1,
+  "status": "available",
+  "transport": {
+    "mode": "file_drop_simulator",
+    "route_id": "route.synthetic.alpha.local",
+    "scope": "synthetic_no_network"
+  },
+  "health": {
+    "central_reachable": true,
+    "local_python_available": true,
+    "local_adb_available": "not_checked",
+    "battery_percent": 88,
+    "last_command_status": "none"
+  },
+  "advisory": {
+    "truth_level": "advisory_cached_view",
+    "source_of_truth": "rusty.manifold_after_acceptance",
+    "staleness_policy": "discard_after_30_seconds"
+  },
+  "redaction": {
+    "privacy_class": "synthetic",
+    "contains_endpoint_values": false,
+    "contains_private_package_ids": false
+  }
+}
+

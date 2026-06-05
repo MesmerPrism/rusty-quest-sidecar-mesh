@@ -1,0 +1,76 @@
+{
+  "schema": "rusty.quest.sidecar.mesh_handoff.v1",
+  "handoff_id": "handoff.synthetic.public_lab_intake.001",
+  "created_at": "2026-06-04T21:42:00Z",
+  "source": {
+    "repo": "rusty-quest-sidecar-mesh",
+    "implementation_profile": "termux",
+    "fixture_set": "synthetic",
+    "public_lab_intake": "fixtures/valid/public-lab-artifact-intake-report.synthetic.json"
+  },
+  "target_manifold_surfaces": [
+    {
+      "surface": "rusty.manifold.host_manifest",
+      "relationship": "propose_sidecar_observation_source"
+    },
+    {
+      "surface": "rusty.manifold.validation_scorecard",
+      "relationship": "propose_public_lab_artifact_review"
+    },
+    {
+      "surface": "rusty.manifold.audit",
+      "relationship": "future_accept_reject_record"
+    }
+  ],
+  "observations": [
+    {
+      "observation_id": "observation.synthetic.alpha.001",
+      "fixture": "fixtures/valid/termux-observation.synthetic.json",
+      "role": "advisory_input"
+    },
+    {
+      "observation_id": "public_lab_intake.synthetic.peer_mesh.001",
+      "fixture": "fixtures/valid/public-lab-artifact-intake-report.synthetic.json",
+      "role": "public_lab_status_summary"
+    }
+  ],
+  "requests": [
+    {
+      "request_id": "request.synthetic.review_public_lab_intake.alpha",
+      "request_type": "review_public_lab_artifact_intake",
+      "requested_by": "operator.private_lab",
+      "authority_required": "rusty.manifold",
+      "status": "proposed"
+    },
+    {
+      "request_id": "request.synthetic.propose_sidecar_health_stream.alpha",
+      "request_type": "propose_sidecar_health_stream",
+      "requested_by": "operator.private_lab",
+      "authority_required": "rusty.manifold",
+      "status": "proposed"
+    }
+  ],
+  "approval": {
+    "status": "not_requested",
+    "required_by": [
+      "rusty.manifold",
+      "operator.private_lab"
+    ],
+    "operator_evidence_required": true
+  },
+  "audit": {
+    "source_of_truth": "rusty.manifold.audit",
+    "sidecar_record_role": "handoff_proposal",
+    "accepted_mutation_record": "not_created"
+  },
+  "limits": [
+    "proposal_only",
+    "public_safe_status_summary_only",
+    "no_commands",
+    "no_adb_targets",
+    "no_pairing_material",
+    "no_install_launch_requests",
+    "no_endpoint_values"
+  ]
+}
+

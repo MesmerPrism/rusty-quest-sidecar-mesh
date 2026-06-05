@@ -1,0 +1,146 @@
+{
+  "schema": "rusty.quest.sidecar.manifold_public_derivative_schema_slice_response_handoff_package.v1",
+  "package_id": "package.manifold_public_derivative_schema_slice_response_handoff.damaged.001",
+  "generated_at": "2026-06-05T00:56:00Z",
+  "package_status": "accepted_by_sidecar",
+  "source_manifold_public_derivative_schema_slice_response_implementation_preflight": {
+    "path": "fixtures/valid/manifold-public-derivative-schema-slice-response-implementation-preflight.synthetic.json",
+    "schema": "rusty.quest.sidecar.manifold_public_derivative_schema_slice_response_implementation_preflight.v1",
+    "preflight_id": "preflight.manifold_public_derivative_schema_slice_response_implementation.synthetic.001",
+    "preflight_status": "blocked",
+    "next_gate": "sidecar_created_public_derivative_schema_slice_response"
+  },
+  "package_scope": {
+    "package_class": "manifold_public_derivative_schema_slice_response_handoff_package",
+    "source_mode": "synthetic_fixture",
+    "target_repo": "rusty.manifold",
+    "repo_touch_status": "touched",
+    "branch_status": "created",
+    "implementation_plan_status": "created",
+    "implementation_status": "created",
+    "response_status": "created",
+    "decision_status": "accepted",
+    "schema_status": "created",
+    "route_status": "created",
+    "accepted_state_status": "created",
+    "audit_record_status": "created",
+    "validation_report_status": "created",
+    "public_derivative_status": "created",
+    "operator_approval_status": "recorded",
+    "hostess_route_status": "created",
+    "hostess_input_status": "created",
+    "live_evidence_status": "included",
+    "private_endpoint": "10.0.0.12:8022",
+    "adb_target": "10.0.0.12:5555",
+    "command_payload": "pm list packages"
+  },
+  "authority": {
+    "package_owner": "rusty.quest.sidecar_mesh",
+    "handoff_acceptance_owner": "rusty.quest.sidecar_mesh",
+    "implementation_plan_owner": "rusty.quest.sidecar_mesh",
+    "response_owner": "rusty.quest.sidecar_mesh",
+    "decision_owner": "rusty.quest.sidecar_mesh",
+    "schema_owner": "rusty.quest.sidecar_mesh",
+    "route_implementation_owner": "rusty.quest.sidecar_mesh",
+    "request_acceptance_owner": "rusty.quest.sidecar_mesh",
+    "runtime_authority_owner": "rusty.quest.sidecar_mesh",
+    "session_authority_owner": "rusty.quest.sidecar_mesh",
+    "audit_owner": "rusty.quest.sidecar_mesh",
+    "accepted_state_owner": "rusty.quest.sidecar_mesh",
+    "rollback_owner": "rusty.quest.sidecar_mesh",
+    "redaction_review_owner": "rusty.quest.sidecar_mesh",
+    "hostess_device_action_authority": "in_sidecar",
+    "sidecar_role": "authority",
+    "proposal_status": "accepted"
+  },
+  "handoff_manifest": {
+    "manifest_id": "manifest.manifold_public_derivative_schema_slice_response_handoff.damaged.001",
+    "status": "accepted",
+    "target_repo": "rusty.manifold",
+    "source_chain_artifacts": [],
+    "required_downstream_artifacts": [
+      {
+        "artifact_id": "artifact.sidecar_response_schema",
+        "artifact_kind": "response_schema",
+        "owner": "rusty.quest.sidecar_mesh",
+        "status": "created"
+      }
+    ],
+    "required_downstream_validation_slots": [],
+    "required_downstream_decisions": [
+      "accepted"
+    ],
+    "required_downstream_rejection_terms": [],
+    "required_downstream_revision_terms": [],
+    "required_downstream_audit_terms": [],
+    "required_route_boundaries": {
+      "input_payload_class": "high_rate_device_control",
+      "accepts_sanitized_summary_only": false,
+      "requires_operator_approval": false,
+      "requires_redaction_review": false,
+      "requires_source_chain_digest": false,
+      "allows_endpoint_values": true,
+      "allows_commands": true,
+      "allows_adb": true,
+      "allows_high_rate_payloads": true,
+      "allows_sidecar_direct_hostess_input": true,
+      "creates_public_derivative_artifact": true,
+      "creates_hostess_input": true,
+      "creates_accepted_state_by_sidecar": true,
+      "accepted_state_owner": "rusty.quest.sidecar_mesh"
+    },
+    "rollback_policy": "sidecar_owned",
+    "handoff_acceptance_status": "accepted",
+    "downstream_implementation_plan_status": "created",
+    "downstream_implementation_status": "created",
+    "downstream_response_status": "created",
+    "downstream_decision_status": "accepted",
+    "downstream_schema_status": "created",
+    "downstream_route_status": "created",
+    "downstream_accepted_state_status": "created",
+    "downstream_audit_status": "created",
+    "downstream_validation_report_status": "created",
+    "downstream_hostess_boundary_status": "created"
+  },
+  "hostess_boundary_handoff": {
+    "status": "route_created",
+    "route_status": "created",
+    "input_status": "created",
+    "recovery_request_status": "created",
+    "device_action_authority": "in_sidecar",
+    "consumes_only": "sidecar_direct_input",
+    "sidecar_direct_input_allowed": true,
+    "requires_manifold_accepted_state": false,
+    "requires_explicit_operator_request": false,
+    "downstream_descriptor_owner": "rusty.quest.sidecar_mesh",
+    "allowed_action_class": "device_command",
+    "handoff_result": "hostess_input_created"
+  },
+  "validation_evidence": {
+    "local_validation_status": "expected_pass",
+    "required_commands": [],
+    "damaged_fixture_policy": "may_pass",
+    "future_manifold_gate": "sidecar_owns_response",
+    "future_hostess_gate": "sidecar_direct_hostess_input"
+  },
+  "privacy_boundary": {
+    "contains_endpoint_values": true,
+    "contains_pairing_material": true,
+    "contains_commands": true,
+    "contains_raw_logs": true,
+    "contains_visual_captures": true,
+    "contains_private_device_ids": true,
+    "public_fixture_policy": "live_device_payload"
+  },
+  "checks": [],
+  "summary": {
+    "check_count": 1,
+    "pass_count": 1,
+    "manual_review_count": 0,
+    "fail_count": 0
+  },
+  "authority_boundary": [
+    "Sidecar accepts this package and creates Hostess input."
+  ],
+  "next_gate": "sidecar_created_public_derivative_schema_slice_response"
+}

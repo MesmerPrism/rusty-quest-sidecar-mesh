@@ -1,0 +1,81 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "rusty.quest.sidecar.manifold_public_derivative_schema_slice_response_expectation.v1",
+  "title": "Rusty Quest Sidecar Manifold Public Derivative Schema Slice Response Expectation",
+  "type": "object",
+  "required": [
+    "schema",
+    "expectation_id",
+    "generated_at",
+    "expectation_status",
+    "source_manifold_public_derivative_schema_handoff_package",
+    "response_expectation_scope",
+    "authority",
+    "expected_manifold_slice_response",
+    "hostess_response_gate",
+    "validation_evidence",
+    "privacy_boundary",
+    "checks",
+    "summary",
+    "authority_boundary",
+    "next_gate"
+  ],
+  "properties": {
+    "schema": {
+      "const": "rusty.quest.sidecar.manifold_public_derivative_schema_slice_response_expectation.v1"
+    },
+    "expectation_id": {
+      "type": "string"
+    },
+    "generated_at": {
+      "type": "string"
+    },
+    "expectation_status": {
+      "enum": [
+        "ready_for_manifold_public_derivative_schema_slice_response",
+        "manual_review",
+        "blocked"
+      ]
+    },
+    "source_manifold_public_derivative_schema_handoff_package": {
+      "type": "object"
+    },
+    "response_expectation_scope": {
+      "type": "object"
+    },
+    "authority": {
+      "type": "object"
+    },
+    "expected_manifold_slice_response": {
+      "type": "object"
+    },
+    "hostess_response_gate": {
+      "type": "object"
+    },
+    "validation_evidence": {
+      "type": "object"
+    },
+    "privacy_boundary": {
+      "type": "object"
+    },
+    "checks": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "summary": {
+      "type": "object"
+    },
+    "authority_boundary": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "next_gate": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}

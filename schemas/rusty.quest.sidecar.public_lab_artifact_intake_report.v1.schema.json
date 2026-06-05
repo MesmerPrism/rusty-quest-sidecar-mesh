@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "rusty.quest.sidecar.public_lab_artifact_intake_report.v1",
+  "title": "Rusty Quest Sidecar Public Lab Artifact Intake Report",
+  "type": "object",
+  "required": [
+    "schema",
+    "intake_id",
+    "generated_at",
+    "source_repo",
+    "overall_status",
+    "artifacts",
+    "summary",
+    "redaction",
+    "authority_boundary",
+    "manifold_handoff_role"
+  ],
+  "properties": {
+    "schema": {
+      "const": "rusty.quest.sidecar.public_lab_artifact_intake_report.v1"
+    },
+    "intake_id": {
+      "type": "string"
+    },
+    "generated_at": {
+      "type": "string"
+    },
+    "source_repo": {
+      "type": "object"
+    },
+    "overall_status": {
+      "enum": [
+        "intake_ready",
+        "manual_review",
+        "intake_blocked"
+      ]
+    },
+    "artifacts": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "summary": {
+      "type": "object"
+    },
+    "redaction": {
+      "type": "object"
+    },
+    "authority_boundary": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "manifold_handoff_role": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}
+

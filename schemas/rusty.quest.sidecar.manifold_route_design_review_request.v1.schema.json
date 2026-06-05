@@ -1,0 +1,88 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "rusty.quest.sidecar.manifold_route_design_review_request.v1",
+  "title": "Rusty Quest Sidecar Manifold Route Design Review Request",
+  "type": "object",
+  "required": [
+    "schema",
+    "request_id",
+    "generated_at",
+    "request_status",
+    "source_manifold_route_blueprint",
+    "request_scope",
+    "authority",
+    "proposed_manifold_review",
+    "proposed_manifold_work_items",
+    "hostess_integration_preconditions",
+    "validation_evidence",
+    "privacy_boundary",
+    "checks",
+    "summary",
+    "authority_boundary",
+    "next_gate"
+  ],
+  "properties": {
+    "schema": {
+      "const": "rusty.quest.sidecar.manifold_route_design_review_request.v1"
+    },
+    "request_id": {
+      "type": "string"
+    },
+    "generated_at": {
+      "type": "string"
+    },
+    "request_status": {
+      "enum": [
+        "ready_for_manifold_route_design_review",
+        "manual_review",
+        "blocked"
+      ]
+    },
+    "source_manifold_route_blueprint": {
+      "type": "object"
+    },
+    "request_scope": {
+      "type": "object"
+    },
+    "authority": {
+      "type": "object"
+    },
+    "proposed_manifold_review": {
+      "type": "object"
+    },
+    "proposed_manifold_work_items": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "hostess_integration_preconditions": {
+      "type": "object"
+    },
+    "validation_evidence": {
+      "type": "object"
+    },
+    "privacy_boundary": {
+      "type": "object"
+    },
+    "checks": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "summary": {
+      "type": "object"
+    },
+    "authority_boundary": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "next_gate": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}

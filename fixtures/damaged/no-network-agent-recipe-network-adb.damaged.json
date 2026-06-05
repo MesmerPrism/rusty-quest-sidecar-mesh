@@ -1,0 +1,36 @@
+{
+  "schema": "rusty.quest.sidecar.no_network_agent_recipe.v1",
+  "recipe_id": "recipe.no_network_termux_agent.damaged.network_adb.001",
+  "created_at": "2026-06-04T21:49:00Z",
+  "implementation_profile": {
+    "runtime": "termux",
+    "language": "python",
+    "dependency_policy": "standard_library_first",
+    "profile_status": "recipe_only"
+  },
+  "authority": {
+    "role": "sidecar_observer",
+    "mutation_policy": "write_observation_file_only",
+    "acceptance_owner": "sidecar_agent",
+    "audit_owner": "sidecar_agent",
+    "proposal_status": "accepted_command"
+  },
+  "execution": {
+    "network_policy": "inbound_listener",
+    "outbound_transport_policy": "enabled",
+    "adb_policy": "adb_allowed",
+    "adb_target": "192.168.1.20:5555",
+    "launch_package": "private.app",
+    "command_policy": "commands_allowed"
+  },
+  "local_files": {
+    "workspace_root": "relative:sidecar-agent/no-network",
+    "output_observation": "relative:sidecar-agent/no-network/observation.json",
+    "evidence_policy": "operator_selected_or_app_private_later",
+    "path_policy": "relative_paths_only"
+  },
+  "emissions": [],
+  "forbidden_surfaces": [],
+  "validation_slots": []
+}
+

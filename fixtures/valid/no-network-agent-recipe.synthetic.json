@@ -1,0 +1,66 @@
+{
+  "schema": "rusty.quest.sidecar.no_network_agent_recipe.v1",
+  "recipe_id": "recipe.no_network_termux_agent.synthetic.001",
+  "created_at": "2026-06-04T21:48:00Z",
+  "implementation_profile": {
+    "runtime": "termux",
+    "language": "python",
+    "dependency_policy": "standard_library_first",
+    "profile_status": "recipe_only"
+  },
+  "authority": {
+    "role": "sidecar_observer",
+    "mutation_policy": "write_observation_file_only",
+    "acceptance_owner": "rusty.manifold",
+    "audit_owner": "rusty.manifold.audit",
+    "proposal_status": "not_accepted"
+  },
+  "execution": {
+    "network_policy": "no_inbound_listener",
+    "outbound_transport_policy": "disabled_for_recipe",
+    "adb_policy": "no_adb",
+    "runtime_limit": "bounded_manual_run",
+    "command_policy": "no_commands"
+  },
+  "local_files": {
+    "workspace_root": "relative:sidecar-agent/no-network",
+    "output_observation": "relative:sidecar-agent/no-network/observation.json",
+    "evidence_policy": "operator_selected_or_app_private_later",
+    "path_policy": "relative_paths_only"
+  },
+  "emissions": [
+    {
+      "emission_id": "emission.sidecar_observation",
+      "schema": "rusty.quest.sidecar.observation.v1",
+      "rate_class": "low_rate",
+      "truth_level": "advisory_cached_view",
+      "manifold_role": "proposal_input"
+    }
+  ],
+  "forbidden_surfaces": [
+    "inbound_listener",
+    "central_polling",
+    "peer_discovery",
+    "peer_gossip_send",
+    "adb_use",
+    "install_launch",
+    "recovery_action",
+    "remote_desktop_control",
+    "high_rate_payload"
+  ],
+  "validation_slots": [
+    {
+      "validation_id": "recipe.schema",
+      "owner": "rusty-quest-sidecar-mesh",
+      "command": "python tools/validate_repo.py --repo-root .",
+      "protects": "no-network recipe authority and privacy boundary"
+    },
+    {
+      "validation_id": "recipe.acceptance_scorecard",
+      "owner": "rusty-quest-sidecar-mesh",
+      "command": "python tools/evaluate_integration_acceptance.py --repo-root . --now 2026-06-04T21:46:00Z --output fixtures/valid/integration-acceptance-scorecard.synthetic.json",
+      "protects": "recipe remains covered by integration acceptance evidence"
+    }
+  ]
+}
+

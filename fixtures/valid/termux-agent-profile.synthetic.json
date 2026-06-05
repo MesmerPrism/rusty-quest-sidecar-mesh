@@ -1,0 +1,86 @@
+{
+  "schema": "rusty.quest.sidecar.agent_profile.v1",
+  "agent_id": "agent.quest_sidecar.alpha",
+  "fleet_id": "fleet.synthetic.private_lab",
+  "host_kind": "headset.device",
+  "implementation_profile": {
+    "runtime": "termux",
+    "linux_userland": "termux",
+    "python": "available",
+    "desktop_surface": "termux_x11_optional",
+    "wifi_adb_client": "operator_bootstrapped_optional",
+    "filesystem_scope": "app_private_and_shared_storage_only"
+  },
+  "authority": {
+    "role": "sidecar_observer",
+    "allowed_roles": [
+      "observer",
+      "proposer",
+      "diagnostic_processor",
+      "file_drop_peer"
+    ],
+    "forbidden_roles": [
+      "manifold_authority",
+      "android_shell_authority",
+      "recovery_authority",
+      "cross_headset_adb_authority",
+      "install_launch_authority"
+    ],
+    "mutation_policy": "requests_only_through_manifold_handoff"
+  },
+  "capabilities": [
+    {
+      "capability_id": "capability.python.cli",
+      "plane": "diagnostic",
+      "status": "available",
+      "description": "Run bounded Python diagnostics and produce JSON observations."
+    },
+    {
+      "capability_id": "capability.peer_status.file_drop",
+      "plane": "advisory_status",
+      "status": "planned",
+      "description": "Exchange status-only gossip envelopes through explicit file drops."
+    },
+    {
+      "capability_id": "capability.localhost.status",
+      "plane": "diagnostic",
+      "status": "planned",
+      "description": "Expose localhost-only status for operator-approved inspection."
+    }
+  ],
+  "local_surfaces": [
+    {
+      "surface_id": "surface.termux.files",
+      "kind": "filesystem",
+      "scope": "relative_fixture_or_app_private"
+    },
+    {
+      "surface_id": "surface.termux.cli",
+      "kind": "process",
+      "scope": "bounded_allowlisted_diagnostics"
+    }
+  ],
+  "manifold_interfaces": [
+    {
+      "surface": "rusty.manifold.host_manifest",
+      "relationship": "future_observation_source"
+    },
+    {
+      "surface": "rusty.manifold.validation_scorecard",
+      "relationship": "future_review_input"
+    },
+    {
+      "surface": "rusty.manifold.audit",
+      "relationship": "handoff_reference_only"
+    }
+  ],
+  "operational_limits": [
+    "advisory_status_only",
+    "no_command_authority",
+    "no_cross_headset_adb",
+    "no_recovery_authority",
+    "no_private_endpoint_values",
+    "no_high_rate_payloads"
+  ]
+}
+

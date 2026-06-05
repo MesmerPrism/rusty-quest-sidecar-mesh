@@ -1,0 +1,533 @@
+{
+  "schema": "rusty.quest.sidecar.manifold_public_derivative_schema_implementation_preflight.v1",
+  "preflight_id": "preflight.manifold_public_derivative_schema_implementation.synthetic.001",
+  "generated_at": "2026-06-05T00:24:00Z",
+  "preflight_status": "ready_for_manifold_public_derivative_schema_slice_planning",
+  "source_manifold_public_derivative_schema_response_expectation": {
+    "path": "fixtures/valid/manifold-public-derivative-schema-response-expectation.synthetic.json",
+    "schema": "rusty.quest.sidecar.manifold_public_derivative_schema_response_expectation.v1",
+    "expectation_id": "expectation.manifold_public_derivative_schema_response.synthetic.001",
+    "expectation_status": "ready_for_manifold_public_derivative_schema_response",
+    "next_gate": "manifold_public_derivative_schema_response_or_operator_decision"
+  },
+  "implementation_preflight_scope": {
+    "preflight_class": "manifold_repo_public_derivative_schema_slice_preflight",
+    "source_mode": "synthetic_fixture",
+    "target_repo": "rusty.manifold",
+    "repo_touch_status": "not_touched",
+    "branch_status": "not_created",
+    "response_status": "not_created",
+    "decision_status": "not_decided",
+    "schema_status": "not_created",
+    "route_status": "not_created",
+    "accepted_state_status": "not_created",
+    "audit_record_status": "not_created",
+    "validation_report_status": "not_created",
+    "public_derivative_status": "not_created",
+    "operator_approval_status": "not_recorded",
+    "hostess_route_status": "not_created",
+    "live_evidence_status": "not_included"
+  },
+  "authority": {
+    "preflight_owner": "rusty.quest.sidecar_mesh",
+    "implementation_plan_owner": "rusty.manifold",
+    "response_owner": "rusty.manifold",
+    "decision_owner": "rusty.manifold",
+    "schema_owner": "rusty.manifold",
+    "route_implementation_owner": "rusty.manifold",
+    "request_acceptance_owner": "rusty.manifold",
+    "runtime_authority_owner": "rusty.manifold",
+    "session_authority_owner": "rusty.manifold",
+    "audit_owner": "rusty.manifold.audit",
+    "accepted_state_owner": "rusty.manifold",
+    "rollback_owner": "rusty.manifold",
+    "redaction_review_owner": "operator",
+    "hostess_device_action_authority": "not_in_sidecar",
+    "sidecar_role": "observer_proposer",
+    "proposal_status": "not_accepted"
+  },
+  "manifold_repo_slice_requirements": {
+    "slice_class": "manifold_owned_public_derivative_schema_slice",
+    "target_repo": "rusty.manifold",
+    "implementation_status": "not_created_by_sidecar",
+    "required_manifold_owned_artifacts": [
+      {
+        "artifact_id": "artifact.public_derivative_response_schema",
+        "artifact_kind": "response_schema",
+        "owner": "rusty.manifold",
+        "status": "not_created_by_sidecar",
+        "evidence_source": "expected_manifold_response.required_fields"
+      },
+      {
+        "artifact_id": "artifact.public_derivative_input_schema",
+        "artifact_kind": "input_schema",
+        "owner": "rusty.manifold",
+        "status": "not_created_by_sidecar",
+        "evidence_source": "proposed_manifold_schema.required_fields"
+      },
+      {
+        "artifact_id": "artifact.public_derivative_intake_route_handler",
+        "artifact_kind": "route_handler",
+        "owner": "rusty.manifold",
+        "status": "not_created_by_sidecar",
+        "evidence_source": "proposed_manifold_route"
+      },
+      {
+        "artifact_id": "artifact.public_derivative_decision_event_fixture",
+        "artifact_kind": "decision_event_fixture",
+        "owner": "rusty.manifold",
+        "status": "not_created_by_sidecar",
+        "evidence_source": "expected_manifold_response.allowed_decisions"
+      },
+      {
+        "artifact_id": "artifact.public_derivative_accepted_state_fixture",
+        "artifact_kind": "accepted_state_fixture",
+        "owner": "rusty.manifold",
+        "status": "not_created_by_sidecar",
+        "evidence_source": "expected_manifold_response.accepted_state_policy"
+      },
+      {
+        "artifact_id": "artifact.public_derivative_audit_fixture",
+        "artifact_kind": "audit_fixture",
+        "owner": "rusty.manifold.audit",
+        "status": "not_created_by_sidecar",
+        "evidence_source": "expected_manifold_response.required_audit_terms"
+      },
+      {
+        "artifact_id": "artifact.public_derivative_validation_report_fixture",
+        "artifact_kind": "validation_report_fixture",
+        "owner": "rusty.manifold",
+        "status": "not_created_by_sidecar",
+        "evidence_source": "expected_manifold_response.validation_report_ref"
+      },
+      {
+        "artifact_id": "artifact.public_derivative_hostess_boundary_descriptor",
+        "artifact_kind": "hostess_boundary_descriptor",
+        "owner": "rusty.manifold",
+        "status": "not_created_by_sidecar",
+        "evidence_source": "hostess_response_gate"
+      }
+    ],
+    "required_validation_slots": [
+      "slot.public_derivative_response_schema_contract",
+      "slot.public_derivative_schema_contract",
+      "slot.public_derivative_valid_fixture",
+      "slot.public_derivative_damaged_fixture",
+      "slot.manifold_route_unit_tests",
+      "slot.public_derivative_audit_fixture",
+      "slot.accepted_state_mapping_check",
+      "slot.hostess_boundary_descriptor_check",
+      "slot.privacy_redaction_rejection_check",
+      "slot.no_private_endpoint_or_command_content"
+    ],
+    "required_response_decisions": [
+      "accepted_for_manifold_schema_slice",
+      "revision_requested",
+      "rejected"
+    ],
+    "required_rejection_terms": [
+      "operator_approval_missing",
+      "public_derivative_schema_missing",
+      "endpoint_values_rejected",
+      "commands_rejected",
+      "adb_rejected",
+      "stale_peer_status",
+      "untrusted_sidecar",
+      "redaction_incomplete",
+      "cleanup_incomplete",
+      "high_rate_payload_rejected",
+      "hostess_direct_action_rejected"
+    ],
+    "required_revision_terms": [
+      "schema_shape_revision",
+      "route_semantics_revision",
+      "audit_shape_revision",
+      "accepted_state_mapping_revision",
+      "hostess_boundary_revision",
+      "privacy_boundary_revision",
+      "validation_report_revision"
+    ],
+    "required_route_boundaries": {
+      "input_payload_class": "low_rate_advisory_status",
+      "accepts_sanitized_summary_only": true,
+      "requires_operator_approval": true,
+      "requires_redaction_review": true,
+      "allows_endpoint_values": false,
+      "allows_commands": false,
+      "allows_adb": false,
+      "allows_high_rate_payloads": false,
+      "allows_sidecar_direct_hostess_input": false,
+      "creates_public_derivative_artifact": false,
+      "creates_hostess_input": false
+    },
+    "rollback_policy": "manifold_owned_disable_route_or_reject_source"
+  },
+  "hostess_boundary_preflight": {
+    "status": "future_lane_not_requested",
+    "route_status": "not_created",
+    "recovery_request_status": "not_created",
+    "device_action_authority": "not_in_sidecar",
+    "consumes_only": "manifold_accepted_state_or_operator_request_descriptor",
+    "sidecar_direct_input_allowed": false,
+    "requires_manifold_accepted_state": true,
+    "requires_explicit_operator_request": true,
+    "allowed_action_class": "operator_recovery_request_descriptor",
+    "preflight_result": "hostess_deferred_until_manifold_acceptance"
+  },
+  "validation_evidence": {
+    "local_validation_status": "expected_pass",
+    "required_commands": [
+      "python tools/prepare_manifold_public_derivative_schema_implementation_preflight.py --response-expectation fixtures/valid/manifold-public-derivative-schema-response-expectation.synthetic.json --now 2026-06-05T00:24:00Z --output fixtures/valid/manifold-public-derivative-schema-implementation-preflight.synthetic.json",
+      "python tools/evaluate_integration_acceptance.py --repo-root . --now 2026-06-04T21:46:00Z --output fixtures/valid/integration-acceptance-scorecard.synthetic.json",
+      "python tools/validate_repo.py --repo-root .",
+      "python -m unittest discover -s tests -p test_*.py",
+      "git diff --check"
+    ],
+    "damaged_fixture_policy": "must_fail_validation",
+    "future_manifold_gate": "manifold_repo_owns_public_derivative_schema_slice_implementation_and_audit",
+    "future_hostess_gate": "hostess_route_requires_manifold_state_or_operator_request"
+  },
+  "privacy_boundary": {
+    "contains_endpoint_values": false,
+    "contains_pairing_material": false,
+    "contains_commands": false,
+    "contains_raw_logs": false,
+    "contains_visual_captures": false,
+    "contains_private_device_ids": false,
+    "public_fixture_policy": "synthetic_descriptor_only"
+  },
+  "checks": [
+    {
+      "check_id": "public_derivative_schema_preflight.source_expectation_ready",
+      "status": "pass",
+      "observed": {
+        "schema": "rusty.quest.sidecar.manifold_public_derivative_schema_response_expectation.v1",
+        "expectation_status": "ready_for_manifold_public_derivative_schema_response",
+        "next_gate": "manifold_public_derivative_schema_response_or_operator_decision"
+      },
+      "expected": {
+        "schema": "rusty.quest.sidecar.manifold_public_derivative_schema_response_expectation.v1",
+        "expectation_status": "ready_for_manifold_public_derivative_schema_response",
+        "next_gate": "manifold_public_derivative_schema_response_or_operator_decision"
+      },
+      "evidence": "fixtures/valid/manifold-public-derivative-schema-response-expectation.synthetic.json"
+    },
+    {
+      "check_id": "public_derivative_schema_preflight.no_repo_schema_route_or_state",
+      "status": "pass",
+      "observed": {
+        "preflight_class": "manifold_repo_public_derivative_schema_slice_preflight",
+        "source_mode": "synthetic_fixture",
+        "target_repo": "rusty.manifold",
+        "repo_touch_status": "not_touched",
+        "branch_status": "not_created",
+        "response_status": "not_created",
+        "decision_status": "not_decided",
+        "schema_status": "not_created",
+        "route_status": "not_created",
+        "accepted_state_status": "not_created",
+        "audit_record_status": "not_created",
+        "validation_report_status": "not_created",
+        "public_derivative_status": "not_created",
+        "operator_approval_status": "not_recorded",
+        "hostess_route_status": "not_created",
+        "live_evidence_status": "not_included"
+      },
+      "expected": {
+        "repo_touch_status": "not_touched",
+        "branch_status": "not_created",
+        "response_status": "not_created",
+        "decision_status": "not_decided",
+        "schema_status": "not_created",
+        "route_status": "not_created",
+        "accepted_state_status": "not_created",
+        "audit_record_status": "not_created",
+        "validation_report_status": "not_created",
+        "public_derivative_status": "not_created",
+        "hostess_route_status": "not_created"
+      },
+      "evidence": "preflight does not touch Manifold, create branch, response, decision, schema, route, state, audit, validation report, public derivative, or Hostess route"
+    },
+    {
+      "check_id": "public_derivative_schema_preflight.manifold_authority",
+      "status": "pass",
+      "observed": {
+        "preflight_owner": "rusty.quest.sidecar_mesh",
+        "implementation_plan_owner": "rusty.manifold",
+        "response_owner": "rusty.manifold",
+        "decision_owner": "rusty.manifold",
+        "schema_owner": "rusty.manifold",
+        "route_implementation_owner": "rusty.manifold",
+        "request_acceptance_owner": "rusty.manifold",
+        "runtime_authority_owner": "rusty.manifold",
+        "session_authority_owner": "rusty.manifold",
+        "audit_owner": "rusty.manifold.audit",
+        "accepted_state_owner": "rusty.manifold",
+        "rollback_owner": "rusty.manifold",
+        "redaction_review_owner": "operator",
+        "hostess_device_action_authority": "not_in_sidecar",
+        "sidecar_role": "observer_proposer",
+        "proposal_status": "not_accepted"
+      },
+      "expected": {
+        "implementation_plan_owner": "rusty.manifold",
+        "response_owner": "rusty.manifold",
+        "decision_owner": "rusty.manifold",
+        "schema_owner": "rusty.manifold",
+        "route_implementation_owner": "rusty.manifold",
+        "request_acceptance_owner": "rusty.manifold",
+        "runtime_authority_owner": "rusty.manifold",
+        "session_authority_owner": "rusty.manifold",
+        "audit_owner": "rusty.manifold.audit",
+        "accepted_state_owner": "rusty.manifold",
+        "rollback_owner": "rusty.manifold",
+        "redaction_review_owner": "operator",
+        "sidecar_role": "observer_proposer"
+      },
+      "evidence": "Manifold remains implementation plan, response, decision, schema, route, runtime, session, audit, state, and rollback owner"
+    },
+    {
+      "check_id": "public_derivative_schema_preflight.artifacts_manifold_owned_not_created",
+      "status": "pass",
+      "observed": {
+        "artifact_kinds": [
+          "accepted_state_fixture",
+          "audit_fixture",
+          "decision_event_fixture",
+          "hostess_boundary_descriptor",
+          "input_schema",
+          "response_schema",
+          "route_handler",
+          "validation_report_fixture"
+        ],
+        "owners": [
+          "rusty.manifold",
+          "rusty.manifold.audit"
+        ],
+        "statuses": [
+          "not_created_by_sidecar"
+        ],
+        "artifact_count": 8
+      },
+      "expected": {
+        "artifact_kinds": [
+          "accepted_state_fixture",
+          "audit_fixture",
+          "decision_event_fixture",
+          "hostess_boundary_descriptor",
+          "input_schema",
+          "response_schema",
+          "route_handler",
+          "validation_report_fixture"
+        ],
+        "owners": [
+          "rusty.manifold",
+          "rusty.manifold.audit"
+        ],
+        "status": "not_created_by_sidecar",
+        "artifact_count": 8
+      },
+      "evidence": "all required public derivative schema artifacts are Manifold-owned and not created by the sidecar repo"
+    },
+    {
+      "check_id": "public_derivative_schema_preflight.validation_rejection_and_revision_terms",
+      "status": "pass",
+      "observed": {
+        "required_validation_slots": [
+          "slot.public_derivative_response_schema_contract",
+          "slot.public_derivative_schema_contract",
+          "slot.public_derivative_valid_fixture",
+          "slot.public_derivative_damaged_fixture",
+          "slot.manifold_route_unit_tests",
+          "slot.public_derivative_audit_fixture",
+          "slot.accepted_state_mapping_check",
+          "slot.hostess_boundary_descriptor_check",
+          "slot.privacy_redaction_rejection_check",
+          "slot.no_private_endpoint_or_command_content"
+        ],
+        "required_response_decisions": [
+          "accepted_for_manifold_schema_slice",
+          "revision_requested",
+          "rejected"
+        ],
+        "required_rejection_terms": [
+          "operator_approval_missing",
+          "public_derivative_schema_missing",
+          "endpoint_values_rejected",
+          "commands_rejected",
+          "adb_rejected",
+          "stale_peer_status",
+          "untrusted_sidecar",
+          "redaction_incomplete",
+          "cleanup_incomplete",
+          "high_rate_payload_rejected",
+          "hostess_direct_action_rejected"
+        ],
+        "required_revision_terms": [
+          "schema_shape_revision",
+          "route_semantics_revision",
+          "audit_shape_revision",
+          "accepted_state_mapping_revision",
+          "hostess_boundary_revision",
+          "privacy_boundary_revision",
+          "validation_report_revision"
+        ]
+      },
+      "expected": {
+        "required_validation_slots": [
+          "slot.accepted_state_mapping_check",
+          "slot.hostess_boundary_descriptor_check",
+          "slot.manifold_route_unit_tests",
+          "slot.no_private_endpoint_or_command_content",
+          "slot.privacy_redaction_rejection_check",
+          "slot.public_derivative_audit_fixture",
+          "slot.public_derivative_damaged_fixture",
+          "slot.public_derivative_response_schema_contract",
+          "slot.public_derivative_schema_contract",
+          "slot.public_derivative_valid_fixture"
+        ],
+        "required_response_decisions": [
+          "accepted_for_manifold_schema_slice",
+          "revision_requested",
+          "rejected"
+        ],
+        "required_rejection_terms": [
+          "adb_rejected",
+          "cleanup_incomplete",
+          "commands_rejected",
+          "endpoint_values_rejected",
+          "high_rate_payload_rejected",
+          "hostess_direct_action_rejected",
+          "operator_approval_missing",
+          "public_derivative_schema_missing",
+          "redaction_incomplete",
+          "stale_peer_status",
+          "untrusted_sidecar"
+        ],
+        "required_revision_terms": [
+          "accepted_state_mapping_revision",
+          "audit_shape_revision",
+          "hostess_boundary_revision",
+          "privacy_boundary_revision",
+          "route_semantics_revision",
+          "schema_shape_revision",
+          "validation_report_revision"
+        ]
+      },
+      "evidence": "future Manifold slice must include fixture, route, audit, Hostess, privacy, decision, rejection, and revision coverage"
+    },
+    {
+      "check_id": "public_derivative_schema_preflight.route_boundaries",
+      "status": "pass",
+      "observed": {
+        "required_route_boundaries": {
+          "input_payload_class": "low_rate_advisory_status",
+          "accepts_sanitized_summary_only": true,
+          "requires_operator_approval": true,
+          "requires_redaction_review": true,
+          "allows_endpoint_values": false,
+          "allows_commands": false,
+          "allows_adb": false,
+          "allows_high_rate_payloads": false,
+          "allows_sidecar_direct_hostess_input": false,
+          "creates_public_derivative_artifact": false,
+          "creates_hostess_input": false
+        },
+        "rollback_policy": "manifold_owned_disable_route_or_reject_source"
+      },
+      "expected": {
+        "input_payload_class": "low_rate_advisory_status",
+        "accepts_sanitized_summary_only": true,
+        "requires_operator_approval": true,
+        "requires_redaction_review": true,
+        "allows_endpoint_values": false,
+        "allows_commands": false,
+        "allows_adb": false,
+        "allows_high_rate_payloads": false,
+        "allows_sidecar_direct_hostess_input": false,
+        "creates_public_derivative_artifact": false,
+        "creates_hostess_input": false,
+        "rollback_policy": "manifold_owned_disable_route_or_reject_source"
+      },
+      "evidence": "future Manifold route preflight remains low-rate sanitized summary input only and rejects sidecar device-action drift"
+    },
+    {
+      "check_id": "public_derivative_schema_preflight.hostess_deferred",
+      "status": "pass",
+      "observed": {
+        "status": "future_lane_not_requested",
+        "route_status": "not_created",
+        "recovery_request_status": "not_created",
+        "device_action_authority": "not_in_sidecar",
+        "consumes_only": "manifold_accepted_state_or_operator_request_descriptor",
+        "sidecar_direct_input_allowed": false,
+        "requires_manifold_accepted_state": true,
+        "requires_explicit_operator_request": true,
+        "allowed_action_class": "operator_recovery_request_descriptor",
+        "preflight_result": "hostess_deferred_until_manifold_acceptance"
+      },
+      "expected": {
+        "status": "future_lane_not_requested",
+        "route_status": "not_created",
+        "recovery_request_status": "not_created",
+        "device_action_authority": "not_in_sidecar",
+        "consumes_only": "manifold_accepted_state_or_operator_request_descriptor",
+        "sidecar_direct_input_allowed": false,
+        "requires_manifold_accepted_state": true,
+        "requires_explicit_operator_request": true,
+        "preflight_result": "hostess_deferred_until_manifold_acceptance"
+      },
+      "evidence": "Hostess remains deferred until Manifold accepted state or explicit operator request exists"
+    },
+    {
+      "check_id": "public_derivative_schema_preflight.privacy_and_validation_boundary",
+      "status": "pass",
+      "observed": {
+        "validation_evidence": {
+          "local_validation_status": "expected_pass",
+          "required_commands": [
+            "python tools/prepare_manifold_public_derivative_schema_implementation_preflight.py --response-expectation fixtures/valid/manifold-public-derivative-schema-response-expectation.synthetic.json --now 2026-06-05T00:24:00Z --output fixtures/valid/manifold-public-derivative-schema-implementation-preflight.synthetic.json",
+            "python tools/evaluate_integration_acceptance.py --repo-root . --now 2026-06-04T21:46:00Z --output fixtures/valid/integration-acceptance-scorecard.synthetic.json",
+            "python tools/validate_repo.py --repo-root .",
+            "python -m unittest discover -s tests -p test_*.py",
+            "git diff --check"
+          ],
+          "damaged_fixture_policy": "must_fail_validation",
+          "future_manifold_gate": "manifold_repo_owns_public_derivative_schema_slice_implementation_and_audit",
+          "future_hostess_gate": "hostess_route_requires_manifold_state_or_operator_request"
+        },
+        "privacy_boundary": {
+          "contains_endpoint_values": false,
+          "contains_pairing_material": false,
+          "contains_commands": false,
+          "contains_raw_logs": false,
+          "contains_visual_captures": false,
+          "contains_private_device_ids": false,
+          "public_fixture_policy": "synthetic_descriptor_only"
+        }
+      },
+      "expected": {
+        "local_validation_status": "expected_pass",
+        "damaged_fixture_policy": "must_fail_validation",
+        "future_manifold_gate": "manifold_repo_owns_public_derivative_schema_slice_implementation_and_audit",
+        "future_hostess_gate": "hostess_route_requires_manifold_state_or_operator_request",
+        "privacy_flags_all_false": true,
+        "public_fixture_policy": "synthetic_descriptor_only"
+      },
+      "evidence": "preflight remains public-safe descriptor evidence with validation gates"
+    }
+  ],
+  "summary": {
+    "check_count": 8,
+    "pass_count": 8,
+    "manual_review_count": 0,
+    "fail_count": 0
+  },
+  "authority_boundary": [
+    "The Manifold public derivative schema implementation preflight is descriptor evidence only; it does not touch the Manifold repo, create a branch, create a response, decide the review, create schemas, create routes, create accepted state, create audit records, create validation reports, create public derivative artifacts, touch Hostess, start live Quest work, use ADB, open sockets, select endpoints, install, launch, recover, copy files, or execute commands.",
+    "Manifold remains the future implementation plan, response, decision, schema, route implementation, request acceptance, command/session/audit, revision, lease, rollback, and accepted-state authority.",
+    "Operator approval and redaction review remain required before real public derivative evidence can be accepted.",
+    "Hostess remains a future operator-recovery lane after Manifold accepted state or explicit operator request; sidecar agents cannot supply direct Hostess device-action input."
+  ],
+  "next_gate": "manifold_public_derivative_schema_handoff_or_operator_decision"
+}

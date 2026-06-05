@@ -1,0 +1,84 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "rusty.quest.sidecar.public_lab_artifact_drift_review.v1",
+  "title": "Rusty Quest Sidecar Public Lab Artifact Drift Review",
+  "type": "object",
+  "required": [
+    "schema",
+    "review_id",
+    "generated_at",
+    "drift_status",
+    "source_manifest",
+    "source_report",
+    "source_access_policy",
+    "authority",
+    "artifact_comparisons",
+    "validation_evidence",
+    "privacy_boundary",
+    "checks",
+    "summary",
+    "authority_boundary",
+    "next_gate"
+  ],
+  "properties": {
+    "schema": {
+      "const": "rusty.quest.sidecar.public_lab_artifact_drift_review.v1"
+    },
+    "review_id": {
+      "type": "string"
+    },
+    "generated_at": {
+      "type": "string"
+    },
+    "drift_status": {
+      "enum": [
+        "drift_clear",
+        "manual_review",
+        "drift_detected"
+      ]
+    },
+    "source_manifest": {
+      "type": "object"
+    },
+    "source_report": {
+      "type": "object"
+    },
+    "source_access_policy": {
+      "type": "object"
+    },
+    "authority": {
+      "type": "object"
+    },
+    "artifact_comparisons": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "validation_evidence": {
+      "type": "object"
+    },
+    "privacy_boundary": {
+      "type": "object"
+    },
+    "checks": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "summary": {
+      "type": "object"
+    },
+    "authority_boundary": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "next_gate": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}

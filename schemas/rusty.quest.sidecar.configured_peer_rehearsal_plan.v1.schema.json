@@ -1,0 +1,95 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "rusty.quest.sidecar.configured_peer_rehearsal_plan.v1",
+  "title": "Rusty Quest Sidecar Configured Peer Rehearsal Plan",
+  "type": "object",
+  "required": [
+    "schema",
+    "plan_id",
+    "generated_at",
+    "plan_status",
+    "source_handoff_review",
+    "rehearsal_scope",
+    "authority",
+    "peer_set",
+    "transport_policy",
+    "manifold_readiness",
+    "hostess_readiness",
+    "evidence_policy",
+    "steps",
+    "checks",
+    "summary",
+    "authority_boundary",
+    "next_gate"
+  ],
+  "properties": {
+    "schema": {
+      "const": "rusty.quest.sidecar.configured_peer_rehearsal_plan.v1"
+    },
+    "plan_id": {
+      "type": "string"
+    },
+    "generated_at": {
+      "type": "string"
+    },
+    "plan_status": {
+      "enum": [
+        "operator_approval_required",
+        "manual_review",
+        "blocked"
+      ]
+    },
+    "source_handoff_review": {
+      "type": "object"
+    },
+    "rehearsal_scope": {
+      "type": "object"
+    },
+    "authority": {
+      "type": "object"
+    },
+    "peer_set": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "transport_policy": {
+      "type": "object"
+    },
+    "manifold_readiness": {
+      "type": "object"
+    },
+    "hostess_readiness": {
+      "type": "object"
+    },
+    "evidence_policy": {
+      "type": "object"
+    },
+    "steps": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "checks": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "summary": {
+      "type": "object"
+    },
+    "authority_boundary": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "next_gate": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "rusty.quest.sidecar.mesh_handoff.v1",
+  "title": "Rusty Quest Sidecar Mesh Handoff",
+  "type": "object",
+  "required": [
+    "schema",
+    "handoff_id",
+    "created_at",
+    "source",
+    "target_manifold_surfaces",
+    "observations",
+    "requests",
+    "approval",
+    "audit",
+    "limits"
+  ],
+  "properties": {
+    "schema": {
+      "const": "rusty.quest.sidecar.mesh_handoff.v1"
+    },
+    "handoff_id": {
+      "type": "string"
+    },
+    "created_at": {
+      "type": "string"
+    },
+    "source": {
+      "type": "object"
+    },
+    "target_manifold_surfaces": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "observations": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "requests": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "approval": {
+      "type": "object"
+    },
+    "audit": {
+      "type": "object"
+    },
+    "limits": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "additionalProperties": false
+}
+

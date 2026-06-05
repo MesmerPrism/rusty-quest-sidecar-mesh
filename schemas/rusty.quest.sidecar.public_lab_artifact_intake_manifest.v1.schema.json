@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "rusty.quest.sidecar.public_lab_artifact_intake_manifest.v1",
+  "title": "Rusty Quest Sidecar Public Lab Artifact Intake Manifest",
+  "type": "object",
+  "required": [
+    "schema",
+    "intake_id",
+    "created_at",
+    "source_repo",
+    "artifact_refs",
+    "extraction_policy",
+    "authority_boundary"
+  ],
+  "properties": {
+    "schema": {
+      "const": "rusty.quest.sidecar.public_lab_artifact_intake_manifest.v1"
+    },
+    "intake_id": {
+      "type": "string"
+    },
+    "created_at": {
+      "type": "string"
+    },
+    "source_repo": {
+      "type": "object"
+    },
+    "artifact_refs": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "extraction_policy": {
+      "type": "object"
+    },
+    "authority_boundary": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "additionalProperties": false
+}
+

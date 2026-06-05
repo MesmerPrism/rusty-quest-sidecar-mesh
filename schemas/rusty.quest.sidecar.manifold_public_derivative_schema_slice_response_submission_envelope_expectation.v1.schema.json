@@ -1,0 +1,85 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "rusty.quest.sidecar.manifold_public_derivative_schema_slice_response_submission_envelope_expectation.v1",
+  "title": "Rusty Quest Sidecar Manifold Public Derivative Schema Slice Response Submission Envelope Expectation",
+  "type": "object",
+  "required": [
+    "schema",
+    "expectation_id",
+    "generated_at",
+    "expectation_status",
+    "source_operator_decision_record_expectation",
+    "expectation_scope",
+    "authority",
+    "expected_submission_envelope",
+    "manifold_intake_after_envelope",
+    "hostess_boundary_after_envelope",
+    "validation_evidence",
+    "privacy_boundary",
+    "checks",
+    "summary",
+    "authority_boundary",
+    "next_gate"
+  ],
+  "properties": {
+    "schema": {
+      "const": "rusty.quest.sidecar.manifold_public_derivative_schema_slice_response_submission_envelope_expectation.v1"
+    },
+    "expectation_id": {
+      "type": "string"
+    },
+    "generated_at": {
+      "type": "string"
+    },
+    "expectation_status": {
+      "enum": [
+        "ready_for_manifold_submission_envelope",
+        "manual_review",
+        "blocked"
+      ]
+    },
+    "source_operator_decision_record_expectation": {
+      "type": "object"
+    },
+    "expectation_scope": {
+      "type": "object"
+    },
+    "authority": {
+      "type": "object"
+    },
+    "expected_submission_envelope": {
+      "type": "object"
+    },
+    "manifold_intake_after_envelope": {
+      "type": "object"
+    },
+    "hostess_boundary_after_envelope": {
+      "type": "object"
+    },
+    "validation_evidence": {
+      "type": "object"
+    },
+    "privacy_boundary": {
+      "type": "object"
+    },
+    "checks": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "summary": {
+      "type": "object"
+    },
+    "authority_boundary": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "next_gate": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}

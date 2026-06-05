@@ -1,0 +1,410 @@
+{
+  "schema": "rusty.quest.sidecar.manifold_route_blueprint.v1",
+  "blueprint_id": "blueprint.manifold_route.synthetic.001",
+  "generated_at": "2026-06-04T23:04:00Z",
+  "blueprint_status": "ready_for_manifold_repo_design_review",
+  "source_contract_intake_request": {
+    "path": "fixtures/valid/manifold-contract-intake-request.synthetic.json",
+    "schema": "rusty.quest.sidecar.manifold_contract_intake_request.v1",
+    "request_id": "request.sidecar_mesh_manifold_contract_intake.synthetic.001",
+    "request_status": "ready_for_manifold_contract_intake",
+    "next_gate": "manifold_repo_owned_contract_schema_or_operator_approved_private_rehearsal_evidence"
+  },
+  "source_private_rehearsal_approval_request": {
+    "path": "fixtures/valid/private-rehearsal-approval-request.synthetic.json",
+    "schema": "rusty.quest.sidecar.private_rehearsal_approval_request.v1",
+    "request_id": "request.private_rehearsal_approval.synthetic.001",
+    "request_status": "operator_approval_required",
+    "next_gate": "operator_decision_or_manifold_repo_owned_contract_schema"
+  },
+  "blueprint_scope": {
+    "blueprint_class": "manifold_owned_sidecar_peer_status_route_blueprint",
+    "source_mode": "synthetic_fixture",
+    "target_repo": "rusty.manifold",
+    "repo_touch_status": "not_touched",
+    "implementation_status": "not_implemented",
+    "route_status": "not_created",
+    "accepted_state_status": "not_created",
+    "live_evidence_status": "not_included",
+    "operator_approval_status": "not_recorded",
+    "hostess_route_status": "not_created"
+  },
+  "authority": {
+    "blueprint_owner": "rusty.quest.sidecar_mesh",
+    "route_implementation_owner": "rusty.manifold",
+    "request_acceptance_owner": "rusty.manifold",
+    "runtime_authority_owner": "rusty.manifold",
+    "session_authority_owner": "rusty.manifold",
+    "audit_owner": "rusty.manifold.audit",
+    "accepted_state_owner": "rusty.manifold",
+    "rollback_owner": "rusty.manifold",
+    "hostess_device_action_authority": "not_in_sidecar",
+    "sidecar_role": "observer_proposer",
+    "proposal_status": "not_accepted"
+  },
+  "proposed_manifold_route": {
+    "route_id": "route.sidecar_peer_status_intake.synthetic.001",
+    "route_name": "sidecar_peer_status_intake",
+    "route_status": "candidate",
+    "route_creation_status": "not_created",
+    "request_type": "submit_sidecar_peer_status_candidate",
+    "input_payload_class": "low_rate_advisory_status",
+    "output_event_class": "accept_reject_revision_audit",
+    "requires_operator_approval_for_private_material": true,
+    "requires_redaction_complete": true,
+    "allows_endpoint_values": false,
+    "allows_commands": false,
+    "allows_adb": false,
+    "allows_high_rate_payloads": false,
+    "hostess_escalation_input": "manifold_accepted_state_or_operator_request",
+    "required_validation_slots": [
+      "slot.manifold_schema_contract_validation",
+      "slot.sidecar_damaged_boundary_fixtures",
+      "slot.manifold_accept_reject_audit_fixture",
+      "slot.hostess_boundary_descriptor_check"
+    ],
+    "required_rejection_terms": [
+      "operator_approval_missing",
+      "endpoint_values_rejected",
+      "commands_rejected",
+      "adb_rejected",
+      "stale_peer_status",
+      "untrusted_sidecar",
+      "redaction_incomplete",
+      "high_rate_payload_rejected",
+      "unsupported_transport",
+      "hostess_route_rejected"
+    ]
+  },
+  "candidate_schemas": [
+    {
+      "schema_id": "rusty.manifold.sidecar_peer_status.request.v1",
+      "schema_role": "request",
+      "owner": "rusty.manifold",
+      "status": "candidate_not_created",
+      "required_fields": [
+        "request_id",
+        "source_sidecar_id",
+        "observed_peer_id",
+        "observed_at",
+        "status_payload_class",
+        "redaction",
+        "operator_approval_ref"
+      ]
+    },
+    {
+      "schema_id": "rusty.manifold.sidecar_peer_status.decision.v1",
+      "schema_role": "decision_event",
+      "owner": "rusty.manifold",
+      "status": "candidate_not_created",
+      "required_fields": [
+        "decision_id",
+        "request_id",
+        "decision",
+        "rejection_terms",
+        "revision",
+        "audit_ref"
+      ]
+    },
+    {
+      "schema_id": "rusty.manifold.sidecar_peer_status.accepted_state.v1",
+      "schema_role": "accepted_state",
+      "owner": "rusty.manifold",
+      "status": "candidate_not_created",
+      "required_fields": [
+        "state_id",
+        "revision",
+        "accepted_at",
+        "source_request_id",
+        "lease_ref",
+        "audit_ref"
+      ]
+    }
+  ],
+  "audit_contract": {
+    "audit_surface": "sidecar_peer_rehearsal_audit",
+    "audit_owner": "rusty.manifold.audit",
+    "audit_record_status": "not_created",
+    "required_audit_fields": [
+      "request_id",
+      "source_fixture_refs",
+      "decision",
+      "rejection_terms",
+      "redaction_summary",
+      "operator_approval_status",
+      "hostess_boundary_status"
+    ],
+    "revision_policy": "manifold_owned_monotonic_revision",
+    "rollback_policy": "manifold_owned_disable_route_or_reject_source"
+  },
+  "hostess_boundary": {
+    "status": "future_lane_not_requested",
+    "route_status": "not_created",
+    "recovery_request_status": "not_created",
+    "device_action_authority": "not_in_sidecar",
+    "input_role": "manifold_accepted_state_or_operator_request",
+    "allowed_action_class": "operator_recovery_request_descriptor"
+  },
+  "validation_evidence": {
+    "local_validation_status": "expected_pass",
+    "required_commands": [
+      "python tools/prepare_manifold_route_blueprint.py --contract-intake-request fixtures/valid/manifold-contract-intake-request.synthetic.json --private-approval-request fixtures/valid/private-rehearsal-approval-request.synthetic.json --now 2026-06-04T23:04:00Z --output fixtures/valid/manifold-route-blueprint.synthetic.json",
+      "python tools/evaluate_integration_acceptance.py --repo-root . --now 2026-06-04T21:46:00Z --output fixtures/valid/integration-acceptance-scorecard.synthetic.json",
+      "python tools/validate_repo.py --repo-root .",
+      "python -m unittest discover -s tests -p test_*.py",
+      "git diff --check"
+    ],
+    "damaged_fixture_policy": "must_fail_validation",
+    "future_manifold_gate": "manifold_repo_owns_schema_route_acceptance_and_audit",
+    "future_hostess_gate": "hostess_route_requires_manifold_state_or_operator_request"
+  },
+  "privacy_boundary": {
+    "contains_endpoint_values": false,
+    "contains_pairing_material": false,
+    "contains_commands": false,
+    "contains_raw_logs": false,
+    "contains_visual_captures": false,
+    "contains_private_device_ids": false,
+    "public_fixture_policy": "synthetic_descriptor_only"
+  },
+  "checks": [
+    {
+      "check_id": "route_blueprint.source_contract_intake_ready",
+      "status": "pass",
+      "observed": {
+        "schema": "rusty.quest.sidecar.manifold_contract_intake_request.v1",
+        "request_status": "ready_for_manifold_contract_intake",
+        "next_gate": "manifold_repo_owned_contract_schema_or_operator_approved_private_rehearsal_evidence"
+      },
+      "expected": {
+        "schema": "rusty.quest.sidecar.manifold_contract_intake_request.v1",
+        "request_status": "ready_for_manifold_contract_intake",
+        "next_gate": "manifold_repo_owned_contract_schema_or_operator_approved_private_rehearsal_evidence"
+      },
+      "evidence": "fixtures/valid/manifold-contract-intake-request.synthetic.json"
+    },
+    {
+      "check_id": "route_blueprint.source_private_approval_ready",
+      "status": "pass",
+      "observed": {
+        "schema": "rusty.quest.sidecar.private_rehearsal_approval_request.v1",
+        "request_status": "operator_approval_required",
+        "next_gate": "operator_decision_or_manifold_repo_owned_contract_schema"
+      },
+      "expected": {
+        "schema": "rusty.quest.sidecar.private_rehearsal_approval_request.v1",
+        "request_status": "operator_approval_required",
+        "next_gate": "operator_decision_or_manifold_repo_owned_contract_schema"
+      },
+      "evidence": "fixtures/valid/private-rehearsal-approval-request.synthetic.json"
+    },
+    {
+      "check_id": "route_blueprint.no_repo_route_or_state",
+      "status": "pass",
+      "observed": {
+        "repo_touch_status": "not_touched",
+        "route_status": "not_created",
+        "accepted_state_status": "not_created",
+        "live_evidence_status": "not_included",
+        "route_creation_status": "not_created",
+        "audit_record_status": "not_created"
+      },
+      "expected": {
+        "repo_touch_status": "not_touched",
+        "route_status": "not_created",
+        "accepted_state_status": "not_created",
+        "live_evidence_status": "not_included",
+        "route_creation_status": "not_created",
+        "audit_record_status": "not_created"
+      },
+      "evidence": "blueprint does not touch Manifold or create route/state/audit records"
+    },
+    {
+      "check_id": "route_blueprint.manifold_authority",
+      "status": "pass",
+      "observed": {
+        "blueprint_owner": "rusty.quest.sidecar_mesh",
+        "route_implementation_owner": "rusty.manifold",
+        "request_acceptance_owner": "rusty.manifold",
+        "runtime_authority_owner": "rusty.manifold",
+        "session_authority_owner": "rusty.manifold",
+        "audit_owner": "rusty.manifold.audit",
+        "accepted_state_owner": "rusty.manifold",
+        "rollback_owner": "rusty.manifold",
+        "hostess_device_action_authority": "not_in_sidecar",
+        "sidecar_role": "observer_proposer",
+        "proposal_status": "not_accepted"
+      },
+      "expected": {
+        "route_implementation_owner": "rusty.manifold",
+        "request_acceptance_owner": "rusty.manifold",
+        "runtime_authority_owner": "rusty.manifold",
+        "session_authority_owner": "rusty.manifold",
+        "audit_owner": "rusty.manifold.audit",
+        "accepted_state_owner": "rusty.manifold",
+        "sidecar_role": "observer_proposer"
+      },
+      "evidence": "Manifold remains route, request, runtime, session, accepted-state, and audit authority"
+    },
+    {
+      "check_id": "route_blueprint.route_constraints",
+      "status": "pass",
+      "observed": {
+        "route_id": "route.sidecar_peer_status_intake.synthetic.001",
+        "route_name": "sidecar_peer_status_intake",
+        "route_status": "candidate",
+        "route_creation_status": "not_created",
+        "request_type": "submit_sidecar_peer_status_candidate",
+        "input_payload_class": "low_rate_advisory_status",
+        "output_event_class": "accept_reject_revision_audit",
+        "requires_operator_approval_for_private_material": true,
+        "requires_redaction_complete": true,
+        "allows_endpoint_values": false,
+        "allows_commands": false,
+        "allows_adb": false,
+        "allows_high_rate_payloads": false,
+        "hostess_escalation_input": "manifold_accepted_state_or_operator_request",
+        "required_validation_slots": [
+          "slot.manifold_schema_contract_validation",
+          "slot.sidecar_damaged_boundary_fixtures",
+          "slot.manifold_accept_reject_audit_fixture",
+          "slot.hostess_boundary_descriptor_check"
+        ],
+        "required_rejection_terms": [
+          "operator_approval_missing",
+          "endpoint_values_rejected",
+          "commands_rejected",
+          "adb_rejected",
+          "stale_peer_status",
+          "untrusted_sidecar",
+          "redaction_incomplete",
+          "high_rate_payload_rejected",
+          "unsupported_transport",
+          "hostess_route_rejected"
+        ]
+      },
+      "expected": {
+        "route_status": "candidate",
+        "input_payload_class": "low_rate_advisory_status",
+        "requires_operator_approval_for_private_material": true,
+        "allows_endpoint_values": false,
+        "allows_commands": false,
+        "allows_adb": false,
+        "allows_high_rate_payloads": false,
+        "required_rejection_terms": [
+          "adb_rejected",
+          "commands_rejected",
+          "endpoint_values_rejected",
+          "high_rate_payload_rejected",
+          "operator_approval_missing",
+          "redaction_incomplete",
+          "stale_peer_status",
+          "untrusted_sidecar"
+        ]
+      },
+      "evidence": "future Manifold route remains candidate-only and low-rate with rejection vocabulary"
+    },
+    {
+      "check_id": "route_blueprint.candidate_schemas_and_audit",
+      "status": "pass",
+      "observed": {
+        "schema_roles": [
+          "accepted_state",
+          "decision_event",
+          "request"
+        ],
+        "schema_owners": [
+          "rusty.manifold"
+        ],
+        "schema_statuses": [
+          "candidate_not_created"
+        ],
+        "audit_owner": "rusty.manifold.audit",
+        "audit_record_status": "not_created",
+        "revision_policy": "manifold_owned_monotonic_revision"
+      },
+      "expected": {
+        "schema_roles": [
+          "accepted_state",
+          "decision_event",
+          "request"
+        ],
+        "schema_owner": "rusty.manifold",
+        "schema_status": "candidate_not_created",
+        "audit_owner": "rusty.manifold.audit",
+        "audit_record_status": "not_created",
+        "revision_policy": "manifold_owned_monotonic_revision"
+      },
+      "evidence": "candidate schemas and audit contract are Manifold-owned and not created"
+    },
+    {
+      "check_id": "route_blueprint.hostess_boundary",
+      "status": "pass",
+      "observed": {
+        "status": "future_lane_not_requested",
+        "route_status": "not_created",
+        "recovery_request_status": "not_created",
+        "device_action_authority": "not_in_sidecar",
+        "input_role": "manifold_accepted_state_or_operator_request",
+        "allowed_action_class": "operator_recovery_request_descriptor"
+      },
+      "expected": {
+        "status": "future_lane_not_requested",
+        "route_status": "not_created",
+        "recovery_request_status": "not_created",
+        "device_action_authority": "not_in_sidecar",
+        "input_role": "manifold_accepted_state_or_operator_request"
+      },
+      "evidence": "Hostess remains descriptor-only and receives no route or device-action authority"
+    },
+    {
+      "check_id": "route_blueprint.privacy_and_validation_boundary",
+      "status": "pass",
+      "observed": {
+        "validation_evidence": {
+          "local_validation_status": "expected_pass",
+          "required_commands": [
+            "python tools/prepare_manifold_route_blueprint.py --contract-intake-request fixtures/valid/manifold-contract-intake-request.synthetic.json --private-approval-request fixtures/valid/private-rehearsal-approval-request.synthetic.json --now 2026-06-04T23:04:00Z --output fixtures/valid/manifold-route-blueprint.synthetic.json",
+            "python tools/evaluate_integration_acceptance.py --repo-root . --now 2026-06-04T21:46:00Z --output fixtures/valid/integration-acceptance-scorecard.synthetic.json",
+            "python tools/validate_repo.py --repo-root .",
+            "python -m unittest discover -s tests -p test_*.py",
+            "git diff --check"
+          ],
+          "damaged_fixture_policy": "must_fail_validation",
+          "future_manifold_gate": "manifold_repo_owns_schema_route_acceptance_and_audit",
+          "future_hostess_gate": "hostess_route_requires_manifold_state_or_operator_request"
+        },
+        "privacy_boundary": {
+          "contains_endpoint_values": false,
+          "contains_pairing_material": false,
+          "contains_commands": false,
+          "contains_raw_logs": false,
+          "contains_visual_captures": false,
+          "contains_private_device_ids": false,
+          "public_fixture_policy": "synthetic_descriptor_only"
+        }
+      },
+      "expected": {
+        "local_validation_status": "expected_pass",
+        "damaged_fixture_policy": "must_fail_validation",
+        "future_manifold_gate": "manifold_repo_owns_schema_route_acceptance_and_audit",
+        "future_hostess_gate": "hostess_route_requires_manifold_state_or_operator_request",
+        "privacy_flags_all_false": true,
+        "public_fixture_policy": "synthetic_descriptor_only"
+      },
+      "evidence": "blueprint remains public-safe descriptor evidence with validation gates"
+    }
+  ],
+  "summary": {
+    "check_count": 8,
+    "pass_count": 8,
+    "manual_review_count": 0,
+    "fail_count": 0
+  },
+  "authority_boundary": [
+    "The Manifold route blueprint is descriptor evidence only; it does not touch the Manifold repo, create a Manifold route, create accepted Manifold state, touch Hostess, start a live Quest run, use ADB, open sockets, select endpoints, install, launch, recover, copy files, or execute commands.",
+    "Manifold remains the future route implementation, request acceptance, command/session/audit, revision, lease, and accepted-state authority.",
+    "Hostess remains a future operator-recovery lane after Manifold accepted state or explicit operator request; sidecar agents cannot perform device actions."
+  ],
+  "next_gate": "manifold_repo_design_review_or_operator_decision"
+}

@@ -1,0 +1,95 @@
+{
+  "schema": "rusty.quest.sidecar.manifold_handoff_package.v1",
+  "package_id": "package.sidecar_mesh_manifold_handoff.damaged.live_accepted.001",
+  "generated_at": "2026-06-04T22:41:00Z",
+  "package_status": "handoff_package_ready",
+  "source_contract_review": {
+    "path": "fixtures/valid/manifold-adapter-contract-review.synthetic.json",
+    "schema": "rusty.quest.sidecar.manifold_adapter_contract_review.v1",
+    "review_id": "review.manifold_adapter_contract.synthetic.001",
+    "review_status": "contract_ready",
+    "next_gate": "manifold_owned_adapter_contract_or_operator_approved_private_rehearsal_evidence"
+  },
+  "package_scope": {
+    "package_class": "manifold_handoff_descriptor",
+    "source_mode": "private_live_route",
+    "implementation_status": "implemented",
+    "route_status": "created",
+    "accepted_state_status": "created",
+    "live_evidence_status": "included"
+  },
+  "authority": {
+    "package_owner": "sidecar_agent",
+    "handoff_acceptance_owner": "sidecar_agent",
+    "runtime_authority_owner": "sidecar_agent",
+    "session_authority_owner": "sidecar_agent",
+    "audit_owner": "sidecar_agent",
+    "accepted_state_owner": "sidecar_agent",
+    "sidecar_role": "manifold_authority",
+    "proposal_status": "accepted"
+  },
+  "artifact_set": [
+    {
+      "artifact_id": "artifact.private_live_command",
+      "path": "private/live-command.json",
+      "schema": "rusty.quest.sidecar.command_payload.v1",
+      "role": "accepted_command",
+      "required_for_handoff": true,
+      "command_payload": "execute_shell"
+    }
+  ],
+  "proposed_manifold_handoff": {
+    "handoff_id": "handoff.sidecar_mesh_to_manifold.damaged.001",
+    "status": "accepted",
+    "target_repo": "rusty.manifold",
+    "target_surfaces": [
+      "sidecar_command_relay"
+    ],
+    "required_acceptance_owner": "sidecar_agent",
+    "required_audit_owner": "sidecar_agent",
+    "accepted_state_status": "created",
+    "required_rejection_terms": [],
+    "required_validation_slots": []
+  },
+  "hostess_boundary": {
+    "status": "active",
+    "route_status": "created",
+    "device_action_authority": "sidecar_agent",
+    "input_role": "sidecar_request",
+    "allowed_action_class": "execute_shell"
+  },
+  "validation_evidence": {
+    "local_validation_status": "skipped",
+    "required_commands": [],
+    "damaged_fixture_policy": "ignored",
+    "future_manifold_gate": "not_required"
+  },
+  "privacy_boundary": {
+    "contains_endpoint_values": true,
+    "contains_pairing_material": true,
+    "contains_commands": true,
+    "contains_raw_logs": true,
+    "contains_visual_captures": true,
+    "contains_private_device_ids": true,
+    "public_fixture_policy": "raw_private_evidence"
+  },
+  "checks": [
+    {
+      "check_id": "handoff_package.damaged_live_accepted",
+      "status": "fail",
+      "observed": "accepted live route",
+      "expected": "descriptor only",
+      "evidence": "damaged fixture asserts accepted live sidecar state"
+    }
+  ],
+  "summary": {
+    "check_count": 1,
+    "pass_count": 0,
+    "manual_review_count": 0,
+    "fail_count": 1
+  },
+  "authority_boundary": [
+    "Sidecar owns accepted state."
+  ],
+  "next_gate": "live_sidecar_manifold_route"
+}

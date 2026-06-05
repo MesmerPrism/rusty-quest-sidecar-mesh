@@ -1,0 +1,35 @@
+{
+  "schema": "rusty.quest.sidecar.manifold_adapter_proposal.v1",
+  "proposal_id": "proposal.manifold_adapter.damaged.sidecar_authority.001",
+  "created_at": "2026-06-04T21:45:00Z",
+  "source": {
+    "repo": "rusty-quest-sidecar-mesh",
+    "fixture_set": "damaged"
+  },
+  "authority": {
+    "source_of_truth": "sidecar_agent",
+    "accepted_mutation_owner": "sidecar_agent",
+    "audit_owner": "sidecar_agent",
+    "sidecar_role": "manifold_authority",
+    "proposal_status": "accepted"
+  },
+  "adapter_surfaces": [
+    {
+      "surface_id": "surface.damaged_direct_command",
+      "manifold_family": "command_descriptor",
+      "module_kind": "control_adapter",
+      "status": "accepted",
+      "rate_class": "control",
+      "input_schema": "rusty.quest.sidecar.mesh_handoff.v1",
+      "output_schema": "rusty.manifold.command_ack",
+      "acceptance_owner": "sidecar_agent",
+      "command_payload": "forbidden"
+    }
+  ],
+  "rejection_vocabulary": [],
+  "validation_slots": [],
+  "limits": [
+    "invalid_sidecar_authority"
+  ]
+}
+

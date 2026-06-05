@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "rusty.quest.sidecar.no_network_agent_run.v1",
+  "title": "Rusty Quest Sidecar No-Network Agent Run",
+  "type": "object",
+  "required": [
+    "schema",
+    "run_id",
+    "generated_at",
+    "prototype_status",
+    "source_recipe",
+    "source_review",
+    "runtime",
+    "authority",
+    "handoff_readiness",
+    "outputs",
+    "checks",
+    "summary",
+    "authority_boundary",
+    "next_gate"
+  ],
+  "properties": {
+    "schema": {
+      "const": "rusty.quest.sidecar.no_network_agent_run.v1"
+    },
+    "run_id": {
+      "type": "string"
+    },
+    "generated_at": {
+      "type": "string"
+    },
+    "prototype_status": {
+      "enum": [
+        "prototype_complete",
+        "manual_review",
+        "blocked"
+      ]
+    },
+    "source_recipe": {
+      "type": "object"
+    },
+    "source_review": {
+      "type": "object"
+    },
+    "runtime": {
+      "type": "object"
+    },
+    "authority": {
+      "type": "object"
+    },
+    "handoff_readiness": {
+      "type": "object"
+    },
+    "outputs": {
+      "type": "object"
+    },
+    "checks": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "summary": {
+      "type": "object"
+    },
+    "authority_boundary": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "next_gate": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}

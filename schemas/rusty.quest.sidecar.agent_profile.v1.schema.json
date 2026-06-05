@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "rusty.quest.sidecar.agent_profile.v1",
+  "title": "Rusty Quest Sidecar Agent Profile",
+  "type": "object",
+  "required": [
+    "schema",
+    "agent_id",
+    "fleet_id",
+    "host_kind",
+    "implementation_profile",
+    "authority",
+    "capabilities",
+    "local_surfaces",
+    "manifold_interfaces",
+    "operational_limits"
+  ],
+  "properties": {
+    "schema": {
+      "const": "rusty.quest.sidecar.agent_profile.v1"
+    },
+    "agent_id": {
+      "type": "string"
+    },
+    "fleet_id": {
+      "type": "string"
+    },
+    "host_kind": {
+      "enum": [
+        "headset.device"
+      ]
+    },
+    "implementation_profile": {
+      "type": "object"
+    },
+    "authority": {
+      "type": "object"
+    },
+    "capabilities": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "local_surfaces": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "manifold_interfaces": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "operational_limits": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "additionalProperties": false
+}
+

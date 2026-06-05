@@ -1,0 +1,110 @@
+{
+  "schema": "rusty.quest.sidecar.private_rehearsal_approval_request.v1",
+  "request_id": "request.private_rehearsal_approval.damaged.001",
+  "generated_at": "2026-06-04T22:56:00Z",
+  "request_status": "approved",
+  "private_endpoint": "192.0.2.15:8787",
+  "adb_target": "192.0.2.15:5555",
+  "shell_command": "id",
+  "source_peer_rehearsal_plan": {
+    "path": "fixtures/valid/configured-peer-rehearsal-plan.synthetic.json",
+    "schema": "rusty.quest.sidecar.configured_peer_rehearsal_plan.v1",
+    "plan_status": "started",
+    "next_gate": "live_route_started"
+  },
+  "source_contract_intake_request": {
+    "path": "fixtures/valid/manifold-contract-intake-request.synthetic.json",
+    "schema": "rusty.quest.sidecar.manifold_contract_intake_request.v1",
+    "request_status": "ready_for_manifold_contract_intake",
+    "next_gate": "manifold_repo_owned_contract_schema_or_operator_approved_private_rehearsal_evidence"
+  },
+  "approval_scope": {
+    "request_class": "private_configured_peer_rehearsal_approval_descriptor",
+    "source_mode": "synthetic_fixture",
+    "operator_approval_status": "approved",
+    "route_status": "started",
+    "implementation_status": "implemented",
+    "live_evidence_status": "collected",
+    "endpoint_material_status": "in_fixture",
+    "adb_status": "used",
+    "command_status": "commands_allowed",
+    "hostess_route_status": "created",
+    "manifold_route_status": "created",
+    "accepted_state_status": "created"
+  },
+  "authority": {
+    "request_owner": "rusty.quest.sidecar_mesh",
+    "approval_owner": "sidecar",
+    "handoff_acceptance_owner": "rusty.quest.sidecar_mesh",
+    "runtime_authority_owner": "rusty.quest.sidecar_mesh",
+    "session_authority_owner": "rusty.quest.sidecar_mesh",
+    "audit_owner": "rusty.quest.sidecar_mesh",
+    "accepted_state_owner": "rusty.quest.sidecar_mesh",
+    "hostess_device_action_authority": "created_by_sidecar",
+    "sidecar_role": "authority",
+    "proposal_status": "accepted"
+  },
+  "requested_rehearsal": {
+    "rehearsal_id": "rehearsal.private_configured_peer_status.damaged.001",
+    "status": "started",
+    "message_class": "command",
+    "allowed_payload_class": "commands",
+    "operator_approval_required": false,
+    "route_start_allowed": true,
+    "requires_private_configured_material": false,
+    "public_fixture_contains_endpoint_values": true,
+    "adb_allowed": true,
+    "commands_allowed": true,
+    "remote_desktop_allowed": true,
+    "file_transfer_allowed": true,
+    "hostess_escalation_input": "sidecar_direct"
+  },
+  "operator_packet": {
+    "packet_status": "approved",
+    "approval_decision": "approved",
+    "approval_record_status": "created",
+    "required_private_inputs": [],
+    "required_public_derivatives": [],
+    "rejection_terms": []
+  },
+  "hostess_boundary": {
+    "status": "route_created",
+    "route_status": "created",
+    "recovery_request_status": "created",
+    "device_action_authority": "created_by_sidecar",
+    "input_role": "sidecar_direct",
+    "allowed_action_class": "device_command"
+  },
+  "validation_evidence": {
+    "local_validation_status": "expected_pass",
+    "required_commands": [],
+    "damaged_fixture_policy": "not_required",
+    "future_manifold_gate": "sidecar_owns_route",
+    "future_hostess_gate": "sidecar_owns_route"
+  },
+  "privacy_boundary": {
+    "contains_endpoint_values": true,
+    "contains_pairing_material": true,
+    "contains_commands": true,
+    "contains_raw_logs": true,
+    "contains_visual_captures": true,
+    "contains_private_device_ids": true,
+    "public_fixture_policy": "raw_private_evidence"
+  },
+  "checks": [
+    {
+      "check_id": "approval_request.damaged",
+      "status": "pass"
+    }
+  ],
+  "summary": {
+    "check_count": 1,
+    "pass_count": 1,
+    "manual_review_count": 0,
+    "fail_count": 0
+  },
+  "authority_boundary": [
+    "damaged fixture intentionally violates authority boundaries"
+  ],
+  "next_gate": "live_route_started"
+}

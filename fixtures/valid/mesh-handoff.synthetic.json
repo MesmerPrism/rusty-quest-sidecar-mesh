@@ -1,0 +1,69 @@
+{
+  "schema": "rusty.quest.sidecar.mesh_handoff.v1",
+  "handoff_id": "handoff.synthetic.peer_mesh.alpha.001",
+  "created_at": "2026-06-04T21:21:00Z",
+  "source": {
+    "repo": "rusty-quest-sidecar-mesh",
+    "implementation_profile": "termux",
+    "fixture_set": "synthetic"
+  },
+  "target_manifold_surfaces": [
+    {
+      "surface": "rusty.manifold.host_manifest",
+      "relationship": "propose_sidecar_observation_source"
+    },
+    {
+      "surface": "rusty.manifold.stream_registry",
+      "relationship": "propose_low_rate_sidecar_health_stream"
+    },
+    {
+      "surface": "rusty.manifold.audit",
+      "relationship": "future_accept_reject_record"
+    }
+  ],
+  "observations": [
+    {
+      "observation_id": "observation.synthetic.alpha.001",
+      "fixture": "fixtures/valid/termux-observation.synthetic.json",
+      "role": "advisory_input"
+    }
+  ],
+  "requests": [
+    {
+      "request_id": "request.synthetic.register_profile.alpha",
+      "request_type": "register_observation_source",
+      "requested_by": "agent.quest_sidecar.alpha",
+      "authority_required": "rusty.manifold",
+      "status": "proposed"
+    },
+    {
+      "request_id": "request.synthetic.review_scorecard.alpha",
+      "request_type": "review_sidecar_scorecard",
+      "requested_by": "operator.private_lab",
+      "authority_required": "rusty.manifold",
+      "status": "proposed"
+    }
+  ],
+  "approval": {
+    "status": "not_requested",
+    "required_by": [
+      "rusty.manifold",
+      "operator.private_lab"
+    ],
+    "operator_evidence_required": true
+  },
+  "audit": {
+    "source_of_truth": "rusty.manifold.audit",
+    "sidecar_record_role": "handoff_proposal",
+    "accepted_mutation_record": "not_created"
+  },
+  "limits": [
+    "proposal_only",
+    "no_commands",
+    "no_adb_targets",
+    "no_pairing_material",
+    "no_install_launch_requests",
+    "no_private_endpoint_values"
+  ]
+}
+

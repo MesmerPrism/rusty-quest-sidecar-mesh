@@ -1,0 +1,106 @@
+{
+  "schema": "rusty.quest.sidecar.manifold_adapter_contract_review.v1",
+  "review_id": "review.manifold_adapter_contract.damaged.authority_command.001",
+  "generated_at": "2026-06-04T22:33:00Z",
+  "review_status": "contract_ready",
+  "source_peer_rehearsal_plan": {
+    "path": "fixtures/valid/configured-peer-rehearsal-plan.synthetic.json",
+    "schema": "rusty.quest.sidecar.configured_peer_rehearsal_plan.v1",
+    "plan_id": "plan.configured_peer_rehearsal.synthetic.001",
+    "plan_status": "operator_approval_required",
+    "next_gate": "operator_approved_private_rehearsal_evidence_or_manifold_adapter_contract"
+  },
+  "integration_status": {
+    "manifold_repo_touched": true,
+    "hostess_repo_touched": true,
+    "live_device_used": true,
+    "runtime_route_created": true,
+    "accepted_manifold_state_created": true,
+    "hostess_route_created": true
+  },
+  "contract_scope": {
+    "contract_class": "manifold_adapter_contract_review",
+    "source_mode": "private_live_route",
+    "implementation_status": "implemented",
+    "route_status": "created",
+    "accepted_state_status": "created",
+    "payload_rate_class": "command",
+    "payload_authority": "sidecar_authoritative"
+  },
+  "authority": {
+    "runtime_authority_owner": "sidecar_agent",
+    "session_authority_owner": "sidecar_agent",
+    "audit_owner": "sidecar_agent",
+    "accepted_state_owner": "sidecar_agent",
+    "sidecar_role": "manifold_authority",
+    "operator_role": "not_required",
+    "hostess_role": "sidecar_recovery",
+    "proposal_status": "accepted"
+  },
+  "proposed_manifold_contract": {
+    "contract_id": "contract.sidecar_peer_status_adapter.damaged.001",
+    "status": "accepted",
+    "source_schema": "rusty.quest.sidecar.configured_peer_rehearsal_plan.v1",
+    "source_path": "fixtures/valid/configured-peer-rehearsal-plan.synthetic.json",
+    "surfaces": [
+      {
+        "surface_id": "surface.sidecar_peer_status_intake.damaged",
+        "kind": "command_descriptor",
+        "rate_class": "control",
+        "acceptance_owner": "sidecar_agent",
+        "audit_owner": "sidecar_agent",
+        "accepted_state_status": "created",
+        "command_payload": "execute_shell"
+      }
+    ],
+    "lifecycle_states": [
+      "accepted_by_sidecar"
+    ],
+    "candidate_intake_fields": [
+      "private_endpoint"
+    ],
+    "candidate_audit_fields": [
+      "accepted_state_owner"
+    ],
+    "required_rejection_terms": []
+  },
+  "hostess_boundary": {
+    "status": "active",
+    "route_status": "created",
+    "device_action_authority": "sidecar_agent",
+    "input_role": "sidecar_request",
+    "request_descriptor_fields": {
+      "required_authority": "sidecar_agent",
+      "allowed_action_class": "execute_shell",
+      "implementation_status": "implemented"
+    },
+    "required_rejection_terms": []
+  },
+  "validation_slots": [],
+  "rollback_policy": {
+    "rollback_owner": "sidecar_agent",
+    "sidecar_rollback_role": "accepted_state_removal",
+    "accepted_state_removal_owner": "sidecar_agent",
+    "audit_record_required": false,
+    "hostess_action_required": true
+  },
+  "checks": [
+    {
+      "check_id": "manifold_contract.damaged_authority",
+      "status": "fail",
+      "observed": "sidecar authority",
+      "expected": "manifold authority",
+      "evidence": "damaged fixture asserts sidecar-owned contract and command payload"
+    }
+  ],
+  "summary": {
+    "check_count": 1,
+    "pass_count": 0,
+    "manual_review_count": 0,
+    "fail_count": 1
+  },
+  "authority_boundary": [
+    "Sidecar owns Manifold accepted state and Hostess recovery."
+  ],
+  "next_gate": "live_sidecar_manifold_route"
+}

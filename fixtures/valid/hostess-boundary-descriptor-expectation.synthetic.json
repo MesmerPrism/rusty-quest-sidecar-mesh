@@ -1,0 +1,399 @@
+{
+  "schema": "rusty.quest.sidecar.hostess_boundary_descriptor_expectation.v1",
+  "expectation_id": "expectation.hostess_boundary_descriptor.synthetic.001",
+  "generated_at": "2026-06-04T23:44:00Z",
+  "expectation_status": "ready_for_future_hostess_boundary_descriptor",
+  "source_manifold_response_handoff_package": {
+    "path": "fixtures/valid/manifold-response-handoff-package.synthetic.json",
+    "schema": "rusty.quest.sidecar.manifold_response_handoff_package.v1",
+    "package_id": "package.manifold_response_slice_handoff.synthetic.001",
+    "package_status": "response_handoff_package_ready",
+    "next_gate": "manifold_repo_response_slice_or_operator_decision"
+  },
+  "expectation_scope": {
+    "expectation_class": "hostess_boundary_descriptor_expectation",
+    "source_mode": "synthetic_fixture",
+    "target_descriptor_owner": "rusty.manifold",
+    "future_consumer": "rusty.hostess",
+    "manifold_repo_touch_status": "not_touched",
+    "hostess_repo_touch_status": "not_touched",
+    "hostess_route_status": "not_created",
+    "manifold_accepted_state_status": "not_created",
+    "operator_request_status": "not_recorded",
+    "live_evidence_status": "not_included"
+  },
+  "authority": {
+    "expectation_owner": "rusty.quest.sidecar_mesh",
+    "boundary_descriptor_owner": "rusty.manifold",
+    "source_of_truth_owner": "rusty.manifold",
+    "response_decision_owner": "rusty.manifold",
+    "accepted_state_owner": "rusty.manifold",
+    "audit_owner": "rusty.manifold.audit",
+    "future_hostess_route_owner": "rusty.hostess",
+    "future_hostess_route_enablement_owner": "rusty.manifold",
+    "hostess_device_action_authority": "not_in_sidecar",
+    "sidecar_role": "observer_proposer",
+    "proposal_status": "not_accepted"
+  },
+  "expected_hostess_boundary_descriptor": {
+    "descriptor_status": "not_created",
+    "descriptor_kind": "hostess_operator_recovery_boundary",
+    "input_source_policy": "manifold_accepted_state_or_operator_request_descriptor",
+    "sidecar_direct_input_allowed": false,
+    "requires_manifold_accepted_state": true,
+    "requires_explicit_operator_request": true,
+    "allows_endpoint_values": false,
+    "allows_commands": false,
+    "allows_adb": false,
+    "allows_high_rate_payloads": false,
+    "allowed_action_classes": [
+      "read_only_status_view_descriptor",
+      "operator_recovery_request_descriptor"
+    ],
+    "disallowed_input_classes": [
+      "sidecar_peer_message_direct",
+      "endpoint_values",
+      "commands",
+      "adb",
+      "high_rate_payloads",
+      "raw_logs",
+      "visual_captures",
+      "pairing_material"
+    ],
+    "required_descriptor_fields": [
+      "manifold_decision_id",
+      "accepted_state_id",
+      "source_handoff_package_id",
+      "decision_status",
+      "operator_request_status",
+      "rejection_terms",
+      "audit_record_id",
+      "privacy_boundary"
+    ],
+    "required_hostess_validation_slots": [
+      "slot.hostess_boundary_descriptor_schema",
+      "slot.hostess_rejects_sidecar_direct_input",
+      "slot.hostess_requires_manifold_accepted_state",
+      "slot.hostess_requires_operator_request_for_recovery",
+      "slot.hostess_privacy_redaction_check",
+      "slot.hostess_no_device_action_fixture"
+    ],
+    "safe_to_create_hostess_route": false
+  },
+  "manifold_acceptance_gate": {
+    "handoff_acceptance_status": "not_accepted",
+    "response_decision_status": "not_decided",
+    "accepted_state_status": "not_created",
+    "audit_record_status": "not_created",
+    "required_response_decision": "accepted_for_manifold_slice",
+    "hostess_boundary_descriptor_status": "not_created",
+    "hostess_route_status": "not_created",
+    "hostess_enablement_status": "not_enabled",
+    "gate_result": "hostess_boundary_descriptor_not_ready_for_route_creation"
+  },
+  "validation_evidence": {
+    "local_validation_status": "expected_pass",
+    "required_commands": [
+      "python tools/prepare_hostess_boundary_descriptor_expectation.py --response-handoff fixtures/valid/manifold-response-handoff-package.synthetic.json --now 2026-06-04T23:44:00Z --output fixtures/valid/hostess-boundary-descriptor-expectation.synthetic.json",
+      "python tools/evaluate_integration_acceptance.py --repo-root . --now 2026-06-04T21:46:00Z --output fixtures/valid/integration-acceptance-scorecard.synthetic.json",
+      "python tools/validate_repo.py --repo-root .",
+      "python -m unittest discover -s tests -p test_*.py",
+      "git diff --check"
+    ],
+    "damaged_fixture_policy": "must_fail_validation",
+    "future_manifold_gate": "manifold_response_acceptance_before_hostess_descriptor_creation",
+    "future_hostess_gate": "hostess_route_requires_manifold_state_or_operator_request"
+  },
+  "privacy_boundary": {
+    "contains_endpoint_values": false,
+    "contains_pairing_material": false,
+    "contains_commands": false,
+    "contains_raw_logs": false,
+    "contains_visual_captures": false,
+    "contains_private_device_ids": false,
+    "public_fixture_policy": "synthetic_descriptor_only"
+  },
+  "checks": [
+    {
+      "check_id": "hostess_boundary_expectation.source_handoff_ready",
+      "status": "pass",
+      "observed": {
+        "schema": "rusty.quest.sidecar.manifold_response_handoff_package.v1",
+        "package_status": "response_handoff_package_ready",
+        "next_gate": "manifold_repo_response_slice_or_operator_decision"
+      },
+      "expected": {
+        "schema": "rusty.quest.sidecar.manifold_response_handoff_package.v1",
+        "package_status": "response_handoff_package_ready",
+        "next_gate": "manifold_repo_response_slice_or_operator_decision"
+      },
+      "evidence": "fixtures/valid/manifold-response-handoff-package.synthetic.json"
+    },
+    {
+      "check_id": "hostess_boundary_expectation.no_repo_route_state_or_live_evidence",
+      "status": "pass",
+      "observed": {
+        "expectation_class": "hostess_boundary_descriptor_expectation",
+        "source_mode": "synthetic_fixture",
+        "target_descriptor_owner": "rusty.manifold",
+        "future_consumer": "rusty.hostess",
+        "manifold_repo_touch_status": "not_touched",
+        "hostess_repo_touch_status": "not_touched",
+        "hostess_route_status": "not_created",
+        "manifold_accepted_state_status": "not_created",
+        "operator_request_status": "not_recorded",
+        "live_evidence_status": "not_included"
+      },
+      "expected": {
+        "manifold_repo_touch_status": "not_touched",
+        "hostess_repo_touch_status": "not_touched",
+        "hostess_route_status": "not_created",
+        "manifold_accepted_state_status": "not_created",
+        "operator_request_status": "not_recorded",
+        "live_evidence_status": "not_included"
+      },
+      "evidence": "expectation does not touch Manifold, Hostess, create routes, accepted state, operator request, or live evidence"
+    },
+    {
+      "check_id": "hostess_boundary_expectation.authority_split",
+      "status": "pass",
+      "observed": {
+        "expectation_owner": "rusty.quest.sidecar_mesh",
+        "boundary_descriptor_owner": "rusty.manifold",
+        "source_of_truth_owner": "rusty.manifold",
+        "response_decision_owner": "rusty.manifold",
+        "accepted_state_owner": "rusty.manifold",
+        "audit_owner": "rusty.manifold.audit",
+        "future_hostess_route_owner": "rusty.hostess",
+        "future_hostess_route_enablement_owner": "rusty.manifold",
+        "hostess_device_action_authority": "not_in_sidecar",
+        "sidecar_role": "observer_proposer",
+        "proposal_status": "not_accepted"
+      },
+      "expected": {
+        "boundary_descriptor_owner": "rusty.manifold",
+        "source_of_truth_owner": "rusty.manifold",
+        "response_decision_owner": "rusty.manifold",
+        "accepted_state_owner": "rusty.manifold",
+        "audit_owner": "rusty.manifold.audit",
+        "future_hostess_route_owner": "rusty.hostess",
+        "future_hostess_route_enablement_owner": "rusty.manifold",
+        "hostess_device_action_authority": "not_in_sidecar",
+        "sidecar_role": "observer_proposer",
+        "proposal_status": "not_accepted"
+      },
+      "evidence": "Manifold owns the future descriptor and enablement gate; Hostess owns only a future route after explicit gate"
+    },
+    {
+      "check_id": "hostess_boundary_expectation.descriptor_constraints",
+      "status": "pass",
+      "observed": {
+        "descriptor_status": "not_created",
+        "descriptor_kind": "hostess_operator_recovery_boundary",
+        "input_source_policy": "manifold_accepted_state_or_operator_request_descriptor",
+        "sidecar_direct_input_allowed": false,
+        "requires_manifold_accepted_state": true,
+        "requires_explicit_operator_request": true,
+        "allows_endpoint_values": false,
+        "allows_commands": false,
+        "allows_adb": false,
+        "allows_high_rate_payloads": false,
+        "allowed_action_classes": [
+          "read_only_status_view_descriptor",
+          "operator_recovery_request_descriptor"
+        ],
+        "disallowed_input_classes": [
+          "sidecar_peer_message_direct",
+          "endpoint_values",
+          "commands",
+          "adb",
+          "high_rate_payloads",
+          "raw_logs",
+          "visual_captures",
+          "pairing_material"
+        ],
+        "required_descriptor_fields": [
+          "manifold_decision_id",
+          "accepted_state_id",
+          "source_handoff_package_id",
+          "decision_status",
+          "operator_request_status",
+          "rejection_terms",
+          "audit_record_id",
+          "privacy_boundary"
+        ],
+        "required_hostess_validation_slots": [
+          "slot.hostess_boundary_descriptor_schema",
+          "slot.hostess_rejects_sidecar_direct_input",
+          "slot.hostess_requires_manifold_accepted_state",
+          "slot.hostess_requires_operator_request_for_recovery",
+          "slot.hostess_privacy_redaction_check",
+          "slot.hostess_no_device_action_fixture"
+        ],
+        "safe_to_create_hostess_route": false
+      },
+      "expected": {
+        "descriptor_status": "not_created",
+        "input_source_policy": "manifold_accepted_state_or_operator_request_descriptor",
+        "sidecar_direct_input_allowed": false,
+        "requires_manifold_accepted_state": true,
+        "requires_explicit_operator_request": true,
+        "allows_endpoint_values": false,
+        "allows_commands": false,
+        "allows_adb": false,
+        "allows_high_rate_payloads": false,
+        "safe_to_create_hostess_route": false
+      },
+      "evidence": "future Hostess boundary descriptor stays gated and cannot accept sidecar-direct device-action input"
+    },
+    {
+      "check_id": "hostess_boundary_expectation.required_fields_and_validation_slots",
+      "status": "pass",
+      "observed": {
+        "required_descriptor_fields": [
+          "manifold_decision_id",
+          "accepted_state_id",
+          "source_handoff_package_id",
+          "decision_status",
+          "operator_request_status",
+          "rejection_terms",
+          "audit_record_id",
+          "privacy_boundary"
+        ],
+        "required_hostess_validation_slots": [
+          "slot.hostess_boundary_descriptor_schema",
+          "slot.hostess_rejects_sidecar_direct_input",
+          "slot.hostess_requires_manifold_accepted_state",
+          "slot.hostess_requires_operator_request_for_recovery",
+          "slot.hostess_privacy_redaction_check",
+          "slot.hostess_no_device_action_fixture"
+        ],
+        "allowed_action_classes": [
+          "read_only_status_view_descriptor",
+          "operator_recovery_request_descriptor"
+        ],
+        "disallowed_input_classes": [
+          "sidecar_peer_message_direct",
+          "endpoint_values",
+          "commands",
+          "adb",
+          "high_rate_payloads",
+          "raw_logs",
+          "visual_captures",
+          "pairing_material"
+        ]
+      },
+      "expected": {
+        "required_descriptor_fields": [
+          "accepted_state_id",
+          "audit_record_id",
+          "decision_status",
+          "manifold_decision_id",
+          "operator_request_status",
+          "privacy_boundary",
+          "rejection_terms",
+          "source_handoff_package_id"
+        ],
+        "required_hostess_validation_slots": [
+          "slot.hostess_boundary_descriptor_schema",
+          "slot.hostess_no_device_action_fixture",
+          "slot.hostess_privacy_redaction_check",
+          "slot.hostess_rejects_sidecar_direct_input",
+          "slot.hostess_requires_manifold_accepted_state",
+          "slot.hostess_requires_operator_request_for_recovery"
+        ],
+        "allowed_action_classes": [
+          "operator_recovery_request_descriptor",
+          "read_only_status_view_descriptor"
+        ],
+        "disallowed_input_classes": [
+          "adb",
+          "commands",
+          "endpoint_values",
+          "high_rate_payloads",
+          "pairing_material",
+          "raw_logs",
+          "sidecar_peer_message_direct",
+          "visual_captures"
+        ]
+      },
+      "evidence": "future descriptor includes enough fields and validation slots for Hostess without accepting device-action payloads"
+    },
+    {
+      "check_id": "hostess_boundary_expectation.manifold_gate_not_satisfied",
+      "status": "pass",
+      "observed": {
+        "handoff_acceptance_status": "not_accepted",
+        "response_decision_status": "not_decided",
+        "accepted_state_status": "not_created",
+        "audit_record_status": "not_created",
+        "required_response_decision": "accepted_for_manifold_slice",
+        "hostess_boundary_descriptor_status": "not_created",
+        "hostess_route_status": "not_created",
+        "hostess_enablement_status": "not_enabled",
+        "gate_result": "hostess_boundary_descriptor_not_ready_for_route_creation"
+      },
+      "expected": {
+        "handoff_acceptance_status": "not_accepted",
+        "response_decision_status": "not_decided",
+        "accepted_state_status": "not_created",
+        "audit_record_status": "not_created",
+        "required_response_decision": "accepted_for_manifold_slice",
+        "hostess_boundary_descriptor_status": "not_created",
+        "hostess_route_status": "not_created",
+        "hostess_enablement_status": "not_enabled",
+        "gate_result": "hostess_boundary_descriptor_not_ready_for_route_creation"
+      },
+      "evidence": "current package is not a Manifold acceptance; Hostess descriptor and route remain not ready"
+    },
+    {
+      "check_id": "hostess_boundary_expectation.privacy_and_validation_boundary",
+      "status": "pass",
+      "observed": {
+        "validation_evidence": {
+          "local_validation_status": "expected_pass",
+          "required_commands": [
+            "python tools/prepare_hostess_boundary_descriptor_expectation.py --response-handoff fixtures/valid/manifold-response-handoff-package.synthetic.json --now 2026-06-04T23:44:00Z --output fixtures/valid/hostess-boundary-descriptor-expectation.synthetic.json",
+            "python tools/evaluate_integration_acceptance.py --repo-root . --now 2026-06-04T21:46:00Z --output fixtures/valid/integration-acceptance-scorecard.synthetic.json",
+            "python tools/validate_repo.py --repo-root .",
+            "python -m unittest discover -s tests -p test_*.py",
+            "git diff --check"
+          ],
+          "damaged_fixture_policy": "must_fail_validation",
+          "future_manifold_gate": "manifold_response_acceptance_before_hostess_descriptor_creation",
+          "future_hostess_gate": "hostess_route_requires_manifold_state_or_operator_request"
+        },
+        "privacy_boundary": {
+          "contains_endpoint_values": false,
+          "contains_pairing_material": false,
+          "contains_commands": false,
+          "contains_raw_logs": false,
+          "contains_visual_captures": false,
+          "contains_private_device_ids": false,
+          "public_fixture_policy": "synthetic_descriptor_only"
+        }
+      },
+      "expected": {
+        "local_validation_status": "expected_pass",
+        "damaged_fixture_policy": "must_fail_validation",
+        "future_manifold_gate": "manifold_response_acceptance_before_hostess_descriptor_creation",
+        "future_hostess_gate": "hostess_route_requires_manifold_state_or_operator_request",
+        "privacy_flags_all_false": true,
+        "public_fixture_policy": "synthetic_descriptor_only"
+      },
+      "evidence": "Hostess boundary expectation remains public-safe descriptor evidence with validation gates"
+    }
+  ],
+  "summary": {
+    "check_count": 7,
+    "pass_count": 7,
+    "manual_review_count": 0,
+    "fail_count": 0
+  },
+  "authority_boundary": [
+    "The Hostess boundary descriptor expectation is descriptor evidence only; it does not touch Manifold, touch Hostess, create a Hostess route, create Manifold accepted state, record operator approval, start live Quest work, use ADB, open sockets, select endpoints, install, launch, recover, copy files, or execute commands.",
+    "Manifold remains the future source of truth, response decision, accepted-state, audit, and Hostess route enablement authority for this sidecar mesh lane.",
+    "Hostess remains a future operator-recovery and read-only status consumer after Manifold accepted state or explicit operator request; sidecar agents cannot supply direct Hostess device-action input."
+  ],
+  "next_gate": "manifold_response_slice_or_operator_decision"
+}

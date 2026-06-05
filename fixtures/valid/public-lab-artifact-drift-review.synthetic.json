@@ -1,0 +1,328 @@
+{
+  "schema": "rusty.quest.sidecar.public_lab_artifact_drift_review.v1",
+  "review_id": "review.public_lab_artifact_drift.synthetic.001",
+  "generated_at": "2026-06-04T21:43:00Z",
+  "drift_status": "drift_clear",
+  "source_manifest": {
+    "path": "fixtures/valid/public-lab-artifact-intake-manifest.synthetic.json",
+    "schema": "rusty.quest.sidecar.public_lab_artifact_intake_manifest.v1",
+    "intake_id": "public_lab_intake.synthetic.peer_mesh.001",
+    "artifact_count": 6
+  },
+  "source_report": {
+    "path": "fixtures/valid/public-lab-artifact-intake-report.synthetic.json",
+    "schema": "rusty.quest.sidecar.public_lab_artifact_intake_report.v1",
+    "intake_id": "public_lab_intake.synthetic.peer_mesh.001",
+    "overall_status": "intake_ready",
+    "generated_at": "2026-06-04T21:41:00Z"
+  },
+  "source_access_policy": {
+    "source_root_mode": "cli_supplied",
+    "read_declared_public_artifacts": true,
+    "copy_raw_artifact": false,
+    "execute_source_validation": false,
+    "read_private_evidence": false,
+    "import_private_values": false
+  },
+  "authority": {
+    "review_owner": "rusty.quest.sidecar_mesh",
+    "source_truth_owner": "quest-termux-lab.public_artifacts",
+    "handoff_acceptance_owner": "rusty.manifold",
+    "audit_owner": "rusty.manifold.audit",
+    "sidecar_role": "observer_proposer",
+    "proposal_status": "not_accepted"
+  },
+  "artifact_comparisons": [
+    {
+      "artifact_id": "artifact.peer_public_package",
+      "path": "examples/peer-public-package-report.synthetic.json",
+      "source_path_exists": true,
+      "expected_schema": "quest-termux-lab.peer-public-package-report.v1",
+      "stored_schema": "quest-termux-lab.peer-public-package-report.v1",
+      "current_schema": "quest-termux-lab.peer-public-package-report.v1",
+      "stored_status": "package_ready",
+      "current_status": "package_ready",
+      "expected_status_class": "ready",
+      "stored_status_class": "ready",
+      "current_status_class": "ready",
+      "stored_result": "passed",
+      "current_result": "passed",
+      "schema_match": true,
+      "status_class_match": true,
+      "source_status_match": true,
+      "result_match": true,
+      "summary_match": true,
+      "drift_status": "drift_clear"
+    },
+    {
+      "artifact_id": "artifact.preflight_clear_review_bundle",
+      "path": "examples/peer-review-bundle-preflight-clear-report.synthetic.json",
+      "source_path_exists": true,
+      "expected_schema": "quest-termux-lab.peer-review-bundle-report.v1",
+      "stored_schema": "quest-termux-lab.peer-review-bundle-report.v1",
+      "current_schema": "quest-termux-lab.peer-review-bundle-report.v1",
+      "stored_status": "review_ready",
+      "current_status": "review_ready",
+      "expected_status_class": "ready",
+      "stored_status_class": "ready",
+      "current_status_class": "ready",
+      "stored_result": "passed",
+      "current_result": "passed",
+      "schema_match": true,
+      "status_class_match": true,
+      "source_status_match": true,
+      "result_match": true,
+      "summary_match": true,
+      "drift_status": "drift_clear"
+    },
+    {
+      "artifact_id": "artifact.baseline_scorecard",
+      "path": "examples/peer-scorecard-report.synthetic.json",
+      "source_path_exists": true,
+      "expected_schema": "quest-termux-lab.peer-scorecard-report.v1",
+      "stored_schema": "quest-termux-lab.peer-scorecard-report.v1",
+      "current_schema": "quest-termux-lab.peer-scorecard-report.v1",
+      "stored_status": "blocked",
+      "current_status": "blocked",
+      "expected_status_class": "blocked",
+      "stored_status_class": "blocked",
+      "current_status_class": "blocked",
+      "stored_result": "passed",
+      "current_result": "passed",
+      "schema_match": true,
+      "status_class_match": true,
+      "source_status_match": true,
+      "result_match": true,
+      "summary_match": true,
+      "drift_status": "drift_clear"
+    },
+    {
+      "artifact_id": "artifact.file_drop_copy_dry_run",
+      "path": "examples/peer-file-drop-copy-dry-run-report.synthetic.json",
+      "source_path_exists": true,
+      "expected_schema": "quest-termux-lab.peer-file-drop-copy-dry-run-report.v1",
+      "stored_schema": "quest-termux-lab.peer-file-drop-copy-dry-run-report.v1",
+      "current_schema": "quest-termux-lab.peer-file-drop-copy-dry-run-report.v1",
+      "stored_status": "file_drop_copy_dry_run_ready",
+      "current_status": "file_drop_copy_dry_run_ready",
+      "expected_status_class": "ready",
+      "stored_status_class": "ready",
+      "current_status_class": "ready",
+      "stored_result": "passed",
+      "current_result": "passed",
+      "schema_match": true,
+      "status_class_match": true,
+      "source_status_match": true,
+      "result_match": true,
+      "summary_match": true,
+      "drift_status": "drift_clear"
+    },
+    {
+      "artifact_id": "artifact.file_drop_inbox_intake",
+      "path": "examples/peer-file-drop-inbox-intake-report.synthetic.json",
+      "source_path_exists": true,
+      "expected_schema": "quest-termux-lab.peer-file-drop-inbox-intake-report.v1",
+      "stored_schema": "quest-termux-lab.peer-file-drop-inbox-intake-report.v1",
+      "current_schema": "quest-termux-lab.peer-file-drop-inbox-intake-report.v1",
+      "stored_status": "file_drop_inbox_intake_ready",
+      "current_status": "file_drop_inbox_intake_ready",
+      "expected_status_class": "ready",
+      "stored_status_class": "ready",
+      "current_status_class": "ready",
+      "stored_result": "passed",
+      "current_result": "passed",
+      "schema_match": true,
+      "status_class_match": true,
+      "source_status_match": true,
+      "result_match": true,
+      "summary_match": true,
+      "drift_status": "drift_clear"
+    },
+    {
+      "artifact_id": "artifact.result_placeholders",
+      "path": "examples/peer-private-result-placeholder-report.synthetic.json",
+      "source_path_exists": true,
+      "expected_schema": "quest-termux-lab.peer-private-result-placeholder-report.v1",
+      "stored_schema": "quest-termux-lab.peer-private-result-placeholder-report.v1",
+      "current_schema": "quest-termux-lab.peer-private-result-placeholder-report.v1",
+      "stored_status": "result_placeholders_blocked",
+      "current_status": "result_placeholders_blocked",
+      "expected_status_class": "blocked",
+      "stored_status_class": "blocked",
+      "current_status_class": "blocked",
+      "stored_result": "passed",
+      "current_result": "passed",
+      "schema_match": true,
+      "status_class_match": true,
+      "source_status_match": true,
+      "result_match": true,
+      "summary_match": true,
+      "drift_status": "drift_clear"
+    }
+  ],
+  "validation_evidence": {
+    "local_validation_status": "expected_pass",
+    "required_commands": [
+      "python tools/review_public_lab_artifact_drift.py --manifest fixtures/valid/public-lab-artifact-intake-manifest.synthetic.json --report fixtures/valid/public-lab-artifact-intake-report.synthetic.json --source-root ../quest-termux-lab --now 2026-06-04T21:43:00Z --output fixtures/valid/public-lab-artifact-drift-review.synthetic.json",
+      "python tools/evaluate_integration_acceptance.py --repo-root . --now 2026-06-04T21:46:00Z --output fixtures/valid/integration-acceptance-scorecard.synthetic.json",
+      "python tools/validate_repo.py --repo-root .",
+      "python -m unittest discover -s tests -p test_*.py",
+      "git diff --check"
+    ],
+    "damaged_fixture_policy": "must_fail_validation"
+  },
+  "privacy_boundary": {
+    "contains_endpoint_values": false,
+    "contains_pairing_material": false,
+    "contains_commands": false,
+    "contains_raw_logs": false,
+    "contains_visual_captures": false,
+    "contains_private_device_ids": false,
+    "public_fixture_policy": "synthetic_descriptor_only"
+  },
+  "checks": [
+    {
+      "check_id": "public_lab_drift.manifest_valid",
+      "status": "pass",
+      "observed": {
+        "schema": "rusty.quest.sidecar.public_lab_artifact_intake_manifest.v1",
+        "copy_raw_artifact": false,
+        "execute_source_validation": false,
+        "contains_endpoint_values": false
+      },
+      "expected": {
+        "schema": "rusty.quest.sidecar.public_lab_artifact_intake_manifest.v1",
+        "copy_raw_artifact": false,
+        "execute_source_validation": false,
+        "contains_endpoint_values": false
+      },
+      "evidence": "fixtures/valid/public-lab-artifact-intake-manifest.synthetic.json"
+    },
+    {
+      "check_id": "public_lab_drift.report_valid",
+      "status": "pass",
+      "observed": {
+        "schema": "rusty.quest.sidecar.public_lab_artifact_intake_report.v1",
+        "overall_status": "intake_ready",
+        "manifold_handoff_role": "proposal_evidence_only"
+      },
+      "expected": {
+        "schema": "rusty.quest.sidecar.public_lab_artifact_intake_report.v1",
+        "overall_status": "intake_ready",
+        "manifold_handoff_role": "proposal_evidence_only"
+      },
+      "evidence": "fixtures/valid/public-lab-artifact-intake-report.synthetic.json"
+    },
+    {
+      "check_id": "public_lab_drift.artifacts_match_current_source",
+      "status": "pass",
+      "observed": {
+        "artifact_count": 6,
+        "drifted_artifacts": []
+      },
+      "expected": {
+        "artifact_count": 6,
+        "drifted_artifacts": []
+      },
+      "evidence": "current source-derived sanitized report matches stored sidecar intake report"
+    },
+    {
+      "check_id": "public_lab_drift.expected_blocked_preserved",
+      "status": "pass",
+      "observed": {
+        "expected_blocked_count": 2,
+        "blocked_status_classes": [
+          "blocked",
+          "blocked"
+        ]
+      },
+      "expected": {
+        "expected_blocked_count": ">=1",
+        "blocked_status_class": "blocked"
+      },
+      "evidence": "expected blocked public-lab lanes remain blocked rather than falsely promoted"
+    },
+    {
+      "check_id": "public_lab_drift.source_access_policy",
+      "status": "pass",
+      "observed": {
+        "source_root_mode": "cli_supplied",
+        "read_declared_public_artifacts": true,
+        "copy_raw_artifact": false,
+        "execute_source_validation": false,
+        "read_private_evidence": false,
+        "import_private_values": false
+      },
+      "expected": {
+        "read_declared_public_artifacts": true,
+        "copy_raw_artifact": false,
+        "execute_source_validation": false,
+        "read_private_evidence": false,
+        "import_private_values": false
+      },
+      "evidence": "drift review reads declared public artifacts only and does not copy or execute source validation"
+    },
+    {
+      "check_id": "public_lab_drift.privacy_boundary",
+      "status": "pass",
+      "observed": {
+        "privacy_boundary": {
+          "contains_endpoint_values": false,
+          "contains_pairing_material": false,
+          "contains_commands": false,
+          "contains_raw_logs": false,
+          "contains_visual_captures": false,
+          "contains_private_device_ids": false,
+          "public_fixture_policy": "synthetic_descriptor_only"
+        },
+        "report_redaction": {
+          "privacy_class": "public_safe_synthetic",
+          "contains_endpoint_values": false,
+          "contains_commands": false,
+          "contains_pairing_material": false,
+          "contains_raw_logs": false,
+          "contains_image_captures": false
+        }
+      },
+      "expected": {
+        "privacy_flags_all_false": true,
+        "report_redaction_flags_false": true
+      },
+      "evidence": "drift review remains public-safe and redacted"
+    },
+    {
+      "check_id": "public_lab_drift.manifold_authority",
+      "status": "pass",
+      "observed": {
+        "review_owner": "rusty.quest.sidecar_mesh",
+        "source_truth_owner": "quest-termux-lab.public_artifacts",
+        "handoff_acceptance_owner": "rusty.manifold",
+        "audit_owner": "rusty.manifold.audit",
+        "sidecar_role": "observer_proposer",
+        "proposal_status": "not_accepted"
+      },
+      "expected": {
+        "handoff_acceptance_owner": "rusty.manifold",
+        "audit_owner": "rusty.manifold.audit",
+        "sidecar_role": "observer_proposer",
+        "proposal_status": "not_accepted"
+      },
+      "evidence": "public lab drift review remains advisory evidence for future Manifold handoff"
+    }
+  ],
+  "summary": {
+    "artifact_count": 6,
+    "drifted_artifact_count": 0,
+    "expected_blocked_artifact_count": 2,
+    "check_count": 7,
+    "pass_count": 7,
+    "manual_review_count": 0,
+    "fail_count": 0
+  },
+  "authority_boundary": [
+    "Public lab artifact drift review reads declared public-safe fixture reports only and does not copy raw artifacts, execute source validation, read private evidence, select endpoints, open sockets, use ADB, install apps, launch apps, or execute commands.",
+    "The drift review is advisory proposal evidence only; Manifold remains the future owner of acceptance, rejection, revision, leases, and audit records.",
+    "Hostess remains a future operator-recovery lane after Manifold accepted state or explicit operator request; sidecar agents cannot perform device actions."
+  ],
+  "next_gate": "public_lab_drift_clear_before_manifold_handoff_or_contract_intake"
+}

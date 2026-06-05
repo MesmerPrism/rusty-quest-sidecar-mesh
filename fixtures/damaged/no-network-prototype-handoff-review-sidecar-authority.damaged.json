@@ -1,0 +1,82 @@
+{
+  "schema": "rusty.quest.sidecar.no_network_prototype_handoff_review.v1",
+  "review_id": "review.no_network_prototype_handoff.damaged.sidecar_authority.001",
+  "generated_at": "2026-06-04T22:19:00Z",
+  "review_status": "handoff_review_ready",
+  "source_observation": {
+    "path": "fixtures/valid/no-network-agent-observation.synthetic.json",
+    "schema": "rusty.quest.sidecar.observation.v1",
+    "observation_id": "observation.no_network.synthetic.002",
+    "truth_level": "advisory_cached_view"
+  },
+  "source_run": {
+    "path": "fixtures/valid/no-network-agent-run.synthetic.json",
+    "schema": "rusty.quest.sidecar.no_network_agent_run.v1",
+    "run_id": "run.no_network_termux_agent.synthetic.001",
+    "prototype_status": "prototype_complete"
+  },
+  "integration_status": {
+    "manifold_repo_touched": true,
+    "hostess_repo_touched": true,
+    "live_device_used": true,
+    "runtime_route_created": true,
+    "hostess_route_created": true
+  },
+  "manifold_mapping": {
+    "mapping_id": "mapping.no_network_observation_to_manifold_intake.damaged.001",
+    "status": "accepted",
+    "authority_owner": "sidecar_agent",
+    "audit_owner": "sidecar_agent",
+    "source_schema": "rusty.quest.sidecar.observation.v1",
+    "source_path": "fixtures/valid/no-network-agent-observation.synthetic.json",
+    "source_role": "accepted_state",
+    "proposed_intake_fields": {
+      "source_agent_id": "agent.quest_sidecar.synthetic_alpha",
+      "observed_agent_id": "agent.quest_sidecar.synthetic_alpha"
+    },
+    "proposed_audit_fields": {
+      "run_id": "run.no_network_termux_agent.synthetic.001",
+      "prototype_status": "prototype_complete",
+      "observation_id": "observation.no_network.synthetic.002",
+      "acceptance_status": "accepted",
+      "accepted_state_owner": "sidecar_agent"
+    },
+    "rejection_terms": []
+  },
+  "hostess_mapping": {
+    "mapping_id": "mapping.no_network_run_to_hostess_operator_recovery.damaged.001",
+    "status": "active",
+    "role": "sidecar_recovery",
+    "device_action_authority": "sidecar_agent",
+    "source_schema": "rusty.quest.sidecar.no_network_agent_run.v1",
+    "source_path": "fixtures/valid/no-network-agent-run.synthetic.json",
+    "input_role": "sidecar_request",
+    "request_descriptor_fields": {
+      "source_run_id": "run.no_network_termux_agent.synthetic.001",
+      "required_authority": "sidecar_agent",
+      "allowed_action_class": "execute_shell",
+      "implementation_status": "active"
+    },
+    "rejection_terms": []
+  },
+  "checks": [
+    {
+      "check_id": "handoff.no_live_integration",
+      "status": "fail",
+      "observed": "live_routes_present",
+      "expected": "no_live_routes",
+      "evidence": "damaged fixture marks sidecar-owned integration as ready"
+    }
+  ],
+  "summary": {
+    "check_count": 1,
+    "pass_count": 0,
+    "manual_review_count": 0,
+    "fail_count": 1
+  },
+  "authority_boundary": [
+    "Sidecar can accept Manifold state and recover devices."
+  ],
+  "next_gate": "private_configured_peer_rehearsal"
+}
+

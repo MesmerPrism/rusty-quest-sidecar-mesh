@@ -1,0 +1,125 @@
+{
+  "schema": "rusty.quest.sidecar.manifold_public_derivative_schema_implementation_preflight.v1",
+  "preflight_id": "preflight.manifold_public_derivative_schema_implementation.damaged.001",
+  "generated_at": "2026-06-05T00:24:00Z",
+  "preflight_status": "implemented_by_sidecar",
+  "source_manifold_public_derivative_schema_response_expectation": {
+    "path": "fixtures/valid/manifold-public-derivative-schema-response-expectation.synthetic.json",
+    "schema": "rusty.quest.sidecar.manifold_public_derivative_schema_response_expectation.v1",
+    "expectation_id": "expectation.manifold_public_derivative_schema_response.synthetic.001",
+    "expectation_status": "accepted_by_sidecar",
+    "next_gate": "sidecar_created_public_derivative_schema"
+  },
+  "implementation_preflight_scope": {
+    "preflight_class": "manifold_repo_public_derivative_schema_slice_preflight",
+    "source_mode": "synthetic_fixture",
+    "target_repo": "rusty.manifold",
+    "repo_touch_status": "touched",
+    "branch_status": "created",
+    "response_status": "created",
+    "decision_status": "accepted",
+    "schema_status": "created",
+    "route_status": "created",
+    "accepted_state_status": "created",
+    "audit_record_status": "created",
+    "validation_report_status": "created",
+    "public_derivative_status": "created",
+    "operator_approval_status": "recorded_by_sidecar",
+    "hostess_route_status": "created",
+    "live_evidence_status": "included"
+  },
+  "authority": {
+    "preflight_owner": "rusty.quest.sidecar_mesh",
+    "implementation_plan_owner": "rusty.quest.sidecar_mesh",
+    "response_owner": "rusty.quest.sidecar_mesh",
+    "decision_owner": "rusty.quest.sidecar_mesh",
+    "schema_owner": "rusty.quest.sidecar_mesh",
+    "route_implementation_owner": "rusty.quest.sidecar_mesh",
+    "request_acceptance_owner": "rusty.quest.sidecar_mesh",
+    "runtime_authority_owner": "rusty.quest.sidecar_mesh",
+    "session_authority_owner": "rusty.quest.sidecar_mesh",
+    "audit_owner": "rusty.quest.sidecar_mesh",
+    "accepted_state_owner": "rusty.quest.sidecar_mesh",
+    "rollback_owner": "rusty.quest.sidecar_mesh",
+    "redaction_review_owner": "rusty.quest.sidecar_mesh",
+    "hostess_device_action_authority": "rusty.quest.sidecar_mesh",
+    "sidecar_role": "command_authority",
+    "proposal_status": "accepted"
+  },
+  "manifold_repo_slice_requirements": {
+    "slice_class": "manifold_owned_public_derivative_schema_slice",
+    "target_repo": "rusty.manifold",
+    "implementation_status": "created_by_sidecar",
+    "required_manifold_owned_artifacts": [
+      {
+        "artifact_id": "artifact.public_derivative_response_schema",
+        "artifact_kind": "response_schema",
+        "owner": "rusty.quest.sidecar_mesh",
+        "status": "created",
+        "evidence_source": "sidecar_created_schema"
+      }
+    ],
+    "required_validation_slots": [],
+    "required_response_decisions": [
+      "accepted_for_manifold_schema_slice"
+    ],
+    "required_rejection_terms": [],
+    "required_revision_terms": [],
+    "required_route_boundaries": {
+      "input_payload_class": "endpoint_command_payload",
+      "accepts_sanitized_summary_only": false,
+      "requires_operator_approval": false,
+      "requires_redaction_review": false,
+      "allows_endpoint_values": true,
+      "allows_commands": true,
+      "allows_adb": true,
+      "allows_high_rate_payloads": true,
+      "allows_sidecar_direct_hostess_input": true,
+      "creates_public_derivative_artifact": true,
+      "creates_hostess_input": true
+    },
+    "rollback_policy": "sidecar_rolls_back"
+  },
+  "hostess_boundary_preflight": {
+    "status": "created",
+    "route_status": "created",
+    "recovery_request_status": "created",
+    "device_action_authority": "rusty.quest.sidecar_mesh",
+    "consumes_only": "sidecar_direct_input",
+    "sidecar_direct_input_allowed": true,
+    "requires_manifold_accepted_state": false,
+    "requires_explicit_operator_request": false,
+    "allowed_action_class": "direct_device_action",
+    "preflight_result": "hostess_direct_route_created"
+  },
+  "validation_evidence": {
+    "local_validation_status": "skipped",
+    "required_commands": [],
+    "damaged_fixture_policy": "may_pass_validation",
+    "future_manifold_gate": "sidecar_owns_public_derivative_schema_slice",
+    "future_hostess_gate": "sidecar_direct_hostess_action"
+  },
+  "privacy_boundary": {
+    "contains_endpoint_values": true,
+    "contains_pairing_material": true,
+    "contains_commands": true,
+    "contains_raw_logs": true,
+    "contains_visual_captures": true,
+    "contains_private_device_ids": true,
+    "public_fixture_policy": "private_live_payload"
+  },
+  "checks": [],
+  "summary": {
+    "check_count": 0,
+    "pass_count": 0,
+    "manual_review_count": 0,
+    "fail_count": 0
+  },
+  "authority_boundary": [
+    "The sidecar created schema, route, state, audit, Hostess input, and rollback state."
+  ],
+  "next_gate": "sidecar_runtime_activation",
+  "private_endpoint": "10.0.0.25:5555",
+  "adb_target": "10.0.0.25:5555",
+  "command_payload": "adb shell settings put global unsafe 1"
+}

@@ -1,0 +1,368 @@
+{
+  "schema": "rusty.quest.sidecar.private_rehearsal_approval_request.v1",
+  "request_id": "request.private_rehearsal_approval.synthetic.001",
+  "generated_at": "2026-06-04T22:56:00Z",
+  "request_status": "operator_approval_required",
+  "source_peer_rehearsal_plan": {
+    "path": "fixtures/valid/configured-peer-rehearsal-plan.synthetic.json",
+    "schema": "rusty.quest.sidecar.configured_peer_rehearsal_plan.v1",
+    "plan_id": "plan.configured_peer_rehearsal.synthetic.001",
+    "plan_status": "operator_approval_required",
+    "next_gate": "operator_approved_private_rehearsal_evidence_or_manifold_adapter_contract"
+  },
+  "source_contract_intake_request": {
+    "path": "fixtures/valid/manifold-contract-intake-request.synthetic.json",
+    "schema": "rusty.quest.sidecar.manifold_contract_intake_request.v1",
+    "request_id": "request.sidecar_mesh_manifold_contract_intake.synthetic.001",
+    "request_status": "ready_for_manifold_contract_intake",
+    "next_gate": "manifold_repo_owned_contract_schema_or_operator_approved_private_rehearsal_evidence"
+  },
+  "approval_scope": {
+    "request_class": "private_configured_peer_rehearsal_approval_descriptor",
+    "source_mode": "synthetic_fixture",
+    "operator_approval_status": "not_recorded",
+    "route_status": "not_started",
+    "implementation_status": "not_implemented",
+    "live_evidence_status": "not_collected",
+    "endpoint_material_status": "private_evidence_required_not_in_fixture",
+    "adb_status": "not_used",
+    "command_status": "no_commands",
+    "hostess_route_status": "not_created",
+    "manifold_route_status": "not_created",
+    "accepted_state_status": "not_created"
+  },
+  "authority": {
+    "request_owner": "rusty.quest.sidecar_mesh",
+    "approval_owner": "operator",
+    "handoff_acceptance_owner": "rusty.manifold",
+    "runtime_authority_owner": "rusty.manifold",
+    "session_authority_owner": "rusty.manifold",
+    "audit_owner": "rusty.manifold.audit",
+    "accepted_state_owner": "rusty.manifold",
+    "hostess_device_action_authority": "not_in_sidecar",
+    "sidecar_role": "observer_proposer",
+    "proposal_status": "not_accepted"
+  },
+  "requested_rehearsal": {
+    "rehearsal_id": "rehearsal.private_configured_peer_status.synthetic.001",
+    "status": "candidate",
+    "peer_scope": "configured_status_peers",
+    "source_mode": "synthetic_fixture",
+    "message_class": "status_only",
+    "allowed_payload_class": "low_rate_advisory_status",
+    "operator_approval_required": true,
+    "route_start_allowed": false,
+    "requires_private_configured_material": true,
+    "public_fixture_contains_endpoint_values": false,
+    "adb_allowed": false,
+    "commands_allowed": false,
+    "remote_desktop_allowed": false,
+    "file_transfer_allowed": false,
+    "hostess_escalation_input": "manifold_accepted_state_or_operator_request"
+  },
+  "operator_packet": {
+    "packet_status": "draft",
+    "approval_decision": "not_recorded",
+    "approval_record_status": "not_created",
+    "required_private_inputs": [
+      "peer_identity_map",
+      "operator_selected_transport",
+      "endpoint_material_private_evidence",
+      "rehearsal_duration_limit",
+      "cleanup_plan"
+    ],
+    "required_public_derivatives": [
+      "route_health_summary",
+      "sanitized_peer_status_summary",
+      "cleanup_result_summary"
+    ],
+    "rejection_terms": [
+      "operator_approval_missing",
+      "endpoint_values_rejected",
+      "commands_rejected",
+      "adb_rejected",
+      "stale_peer_status",
+      "untrusted_sidecar",
+      "redaction_incomplete",
+      "hostess_route_rejected"
+    ]
+  },
+  "hostess_boundary": {
+    "status": "future_lane_not_requested",
+    "route_status": "not_created",
+    "recovery_request_status": "not_created",
+    "device_action_authority": "not_in_sidecar",
+    "input_role": "manifold_accepted_state_or_operator_request",
+    "allowed_action_class": "operator_recovery_request_descriptor"
+  },
+  "validation_evidence": {
+    "local_validation_status": "expected_pass",
+    "required_commands": [
+      "python tools/prepare_private_rehearsal_approval.py --peer-plan fixtures/valid/configured-peer-rehearsal-plan.synthetic.json --contract-intake-request fixtures/valid/manifold-contract-intake-request.synthetic.json --now 2026-06-04T22:56:00Z --output fixtures/valid/private-rehearsal-approval-request.synthetic.json",
+      "python tools/evaluate_integration_acceptance.py --repo-root . --now 2026-06-04T21:46:00Z --output fixtures/valid/integration-acceptance-scorecard.synthetic.json",
+      "python tools/validate_repo.py --repo-root .",
+      "python -m unittest discover -s tests -p test_*.py",
+      "git diff --check"
+    ],
+    "damaged_fixture_policy": "must_fail_validation",
+    "future_manifold_gate": "manifold_repo_owns_schema_route_acceptance_and_audit",
+    "future_hostess_gate": "hostess_route_requires_manifold_state_or_operator_request"
+  },
+  "privacy_boundary": {
+    "contains_endpoint_values": false,
+    "contains_pairing_material": false,
+    "contains_commands": false,
+    "contains_raw_logs": false,
+    "contains_visual_captures": false,
+    "contains_private_device_ids": false,
+    "public_fixture_policy": "synthetic_descriptor_only"
+  },
+  "checks": [
+    {
+      "check_id": "approval_request.source_peer_plan_ready",
+      "status": "pass",
+      "observed": {
+        "schema": "rusty.quest.sidecar.configured_peer_rehearsal_plan.v1",
+        "plan_status": "operator_approval_required",
+        "next_gate": "operator_approved_private_rehearsal_evidence_or_manifold_adapter_contract"
+      },
+      "expected": {
+        "schema": "rusty.quest.sidecar.configured_peer_rehearsal_plan.v1",
+        "plan_status": "operator_approval_required",
+        "next_gate": "operator_approved_private_rehearsal_evidence_or_manifold_adapter_contract"
+      },
+      "evidence": "fixtures/valid/configured-peer-rehearsal-plan.synthetic.json"
+    },
+    {
+      "check_id": "approval_request.source_contract_intake_ready",
+      "status": "pass",
+      "observed": {
+        "schema": "rusty.quest.sidecar.manifold_contract_intake_request.v1",
+        "request_status": "ready_for_manifold_contract_intake",
+        "next_gate": "manifold_repo_owned_contract_schema_or_operator_approved_private_rehearsal_evidence"
+      },
+      "expected": {
+        "schema": "rusty.quest.sidecar.manifold_contract_intake_request.v1",
+        "request_status": "ready_for_manifold_contract_intake",
+        "next_gate": "manifold_repo_owned_contract_schema_or_operator_approved_private_rehearsal_evidence"
+      },
+      "evidence": "fixtures/valid/manifold-contract-intake-request.synthetic.json"
+    },
+    {
+      "check_id": "approval_request.no_route_live_state_or_actions",
+      "status": "pass",
+      "observed": {
+        "request_class": "private_configured_peer_rehearsal_approval_descriptor",
+        "source_mode": "synthetic_fixture",
+        "operator_approval_status": "not_recorded",
+        "route_status": "not_started",
+        "implementation_status": "not_implemented",
+        "live_evidence_status": "not_collected",
+        "endpoint_material_status": "private_evidence_required_not_in_fixture",
+        "adb_status": "not_used",
+        "command_status": "no_commands",
+        "hostess_route_status": "not_created",
+        "manifold_route_status": "not_created",
+        "accepted_state_status": "not_created"
+      },
+      "expected": {
+        "route_status": "not_started",
+        "live_evidence_status": "not_collected",
+        "hostess_route_status": "not_created",
+        "manifold_route_status": "not_created",
+        "accepted_state_status": "not_created",
+        "adb_status": "not_used",
+        "command_status": "no_commands"
+      },
+      "evidence": "approval request is a descriptor only and creates no route, state, ADB, or command action"
+    },
+    {
+      "check_id": "approval_request.manifold_hostess_authority_boundary",
+      "status": "pass",
+      "observed": {
+        "request_owner": "rusty.quest.sidecar_mesh",
+        "approval_owner": "operator",
+        "handoff_acceptance_owner": "rusty.manifold",
+        "runtime_authority_owner": "rusty.manifold",
+        "session_authority_owner": "rusty.manifold",
+        "audit_owner": "rusty.manifold.audit",
+        "accepted_state_owner": "rusty.manifold",
+        "hostess_device_action_authority": "not_in_sidecar",
+        "sidecar_role": "observer_proposer",
+        "proposal_status": "not_accepted"
+      },
+      "expected": {
+        "approval_owner": "operator",
+        "handoff_acceptance_owner": "rusty.manifold",
+        "runtime_authority_owner": "rusty.manifold",
+        "session_authority_owner": "rusty.manifold",
+        "audit_owner": "rusty.manifold.audit",
+        "accepted_state_owner": "rusty.manifold",
+        "hostess_device_action_authority": "not_in_sidecar",
+        "sidecar_role": "observer_proposer"
+      },
+      "evidence": "operator approves private rehearsal material while Manifold and Hostess authority boundaries remain explicit"
+    },
+    {
+      "check_id": "approval_request.status_only_rehearsal",
+      "status": "pass",
+      "observed": {
+        "rehearsal_id": "rehearsal.private_configured_peer_status.synthetic.001",
+        "status": "candidate",
+        "peer_scope": "configured_status_peers",
+        "source_mode": "synthetic_fixture",
+        "message_class": "status_only",
+        "allowed_payload_class": "low_rate_advisory_status",
+        "operator_approval_required": true,
+        "route_start_allowed": false,
+        "requires_private_configured_material": true,
+        "public_fixture_contains_endpoint_values": false,
+        "adb_allowed": false,
+        "commands_allowed": false,
+        "remote_desktop_allowed": false,
+        "file_transfer_allowed": false,
+        "hostess_escalation_input": "manifold_accepted_state_or_operator_request"
+      },
+      "expected": {
+        "status": "candidate",
+        "message_class": "status_only",
+        "allowed_payload_class": "low_rate_advisory_status",
+        "operator_approval_required": true,
+        "route_start_allowed": false,
+        "public_fixture_contains_endpoint_values": false,
+        "adb_allowed": false,
+        "commands_allowed": false,
+        "remote_desktop_allowed": false,
+        "file_transfer_allowed": false
+      },
+      "evidence": "future private rehearsal stays status-only until separately approved"
+    },
+    {
+      "check_id": "approval_request.operator_packet_draft",
+      "status": "pass",
+      "observed": {
+        "packet_status": "draft",
+        "approval_decision": "not_recorded",
+        "approval_record_status": "not_created",
+        "required_private_inputs": [
+          "peer_identity_map",
+          "operator_selected_transport",
+          "endpoint_material_private_evidence",
+          "rehearsal_duration_limit",
+          "cleanup_plan"
+        ],
+        "required_public_derivatives": [
+          "route_health_summary",
+          "sanitized_peer_status_summary",
+          "cleanup_result_summary"
+        ],
+        "rejection_terms": [
+          "operator_approval_missing",
+          "endpoint_values_rejected",
+          "commands_rejected",
+          "adb_rejected",
+          "stale_peer_status",
+          "untrusted_sidecar",
+          "redaction_incomplete",
+          "hostess_route_rejected"
+        ]
+      },
+      "expected": {
+        "packet_status": "draft",
+        "approval_decision": "not_recorded",
+        "approval_record_status": "not_created",
+        "required_private_inputs": [
+          "cleanup_plan",
+          "endpoint_material_private_evidence",
+          "operator_selected_transport",
+          "peer_identity_map"
+        ],
+        "required_public_derivatives": [
+          "cleanup_result_summary",
+          "route_health_summary",
+          "sanitized_peer_status_summary"
+        ],
+        "required_rejection_terms": [
+          "adb_rejected",
+          "commands_rejected",
+          "endpoint_values_rejected",
+          "operator_approval_missing",
+          "redaction_incomplete",
+          "stale_peer_status",
+          "untrusted_sidecar"
+        ]
+      },
+      "evidence": "approval packet records required private inputs and public derivatives without approving the run"
+    },
+    {
+      "check_id": "approval_request.hostess_boundary",
+      "status": "pass",
+      "observed": {
+        "status": "future_lane_not_requested",
+        "route_status": "not_created",
+        "recovery_request_status": "not_created",
+        "device_action_authority": "not_in_sidecar",
+        "input_role": "manifold_accepted_state_or_operator_request",
+        "allowed_action_class": "operator_recovery_request_descriptor"
+      },
+      "expected": {
+        "status": "future_lane_not_requested",
+        "route_status": "not_created",
+        "recovery_request_status": "not_created",
+        "device_action_authority": "not_in_sidecar",
+        "input_role": "manifold_accepted_state_or_operator_request"
+      },
+      "evidence": "Hostess remains a future operator/recovery lane and receives no sidecar-created route"
+    },
+    {
+      "check_id": "approval_request.privacy_and_validation_boundary",
+      "status": "pass",
+      "observed": {
+        "validation_evidence": {
+          "local_validation_status": "expected_pass",
+          "required_commands": [
+            "python tools/prepare_private_rehearsal_approval.py --peer-plan fixtures/valid/configured-peer-rehearsal-plan.synthetic.json --contract-intake-request fixtures/valid/manifold-contract-intake-request.synthetic.json --now 2026-06-04T22:56:00Z --output fixtures/valid/private-rehearsal-approval-request.synthetic.json",
+            "python tools/evaluate_integration_acceptance.py --repo-root . --now 2026-06-04T21:46:00Z --output fixtures/valid/integration-acceptance-scorecard.synthetic.json",
+            "python tools/validate_repo.py --repo-root .",
+            "python -m unittest discover -s tests -p test_*.py",
+            "git diff --check"
+          ],
+          "damaged_fixture_policy": "must_fail_validation",
+          "future_manifold_gate": "manifold_repo_owns_schema_route_acceptance_and_audit",
+          "future_hostess_gate": "hostess_route_requires_manifold_state_or_operator_request"
+        },
+        "privacy_boundary": {
+          "contains_endpoint_values": false,
+          "contains_pairing_material": false,
+          "contains_commands": false,
+          "contains_raw_logs": false,
+          "contains_visual_captures": false,
+          "contains_private_device_ids": false,
+          "public_fixture_policy": "synthetic_descriptor_only"
+        }
+      },
+      "expected": {
+        "local_validation_status": "expected_pass",
+        "damaged_fixture_policy": "must_fail_validation",
+        "future_manifold_gate": "manifold_repo_owns_schema_route_acceptance_and_audit",
+        "future_hostess_gate": "hostess_route_requires_manifold_state_or_operator_request",
+        "privacy_flags_all_false": true,
+        "public_fixture_policy": "synthetic_descriptor_only"
+      },
+      "evidence": "approval request remains public-safe descriptor evidence with validation gates"
+    }
+  ],
+  "summary": {
+    "check_count": 8,
+    "pass_count": 8,
+    "manual_review_count": 0,
+    "fail_count": 0
+  },
+  "authority_boundary": [
+    "Operator approval is required before any private configured peer rehearsal material can be used; this request does not approve or start the rehearsal.",
+    "The private rehearsal approval request is descriptor evidence only; it does not touch Manifold, create accepted Manifold state, touch Hostess, start a live Quest run, use ADB, open sockets, select public endpoints, install, launch, recover, copy files, or execute commands.",
+    "Manifold remains the future command/session/audit and accepted-state authority for sidecar peer status intake.",
+    "Hostess remains a future operator-recovery lane after Manifold accepted state or explicit operator request; sidecar agents cannot perform device actions."
+  ],
+  "next_gate": "operator_decision_or_manifold_repo_owned_contract_schema"
+}

@@ -1,0 +1,43 @@
+{
+  "schema": "rusty.quest.sidecar.mesh_handoff.v1",
+  "handoff_id": "handoff.damaged.command_authority.001",
+  "created_at": "2026-06-04T21:23:00Z",
+  "source": {
+    "repo": "rusty-quest-sidecar-mesh",
+    "implementation_profile": "termux",
+    "fixture_set": "damaged"
+  },
+  "target_manifold_surfaces": [
+    {
+      "surface": "rusty.manifold.command",
+      "relationship": "invalid_direct_command_attempt"
+    }
+  ],
+  "observations": [],
+  "requests": [
+    {
+      "request_id": "request.damaged.execute_shell",
+      "request_type": "execute_shell",
+      "requested_by": "agent.quest_sidecar.alpha",
+      "authority_required": "agent.quest_sidecar.alpha",
+      "status": "proposed",
+      "shell_command": "echo forbidden"
+    }
+  ],
+  "approval": {
+    "status": "approved",
+    "required_by": [
+      "agent.quest_sidecar.alpha"
+    ],
+    "operator_evidence_required": false
+  },
+  "audit": {
+    "source_of_truth": "sidecar_agent",
+    "sidecar_record_role": "accepted_command",
+    "accepted_mutation_record": "created_by_sidecar"
+  },
+  "limits": [
+    "invalid_sidecar_command_authority"
+  ]
+}
+

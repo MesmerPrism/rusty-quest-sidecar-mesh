@@ -1,0 +1,132 @@
+{
+  "schema": "rusty.quest.sidecar.manifold_adapter_proposal.v1",
+  "proposal_id": "proposal.manifold_adapter.sidecar_mesh.001",
+  "created_at": "2026-06-04T21:44:00Z",
+  "source": {
+    "repo": "rusty-quest-sidecar-mesh",
+    "fixture_set": "synthetic",
+    "public_lab_intake_report": "fixtures/valid/public-lab-artifact-intake-report.synthetic.json",
+    "handoff_report": "fixtures/valid/mesh-handoff.with-public-lab-intake.synthetic.json"
+  },
+  "authority": {
+    "source_of_truth": "rusty.manifold",
+    "accepted_mutation_owner": "rusty.manifold",
+    "audit_owner": "rusty.manifold.audit",
+    "sidecar_role": "observer_proposer",
+    "proposal_status": "not_accepted"
+  },
+  "adapter_surfaces": [
+    {
+      "surface_id": "surface.sidecar_observation_source",
+      "manifold_family": "host_manifest",
+      "module_kind": "diagnostic",
+      "status": "proposed",
+      "rate_class": "low_rate",
+      "input_schema": "rusty.quest.sidecar.agent_profile.v1",
+      "output_schema": "rusty.manifold.host_manifest",
+      "acceptance_owner": "rusty.manifold",
+      "audit_record": "required"
+    },
+    {
+      "surface_id": "surface.sidecar_health_stream",
+      "manifold_family": "stream_registry",
+      "module_kind": "diagnostic",
+      "status": "proposed",
+      "rate_class": "low_rate",
+      "input_schema": "rusty.quest.sidecar.observation.v1",
+      "output_schema": "rusty.manifold.stream_registry_snapshot",
+      "acceptance_owner": "rusty.manifold",
+      "audit_record": "required"
+    },
+    {
+      "surface_id": "surface.public_lab_intake_review",
+      "manifold_family": "validation_scorecard",
+      "module_kind": "diagnostic",
+      "status": "proposed",
+      "rate_class": "control",
+      "input_schema": "rusty.quest.sidecar.public_lab_artifact_intake_report.v1",
+      "output_schema": "rusty.manifold.validation_scorecard",
+      "acceptance_owner": "rusty.manifold",
+      "audit_record": "required"
+    },
+    {
+      "surface_id": "surface.sidecar_handoff_acceptance",
+      "manifold_family": "command_descriptor",
+      "module_kind": "control_adapter",
+      "status": "proposed",
+      "rate_class": "control",
+      "input_schema": "rusty.quest.sidecar.mesh_handoff.v1",
+      "output_schema": "rusty.manifold.command_ack",
+      "required_lease_scope": "sidecar.mesh.handoff",
+      "acceptance_owner": "rusty.manifold",
+      "audit_record": "required"
+    }
+  ],
+  "rejection_vocabulary": [
+    {
+      "rejection_id": "stale_observation",
+      "owner": "rusty.manifold",
+      "meaning": "The sidecar observation is older than the accepted staleness window."
+    },
+    {
+      "rejection_id": "untrusted_sidecar",
+      "owner": "rusty.manifold",
+      "meaning": "The sidecar is not in the accepted host or agent registry."
+    },
+    {
+      "rejection_id": "forbidden_authority",
+      "owner": "rusty.manifold",
+      "meaning": "The sidecar attempted to claim command, shell, recovery, install, launch, or audit authority."
+    },
+    {
+      "rejection_id": "redaction_incomplete",
+      "owner": "rusty.manifold",
+      "meaning": "The handoff contains evidence that has not passed public/private redaction policy."
+    },
+    {
+      "rejection_id": "operator_approval_missing",
+      "owner": "rusty.manifold",
+      "meaning": "The request requires explicit operator approval before acceptance."
+    },
+    {
+      "rejection_id": "endpoint_values_rejected",
+      "owner": "rusty.manifold",
+      "meaning": "The proposal carried endpoint values where only sanitized identifiers are allowed."
+    },
+    {
+      "rejection_id": "high_rate_payload_rejected",
+      "owner": "rusty.manifold",
+      "meaning": "The proposal attempted to put high-rate data into a low-rate control surface."
+    },
+    {
+      "rejection_id": "unsupported_transport",
+      "owner": "rusty.manifold",
+      "meaning": "The proposed transport is not in the accepted adapter set."
+    }
+  ],
+  "validation_slots": [
+    {
+      "validation_id": "adapter.proposal.schema",
+      "owner": "rusty-quest-sidecar-mesh",
+      "command": "python tools/validate_repo.py --repo-root .",
+      "protects": "adapter proposal schema and authority boundary"
+    },
+    {
+      "validation_id": "adapter.proposal.tests",
+      "owner": "rusty-quest-sidecar-mesh",
+      "command": "python -m unittest discover -s tests -p test_*.py",
+      "protects": "valid proposal and damaged authority-drift fixture behavior"
+    }
+  ],
+  "limits": [
+    "proposal_only",
+    "no_runtime_route",
+    "no_sidecar_authority",
+    "no_high_rate_payloads",
+    "no_endpoint_values",
+    "no_adb",
+    "no_install_launch",
+    "no_recovery"
+  ]
+}
+

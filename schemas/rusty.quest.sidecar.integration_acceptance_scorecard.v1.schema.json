@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "rusty.quest.sidecar.integration_acceptance_scorecard.v1",
+  "title": "Rusty Quest Sidecar Integration Acceptance Scorecard",
+  "type": "object",
+  "required": [
+    "schema",
+    "scorecard_id",
+    "generated_at",
+    "scope",
+    "overall_status",
+    "checks",
+    "summary",
+    "authority_boundary",
+    "next_gate"
+  ],
+  "properties": {
+    "schema": {
+      "const": "rusty.quest.sidecar.integration_acceptance_scorecard.v1"
+    },
+    "scorecard_id": {
+      "type": "string"
+    },
+    "generated_at": {
+      "type": "string"
+    },
+    "scope": {
+      "type": "object"
+    },
+    "overall_status": {
+      "enum": [
+        "acceptance_ready",
+        "manual_review",
+        "acceptance_blocked"
+      ]
+    },
+    "checks": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "summary": {
+      "type": "object"
+    },
+    "authority_boundary": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "next_gate": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}
+

@@ -1,0 +1,139 @@
+{
+  "schema": "rusty.quest.sidecar.manifold_public_derivative_schema_slice_response_implementation_preflight.v1",
+  "preflight_id": "preflight.manifold_public_derivative_schema_slice_response_implementation.damaged.001",
+  "generated_at": "2026-06-05T00:48:00Z",
+  "preflight_status": "implemented_by_sidecar",
+  "source_manifold_public_derivative_schema_slice_response_expectation": {
+    "path": "fixtures/valid/manifold-public-derivative-schema-slice-response-expectation.synthetic.json",
+    "schema": "rusty.quest.sidecar.manifold_public_derivative_schema_slice_response_expectation.v1",
+    "expectation_id": "expectation.manifold_public_derivative_schema_slice_response.synthetic.001",
+    "expectation_status": "accepted_by_sidecar",
+    "next_gate": "sidecar_created_public_derivative_schema_slice_response"
+  },
+  "implementation_preflight_scope": {
+    "preflight_class": "sidecar_created_public_derivative_schema_slice_response_preflight",
+    "source_mode": "synthetic_fixture",
+    "target_repo": "rusty.manifold",
+    "repo_touch_status": "touched",
+    "branch_status": "created",
+    "implementation_plan_status": "created",
+    "response_status": "created",
+    "decision_status": "accepted",
+    "schema_status": "created",
+    "route_status": "created",
+    "accepted_state_status": "created",
+    "audit_record_status": "created",
+    "validation_report_status": "created",
+    "public_derivative_status": "created",
+    "operator_approval_status": "recorded",
+    "hostess_route_status": "created",
+    "live_evidence_status": "included"
+  },
+  "authority": {
+    "preflight_owner": "rusty.quest.sidecar_mesh",
+    "handoff_acceptance_owner": "rusty.quest.sidecar_mesh",
+    "implementation_plan_owner": "rusty.quest.sidecar_mesh",
+    "response_owner": "rusty.quest.sidecar_mesh",
+    "decision_owner": "rusty.quest.sidecar_mesh",
+    "schema_owner": "rusty.quest.sidecar_mesh",
+    "route_implementation_owner": "rusty.quest.sidecar_mesh",
+    "request_acceptance_owner": "rusty.quest.sidecar_mesh",
+    "runtime_authority_owner": "rusty.quest.sidecar_mesh",
+    "session_authority_owner": "rusty.quest.sidecar_mesh",
+    "audit_owner": "rusty.quest.sidecar_mesh",
+    "accepted_state_owner": "rusty.quest.sidecar_mesh",
+    "rollback_owner": "rusty.quest.sidecar_mesh",
+    "redaction_review_owner": "rusty.quest.sidecar_mesh",
+    "hostess_device_action_authority": "rusty.quest.sidecar_mesh",
+    "sidecar_role": "command_authority",
+    "proposal_status": "accepted"
+  },
+  "manifold_repo_slice_response_requirements": {
+    "slice_class": "sidecar_created_public_derivative_schema_slice_response",
+    "target_repo": "rusty.manifold",
+    "implementation_status": "created_by_sidecar",
+    "required_manifold_owned_artifacts": [
+      {
+        "artifact_id": "artifact.sidecar_created_response",
+        "artifact_kind": "response_schema",
+        "owner": "rusty.quest.sidecar_mesh",
+        "status": "created_by_sidecar",
+        "evidence_source": "damaged"
+      }
+    ],
+    "required_validation_slots": [],
+    "required_response_decisions": [
+      "accepted_by_sidecar"
+    ],
+    "required_rejection_terms": [],
+    "required_revision_terms": [],
+    "required_audit_terms": [],
+    "required_route_boundaries": {
+      "input_payload_class": "high_rate_payload",
+      "accepts_sanitized_summary_only": false,
+      "requires_operator_approval": false,
+      "requires_redaction_review": false,
+      "requires_source_chain_digest": false,
+      "allows_endpoint_values": true,
+      "allows_commands": true,
+      "allows_adb": true,
+      "allows_high_rate_payloads": true,
+      "allows_sidecar_direct_hostess_input": true,
+      "creates_public_derivative_artifact": true,
+      "creates_hostess_input": true,
+      "creates_accepted_state_by_sidecar": true,
+      "accepted_state_owner": "rusty.quest.sidecar_mesh"
+    },
+    "rollback_policy": "sidecar_owned"
+  },
+  "hostess_boundary_preflight": {
+    "status": "created",
+    "route_status": "created",
+    "recovery_request_status": "created",
+    "device_action_authority": "rusty.quest.sidecar_mesh",
+    "consumes_only": "sidecar_direct_input",
+    "sidecar_direct_input_allowed": true,
+    "requires_manifold_accepted_state": false,
+    "requires_explicit_operator_request": false,
+    "allowed_action_class": "direct_device_action",
+    "preflight_result": "hostess_direct_input_enabled"
+  },
+  "validation_evidence": {
+    "local_validation_status": "skipped",
+    "required_commands": [],
+    "damaged_fixture_policy": "unexpected_pass",
+    "future_manifold_gate": "sidecar_created_public_derivative_schema_slice_response",
+    "future_hostess_gate": "sidecar_direct_hostess_input"
+  },
+  "privacy_boundary": {
+    "contains_endpoint_values": true,
+    "contains_pairing_material": true,
+    "contains_commands": true,
+    "contains_raw_logs": true,
+    "contains_visual_captures": true,
+    "contains_private_device_ids": true,
+    "public_fixture_policy": "contains_private_values"
+  },
+  "checks": [
+    {
+      "check_id": "damaged.sidecar_created_implementation",
+      "status": "fail",
+      "observed": "sidecar_authority",
+      "expected": "manifold_authority",
+      "evidence": "damaged fixture"
+    }
+  ],
+  "summary": {
+    "check_count": 1,
+    "pass_count": 0,
+    "manual_review_count": 0,
+    "fail_count": 1
+  },
+  "authority_boundary": [
+    "This damaged fixture attempts to let the sidecar create the Manifold slice response implementation and drive Hostess directly."
+  ],
+  "next_gate": "sidecar_created_public_derivative_schema_slice_response",
+  "private_endpoint": "peer.private.invalid",
+  "adb_target": "device.private.invalid",
+  "command_payload": "sidecar creates the slice response implementation"
+}

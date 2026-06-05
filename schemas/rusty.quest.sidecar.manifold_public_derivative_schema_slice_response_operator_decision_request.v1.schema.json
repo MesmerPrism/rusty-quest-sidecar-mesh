@@ -1,0 +1,89 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "rusty.quest.sidecar.manifold_public_derivative_schema_slice_response_operator_decision_request.v1",
+  "title": "Rusty Quest Sidecar Manifold Public Derivative Schema Slice Response Operator Decision Request",
+  "type": "object",
+  "required": [
+    "schema",
+    "request_id",
+    "generated_at",
+    "request_status",
+    "source_manifold_public_derivative_schema_slice_response_handoff_package",
+    "decision_request_scope",
+    "authority",
+    "requested_decision",
+    "operator_packet",
+    "manifold_submission_gate",
+    "hostess_boundary_gate",
+    "validation_evidence",
+    "privacy_boundary",
+    "checks",
+    "summary",
+    "authority_boundary",
+    "next_gate"
+  ],
+  "properties": {
+    "schema": {
+      "const": "rusty.quest.sidecar.manifold_public_derivative_schema_slice_response_operator_decision_request.v1"
+    },
+    "request_id": {
+      "type": "string"
+    },
+    "generated_at": {
+      "type": "string"
+    },
+    "request_status": {
+      "enum": [
+        "operator_decision_required",
+        "manual_review",
+        "blocked"
+      ]
+    },
+    "source_manifold_public_derivative_schema_slice_response_handoff_package": {
+      "type": "object"
+    },
+    "decision_request_scope": {
+      "type": "object"
+    },
+    "authority": {
+      "type": "object"
+    },
+    "requested_decision": {
+      "type": "object"
+    },
+    "operator_packet": {
+      "type": "object"
+    },
+    "manifold_submission_gate": {
+      "type": "object"
+    },
+    "hostess_boundary_gate": {
+      "type": "object"
+    },
+    "validation_evidence": {
+      "type": "object"
+    },
+    "privacy_boundary": {
+      "type": "object"
+    },
+    "checks": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "summary": {
+      "type": "object"
+    },
+    "authority_boundary": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "next_gate": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}

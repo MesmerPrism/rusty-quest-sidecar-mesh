@@ -1,0 +1,123 @@
+{
+  "schema": "rusty.quest.sidecar.no_network_agent_recipe_review.v1",
+  "review_id": "review.no_network_termux_agent.synthetic.001",
+  "generated_at": "2026-06-04T22:05:00Z",
+  "source_recipe": {
+    "path": "fixtures/valid/no-network-agent-recipe.synthetic.json",
+    "recipe_id": "recipe.no_network_termux_agent.synthetic.001",
+    "recipe_schema": "rusty.quest.sidecar.no_network_agent_recipe.v1",
+    "profile_status": "recipe_only"
+  },
+  "review_status": "ready_for_no_network_prototype",
+  "checks": [
+    {
+      "check_id": "recipe.schema_valid",
+      "status": "pass",
+      "observed": "ok",
+      "expected": "ok",
+      "evidence": "fixtures/valid/no-network-agent-recipe.synthetic.json"
+    },
+    {
+      "check_id": "recipe.termux_python_profile",
+      "status": "pass",
+      "observed": {
+        "runtime": "termux",
+        "language": "python",
+        "profile_status": "recipe_only"
+      },
+      "expected": {
+        "runtime": "termux",
+        "language": "python",
+        "profile_status": "recipe_only"
+      },
+      "evidence": "future implementation profile remains Termux/Python and recipe-only"
+    },
+    {
+      "check_id": "recipe.manifold_authority",
+      "status": "pass",
+      "observed": {
+        "role": "sidecar_observer",
+        "acceptance_owner": "rusty.manifold",
+        "audit_owner": "rusty.manifold.audit",
+        "proposal_status": "not_accepted"
+      },
+      "expected": {
+        "role": "sidecar_observer",
+        "acceptance_owner": "rusty.manifold",
+        "audit_owner": "rusty.manifold.audit",
+        "proposal_status": "not_accepted"
+      },
+      "evidence": "sidecar remains observer/proposer; Manifold owns future acceptance and audit"
+    },
+    {
+      "check_id": "recipe.no_network_no_adb_no_commands",
+      "status": "pass",
+      "observed": {
+        "network_policy": "no_inbound_listener",
+        "outbound_transport_policy": "disabled_for_recipe",
+        "adb_policy": "no_adb",
+        "command_policy": "no_commands"
+      },
+      "expected": {
+        "network_policy": "no_inbound_listener",
+        "outbound_transport_policy": "disabled_for_recipe",
+        "adb_policy": "no_adb",
+        "command_policy": "no_commands"
+      },
+      "evidence": "first runtime prototype must not carry network, ADB, or command authority"
+    },
+    {
+      "check_id": "recipe.relative_file_outputs",
+      "status": "pass",
+      "observed": {
+        "workspace_root": "relative:sidecar-agent/no-network",
+        "output_observation": "relative:sidecar-agent/no-network/observation.json",
+        "path_policy": "relative_paths_only"
+      },
+      "expected": "relative_paths_only",
+      "evidence": "recipe output stays in relative operator-selected or app-private storage shape"
+    },
+    {
+      "check_id": "recipe.low_rate_observation_emission",
+      "status": "pass",
+      "observed": [
+        {
+          "schema": "rusty.quest.sidecar.observation.v1",
+          "rate_class": "low_rate",
+          "manifold_role": "proposal_input"
+        }
+      ],
+      "expected": "low_rate sidecar observation proposal input",
+      "evidence": "future agent emits only low-rate advisory observation files"
+    },
+    {
+      "check_id": "recipe.forbidden_surfaces_declared",
+      "status": "pass",
+      "observed": [],
+      "expected": [],
+      "evidence": "recipe declares forbidden surfaces before runtime code exists"
+    },
+    {
+      "check_id": "recipe.validation_slots_cover_gates",
+      "status": "pass",
+      "observed": [
+        "python tools/evaluate_integration_acceptance.py --repo-root . --now 2026-06-04T21:46:00Z --output fixtures/valid/integration-acceptance-scorecard.synthetic.json",
+        "python tools/validate_repo.py --repo-root ."
+      ],
+      "expected": "validator and integration acceptance generator",
+      "evidence": "recipe validation slots keep the recipe covered by repo and integration gates"
+    }
+  ],
+  "summary": {
+    "check_count": 8,
+    "pass_count": 8,
+    "manual_review_count": 0,
+    "fail_count": 0
+  },
+  "authority_boundary": [
+    "The recipe review summarizes fixture evidence only.",
+    "The recipe review does not approve live Quest work, open network transport, use ADB, execute commands, install apps, launch apps, recover devices, control remote desktops, or mutate Manifold state.",
+    "The recipe review is proposal evidence; Manifold remains the future owner of acceptance, rejection, revision, lease, and audit records."
+  ],
+  "next_gate": "private_no_network_termux_agent_prototype_without_transport_or_adb"
+}

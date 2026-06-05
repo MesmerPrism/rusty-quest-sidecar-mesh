@@ -1,0 +1,81 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "rusty.quest.sidecar.manifold_public_derivative_schema_handoff_package.v1",
+  "title": "Rusty Quest Sidecar Manifold Public Derivative Schema Handoff Package",
+  "type": "object",
+  "required": [
+    "schema",
+    "package_id",
+    "generated_at",
+    "package_status",
+    "source_manifold_public_derivative_schema_implementation_preflight",
+    "package_scope",
+    "authority",
+    "handoff_manifest",
+    "hostess_boundary_handoff",
+    "validation_evidence",
+    "privacy_boundary",
+    "checks",
+    "summary",
+    "authority_boundary",
+    "next_gate"
+  ],
+  "properties": {
+    "schema": {
+      "const": "rusty.quest.sidecar.manifold_public_derivative_schema_handoff_package.v1"
+    },
+    "package_id": {
+      "type": "string"
+    },
+    "generated_at": {
+      "type": "string"
+    },
+    "package_status": {
+      "enum": [
+        "public_derivative_schema_handoff_package_ready",
+        "manual_review",
+        "blocked"
+      ]
+    },
+    "source_manifold_public_derivative_schema_implementation_preflight": {
+      "type": "object"
+    },
+    "package_scope": {
+      "type": "object"
+    },
+    "authority": {
+      "type": "object"
+    },
+    "handoff_manifest": {
+      "type": "object"
+    },
+    "hostess_boundary_handoff": {
+      "type": "object"
+    },
+    "validation_evidence": {
+      "type": "object"
+    },
+    "privacy_boundary": {
+      "type": "object"
+    },
+    "checks": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "summary": {
+      "type": "object"
+    },
+    "authority_boundary": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "next_gate": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}

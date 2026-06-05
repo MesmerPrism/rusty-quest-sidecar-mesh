@@ -1,0 +1,121 @@
+{
+  "schema": "rusty.quest.sidecar.manifold_route_blueprint.v1",
+  "blueprint_id": "blueprint.manifold_route.damaged.001",
+  "generated_at": "2026-06-04T23:04:00Z",
+  "blueprint_status": "ready_for_manifold_repo_design_review",
+  "private_endpoint": "192.0.2.20:9090",
+  "adb_target": "192.0.2.20:5555",
+  "command_payload": "reboot",
+  "source_contract_intake_request": {
+    "path": "fixtures/valid/manifold-contract-intake-request.synthetic.json",
+    "schema": "rusty.quest.sidecar.manifold_contract_intake_request.v1",
+    "request_status": "ready_for_manifold_contract_intake",
+    "next_gate": "manifold_repo_owned_contract_schema_or_operator_approved_private_rehearsal_evidence"
+  },
+  "source_private_rehearsal_approval_request": {
+    "path": "fixtures/valid/private-rehearsal-approval-request.synthetic.json",
+    "schema": "rusty.quest.sidecar.private_rehearsal_approval_request.v1",
+    "request_status": "approved",
+    "next_gate": "live_route_started"
+  },
+  "blueprint_scope": {
+    "blueprint_class": "manifold_owned_sidecar_peer_status_route_blueprint",
+    "source_mode": "synthetic_fixture",
+    "target_repo": "rusty.manifold",
+    "repo_touch_status": "touched",
+    "implementation_status": "implemented",
+    "route_status": "created",
+    "accepted_state_status": "created",
+    "live_evidence_status": "included",
+    "operator_approval_status": "approved",
+    "hostess_route_status": "created"
+  },
+  "authority": {
+    "blueprint_owner": "rusty.quest.sidecar_mesh",
+    "route_implementation_owner": "rusty.quest.sidecar_mesh",
+    "request_acceptance_owner": "rusty.quest.sidecar_mesh",
+    "runtime_authority_owner": "rusty.quest.sidecar_mesh",
+    "session_authority_owner": "rusty.quest.sidecar_mesh",
+    "audit_owner": "rusty.quest.sidecar_mesh",
+    "accepted_state_owner": "rusty.quest.sidecar_mesh",
+    "rollback_owner": "rusty.quest.sidecar_mesh",
+    "hostess_device_action_authority": "created_by_sidecar",
+    "sidecar_role": "authority",
+    "proposal_status": "accepted"
+  },
+  "proposed_manifold_route": {
+    "route_id": "route.sidecar_peer_status_intake.damaged.001",
+    "route_name": "sidecar_peer_status_intake",
+    "route_status": "created",
+    "route_creation_status": "created",
+    "request_type": "execute_shell",
+    "input_payload_class": "commands",
+    "output_event_class": "accepted_command",
+    "requires_operator_approval_for_private_material": false,
+    "requires_redaction_complete": false,
+    "allows_endpoint_values": true,
+    "allows_commands": true,
+    "allows_adb": true,
+    "allows_high_rate_payloads": true,
+    "hostess_escalation_input": "sidecar_direct",
+    "required_validation_slots": [],
+    "required_rejection_terms": []
+  },
+  "candidate_schemas": [
+    {
+      "schema_id": "rusty.sidecar.owned_route.v1",
+      "schema_role": "request",
+      "owner": "rusty.quest.sidecar_mesh",
+      "status": "created",
+      "required_fields": []
+    }
+  ],
+  "audit_contract": {
+    "audit_surface": "sidecar_owned_audit",
+    "audit_owner": "rusty.quest.sidecar_mesh",
+    "audit_record_status": "created",
+    "required_audit_fields": [],
+    "revision_policy": "sidecar_owned_revision",
+    "rollback_policy": "sidecar_owned_route"
+  },
+  "hostess_boundary": {
+    "status": "route_created",
+    "route_status": "created",
+    "recovery_request_status": "created",
+    "device_action_authority": "created_by_sidecar",
+    "input_role": "sidecar_direct",
+    "allowed_action_class": "device_command"
+  },
+  "validation_evidence": {
+    "local_validation_status": "expected_pass",
+    "required_commands": [],
+    "damaged_fixture_policy": "not_required",
+    "future_manifold_gate": "sidecar_owns_route",
+    "future_hostess_gate": "sidecar_owns_route"
+  },
+  "privacy_boundary": {
+    "contains_endpoint_values": true,
+    "contains_pairing_material": true,
+    "contains_commands": true,
+    "contains_raw_logs": true,
+    "contains_visual_captures": true,
+    "contains_private_device_ids": true,
+    "public_fixture_policy": "raw_private_evidence"
+  },
+  "checks": [
+    {
+      "check_id": "route_blueprint.damaged",
+      "status": "pass"
+    }
+  ],
+  "summary": {
+    "check_count": 1,
+    "pass_count": 1,
+    "manual_review_count": 0,
+    "fail_count": 0
+  },
+  "authority_boundary": [
+    "damaged fixture intentionally violates Manifold and Hostess boundaries"
+  ],
+  "next_gate": "live_route_started"
+}

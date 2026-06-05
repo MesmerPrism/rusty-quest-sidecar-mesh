@@ -1,0 +1,128 @@
+{
+  "schema": "rusty.quest.sidecar.no_network_agent_run.v1",
+  "run_id": "run.no_network_termux_agent.synthetic.001",
+  "generated_at": "2026-06-04T22:12:00Z",
+  "prototype_status": "prototype_complete",
+  "source_recipe": {
+    "path": "fixtures/valid/no-network-agent-recipe.synthetic.json",
+    "recipe_id": "recipe.no_network_termux_agent.synthetic.001",
+    "recipe_schema": "rusty.quest.sidecar.no_network_agent_recipe.v1"
+  },
+  "source_review": {
+    "path": "fixtures/valid/no-network-agent-recipe-review.synthetic.json",
+    "review_id": "review.no_network_termux_agent.synthetic.001",
+    "review_schema": "rusty.quest.sidecar.no_network_agent_recipe_review.v1",
+    "review_status": "ready_for_no_network_prototype"
+  },
+  "runtime": {
+    "implementation_profile": "termux_python_standard_library",
+    "execution_mode": "local_static_file_generation",
+    "network_policy": "no_inbound_listener",
+    "outbound_transport_policy": "disabled",
+    "adb_policy": "no_adb",
+    "command_policy": "no_commands"
+  },
+  "authority": {
+    "role": "sidecar_observer",
+    "mutation_policy": "write_observation_file_only",
+    "acceptance_owner": "rusty.manifold",
+    "audit_owner": "rusty.manifold.audit",
+    "proposal_status": "not_accepted"
+  },
+  "handoff_readiness": {
+    "manifold_observation_intake": {
+      "status": "candidate",
+      "authority_owner": "rusty.manifold",
+      "audit_owner": "rusty.manifold.audit",
+      "input_schema": "rusty.quest.sidecar.observation.v1",
+      "input_role": "proposal_input"
+    },
+    "hostess_operator_recovery": {
+      "status": "future_lane_not_requested",
+      "role": "operator_recovery_after_manifold_acceptance",
+      "device_action_authority": "not_in_sidecar",
+      "input_role": "manifold_accepted_state_or_operator_request"
+    }
+  },
+  "outputs": {
+    "observation_path": "fixtures/valid/no-network-agent-observation.synthetic.json",
+    "observation_schema": "rusty.quest.sidecar.observation.v1",
+    "observation_id": "observation.no_network.synthetic.002",
+    "emission_rate_class": "low_rate"
+  },
+  "checks": [
+    {
+      "check_id": "prototype.recipe_valid",
+      "status": "pass",
+      "observed": "ok",
+      "expected": "ok",
+      "evidence": "fixtures/valid/no-network-agent-recipe.synthetic.json"
+    },
+    {
+      "check_id": "prototype.review_ready",
+      "status": "pass",
+      "observed": {
+        "review_status": "ready_for_no_network_prototype",
+        "fail_count": 0
+      },
+      "expected": {
+        "review_status": "ready_for_no_network_prototype",
+        "fail_count": 0
+      },
+      "evidence": "fixtures/valid/no-network-agent-recipe-review.synthetic.json"
+    },
+    {
+      "check_id": "prototype.no_network_no_adb_no_commands",
+      "status": "pass",
+      "observed": {
+        "network_policy": "no_inbound_listener",
+        "outbound_transport_policy": "disabled_for_recipe",
+        "adb_policy": "no_adb",
+        "command_policy": "no_commands"
+      },
+      "expected": {
+        "network_policy": "no_inbound_listener",
+        "outbound_transport_policy": "disabled_for_recipe",
+        "adb_policy": "no_adb",
+        "command_policy": "no_commands"
+      },
+      "evidence": "prototype inherits the reviewed recipe execution boundary"
+    },
+    {
+      "check_id": "prototype.manifold_authority_preserved",
+      "status": "pass",
+      "observed": {
+        "role": "sidecar_observer",
+        "acceptance_owner": "rusty.manifold",
+        "audit_owner": "rusty.manifold.audit",
+        "proposal_status": "not_accepted"
+      },
+      "expected": {
+        "role": "sidecar_observer",
+        "acceptance_owner": "rusty.manifold",
+        "audit_owner": "rusty.manifold.audit",
+        "proposal_status": "not_accepted"
+      },
+      "evidence": "prototype can produce proposal input only"
+    },
+    {
+      "check_id": "prototype.observation_valid",
+      "status": "pass",
+      "observed": "ok",
+      "expected": "ok",
+      "evidence": "fixtures/valid/no-network-agent-observation.synthetic.json"
+    }
+  ],
+  "summary": {
+    "check_count": 5,
+    "pass_count": 5,
+    "manual_review_count": 0,
+    "fail_count": 0
+  },
+  "authority_boundary": [
+    "The no-network prototype writes local JSON evidence only.",
+    "The no-network prototype does not open network transport, use ADB, execute commands, install apps, launch apps, recover devices, control remote desktops, copy files, or mutate Manifold state.",
+    "The generated observation is proposal input; Manifold remains the future owner of acceptance, rejection, revision, lease, and audit records."
+  ],
+  "next_gate": "no_network_prototype_handoff_review_before_configured_peer_rehearsal"
+}

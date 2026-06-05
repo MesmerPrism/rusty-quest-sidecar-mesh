@@ -1,0 +1,81 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "rusty.quest.sidecar.hostess_boundary_descriptor_expectation.v1",
+  "title": "Rusty Quest Sidecar Hostess Boundary Descriptor Expectation",
+  "type": "object",
+  "required": [
+    "schema",
+    "expectation_id",
+    "generated_at",
+    "expectation_status",
+    "source_manifold_response_handoff_package",
+    "expectation_scope",
+    "authority",
+    "expected_hostess_boundary_descriptor",
+    "manifold_acceptance_gate",
+    "validation_evidence",
+    "privacy_boundary",
+    "checks",
+    "summary",
+    "authority_boundary",
+    "next_gate"
+  ],
+  "properties": {
+    "schema": {
+      "const": "rusty.quest.sidecar.hostess_boundary_descriptor_expectation.v1"
+    },
+    "expectation_id": {
+      "type": "string"
+    },
+    "generated_at": {
+      "type": "string"
+    },
+    "expectation_status": {
+      "enum": [
+        "ready_for_future_hostess_boundary_descriptor",
+        "manual_review",
+        "blocked"
+      ]
+    },
+    "source_manifold_response_handoff_package": {
+      "type": "object"
+    },
+    "expectation_scope": {
+      "type": "object"
+    },
+    "authority": {
+      "type": "object"
+    },
+    "expected_hostess_boundary_descriptor": {
+      "type": "object"
+    },
+    "manifold_acceptance_gate": {
+      "type": "object"
+    },
+    "validation_evidence": {
+      "type": "object"
+    },
+    "privacy_boundary": {
+      "type": "object"
+    },
+    "checks": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "summary": {
+      "type": "object"
+    },
+    "authority_boundary": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "next_gate": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,96 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "rusty.quest.sidecar.manifold_route_blueprint.v1",
+  "title": "Rusty Quest Sidecar Manifold Route Blueprint",
+  "type": "object",
+  "required": [
+    "schema",
+    "blueprint_id",
+    "generated_at",
+    "blueprint_status",
+    "source_contract_intake_request",
+    "source_private_rehearsal_approval_request",
+    "blueprint_scope",
+    "authority",
+    "proposed_manifold_route",
+    "candidate_schemas",
+    "audit_contract",
+    "hostess_boundary",
+    "validation_evidence",
+    "privacy_boundary",
+    "checks",
+    "summary",
+    "authority_boundary",
+    "next_gate"
+  ],
+  "properties": {
+    "schema": {
+      "const": "rusty.quest.sidecar.manifold_route_blueprint.v1"
+    },
+    "blueprint_id": {
+      "type": "string"
+    },
+    "generated_at": {
+      "type": "string"
+    },
+    "blueprint_status": {
+      "enum": [
+        "ready_for_manifold_repo_design_review",
+        "manual_review",
+        "blocked"
+      ]
+    },
+    "source_contract_intake_request": {
+      "type": "object"
+    },
+    "source_private_rehearsal_approval_request": {
+      "type": "object"
+    },
+    "blueprint_scope": {
+      "type": "object"
+    },
+    "authority": {
+      "type": "object"
+    },
+    "proposed_manifold_route": {
+      "type": "object"
+    },
+    "candidate_schemas": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "audit_contract": {
+      "type": "object"
+    },
+    "hostess_boundary": {
+      "type": "object"
+    },
+    "validation_evidence": {
+      "type": "object"
+    },
+    "privacy_boundary": {
+      "type": "object"
+    },
+    "checks": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "summary": {
+      "type": "object"
+    },
+    "authority_boundary": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "next_gate": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}

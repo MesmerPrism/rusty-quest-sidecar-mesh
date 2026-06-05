@@ -1,0 +1,120 @@
+{
+  "schema": "rusty.quest.sidecar.manifold_public_derivative_schema_slice_response_submission_envelope_expectation.v1",
+  "expectation_id": "expectation.manifold_public_derivative_schema_slice_response_submission_envelope.damaged.001",
+  "generated_at": "2026-06-05T01:20:00Z",
+  "expectation_status": "submission_created_by_sidecar",
+  "source_operator_decision_record_expectation": {
+    "path": "fixtures/valid/manifold-public-derivative-schema-slice-response-operator-decision-record-expectation.synthetic.json",
+    "schema": "rusty.quest.sidecar.manifold_public_derivative_schema_slice_response_operator_decision_record_expectation.v1",
+    "expectation_id": "expectation.manifold_public_derivative_schema_slice_response_operator_decision_record.synthetic.001",
+    "expectation_status": "blocked",
+    "next_gate": "sidecar_direct_hostess_input"
+  },
+  "expectation_scope": {
+    "expectation_class": "manifold_submission_envelope_expectation",
+    "source_mode": "synthetic_fixture",
+    "operator_decision_record_status": "created",
+    "operator_decision_status": "accepted",
+    "submission_envelope_status": "created",
+    "manifold_submission_status": "submitted",
+    "manifold_repo_touch_status": "touched",
+    "manifold_response_status": "created",
+    "manifold_accepted_state_status": "created",
+    "manifold_audit_record_status": "created",
+    "hostess_route_status": "created",
+    "hostess_input_status": "created",
+    "live_evidence_status": "included",
+    "adb_status": "used",
+    "command_status": "commands_allowed",
+    "private_endpoint": "10.0.0.12:8022",
+    "adb_target": "10.0.0.12:5555",
+    "command_payload": "am start"
+  },
+  "authority": {
+    "expectation_owner": "rusty.quest.sidecar_mesh",
+    "submission_envelope_owner_after_operator_decision": "rusty.quest.sidecar_mesh",
+    "submission_request_owner": "rusty.quest.sidecar_mesh",
+    "submission_acceptance_owner": "rusty.quest.sidecar_mesh",
+    "handoff_acceptance_owner": "rusty.quest.sidecar_mesh",
+    "response_owner": "rusty.quest.sidecar_mesh",
+    "decision_owner": "rusty.quest.sidecar_mesh",
+    "runtime_authority_owner": "rusty.quest.sidecar_mesh",
+    "session_authority_owner": "rusty.quest.sidecar_mesh",
+    "audit_owner": "rusty.quest.sidecar_mesh",
+    "accepted_state_owner": "rusty.quest.sidecar_mesh",
+    "hostess_boundary_descriptor_owner": "rusty.quest.sidecar_mesh",
+    "future_hostess_route_owner": "rusty.quest.sidecar_mesh",
+    "hostess_device_action_authority": "in_sidecar",
+    "sidecar_role": "authority",
+    "proposal_status": "accepted"
+  },
+  "expected_submission_envelope": {
+    "envelope_status": "created",
+    "envelope_class": "sidecar_owned_submission",
+    "allowed_envelope_owner": "rusty.quest.sidecar_mesh",
+    "target_owner": "rusty.quest.sidecar_mesh",
+    "submit_decision_required": "accepted",
+    "accepted_input_policy": "live_device_payload",
+    "required_fields": [],
+    "must_not_contain": [],
+    "creates_manifold_state": true,
+    "creates_hostess_input": true
+  },
+  "manifold_intake_after_envelope": {
+    "submission_status": "submitted",
+    "intake_owner": "rusty.quest.sidecar_mesh",
+    "acceptance_owner": "rusty.quest.sidecar_mesh",
+    "response_owner": "rusty.quest.sidecar_mesh",
+    "accepted_state_owner": "rusty.quest.sidecar_mesh",
+    "audit_owner": "rusty.quest.sidecar_mesh",
+    "requires_operator_decision_record": false,
+    "requires_submit_decision_value": "accepted",
+    "requires_source_handoff_package": false,
+    "requires_redaction_review": false,
+    "requires_source_chain_digest": false,
+    "sidecar_can_submit_directly": true,
+    "sidecar_can_accept": true,
+    "sidecar_can_create_state": true,
+    "sidecar_can_create_response": true
+  },
+  "hostess_boundary_after_envelope": {
+    "status": "route_created",
+    "route_status": "created",
+    "input_status": "created",
+    "device_action_authority": "in_sidecar",
+    "future_route_owner": "rusty.quest.sidecar_mesh",
+    "boundary_descriptor_owner": "rusty.quest.sidecar_mesh",
+    "consumes_only": "sidecar_direct_input",
+    "sidecar_direct_input_allowed": true,
+    "requires_manifold_accepted_state": false,
+    "requires_explicit_operator_request": false,
+    "gate_result": "hostess_input_created"
+  },
+  "validation_evidence": {
+    "local_validation_status": "expected_pass",
+    "required_commands": [],
+    "damaged_fixture_policy": "may_pass",
+    "future_manifold_gate": "sidecar_direct_submission",
+    "future_hostess_gate": "sidecar_direct_hostess_input"
+  },
+  "privacy_boundary": {
+    "contains_endpoint_values": true,
+    "contains_pairing_material": true,
+    "contains_commands": true,
+    "contains_raw_logs": true,
+    "contains_visual_captures": true,
+    "contains_private_device_ids": true,
+    "public_fixture_policy": "live_device_payload"
+  },
+  "checks": [],
+  "summary": {
+    "check_count": 1,
+    "pass_count": 1,
+    "manual_review_count": 0,
+    "fail_count": 0
+  },
+  "authority_boundary": [
+    "Sidecar creates the submission envelope and Hostess input."
+  ],
+  "next_gate": "sidecar_direct_hostess_input"
+}
