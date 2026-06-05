@@ -910,6 +910,37 @@ python -m unittest discover -s tests -p test_*.py
 git diff --check
 ```
 
+## Slice 17Q: Manifold Public Derivative Schema Slice Response Submission Intake Response Handoff Package
+
+Status: implemented.
+
+Only after the Manifold public derivative schema slice response submission
+intake response implementation preflight is stable:
+
+- generate a descriptor-only handoff package for future Manifold-owned
+  submission intake response implementation review;
+- bind the validated sidecar source chain and the intake response preflight
+  into a future Manifold repo review unit;
+- carry required Manifold-owned artifacts, validation slots, response
+  decisions, rejection terms, revision terms, audit terms, route boundaries,
+  source-chain/redaction requirements, and rollback policy forward;
+- keep the Manifold repo, branch, implementation plan, submission envelope,
+  submission, response, decision, schema, route, accepted state, audit record,
+  validation report, public derivative artifact, Hostess boundary descriptor,
+  Hostess route, Hostess input, live evidence, ADB, and commands not created;
+- keep Hostess integration deferred until Manifold accepted state or explicit
+  operator request.
+
+Validation:
+
+```powershell
+python tools\package_manifold_public_derivative_schema_slice_response_submission_intake_response_handoff.py --preflight fixtures\valid\manifold-public-derivative-schema-slice-response-submission-intake-response-implementation-preflight.synthetic.json --now 2026-06-05T01:44:00Z --output fixtures\valid\manifold-public-derivative-schema-slice-response-submission-intake-response-handoff-package.synthetic.json
+python tools\evaluate_integration_acceptance.py --repo-root . --now 2026-06-04T21:46:00Z --output fixtures\valid\integration-acceptance-scorecard.synthetic.json
+python tools\validate_repo.py --repo-root .
+python -m unittest discover -s tests -p test_*.py
+git diff --check
+```
+
 ## Slice 18: Private Configured Peer Rehearsal
 
 Only after an explicit operator approval decision:

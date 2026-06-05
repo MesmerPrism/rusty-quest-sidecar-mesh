@@ -739,6 +739,43 @@ class ValidateRepoTests(unittest.TestCase):
         self.assertIn("Hostess status must be future_lane_not_requested", joined)
         self.assertIn("privacy_boundary.contains_endpoint_values must be false", joined)
 
+    def test_manifold_public_derivative_schema_slice_response_submission_intake_response_handoff_package_passes(self) -> None:
+        package_path = REPO_ROOT / "fixtures" / "valid" / "manifold-public-derivative-schema-slice-response-submission-intake-response-handoff-package.synthetic.json"
+        result = validate_repo.validate_json_file(package_path)
+        self.assertTrue(result.ok, result.errors)
+
+    def test_damaged_manifold_public_derivative_schema_slice_response_submission_intake_response_handoff_package_is_rejected(self) -> None:
+        package_path = REPO_ROOT / "fixtures" / "damaged" / "manifold-public-derivative-schema-slice-response-submission-intake-response-handoff-package-sidecar-accepted.damaged.json"
+        result = validate_repo.validate_json_file(package_path)
+        self.assertFalse(result.ok)
+        joined = "\n".join(result.errors)
+        self.assertIn("forbidden key fragment 'private_endpoint'", joined)
+        self.assertIn("forbidden key fragment 'adb_target'", joined)
+        self.assertIn("forbidden key fragment 'command_payload'", joined)
+        self.assertIn("has invalid package_status", joined)
+        self.assertIn("source preflight must be ready", joined)
+        self.assertIn("package_scope.repo_touch_status must be not_touched", joined)
+        self.assertIn("package_scope.submission_status must be not_submitted", joined)
+        self.assertIn("package_scope.intake_response_status must be not_created", joined)
+        self.assertIn("authority.handoff_acceptance_owner must be rusty.manifold", joined)
+        self.assertIn("authority.submission_envelope_owner must be operator", joined)
+        self.assertIn("authority.intake_response_owner must be rusty.manifold", joined)
+        self.assertIn("authority.validation_report_owner must be rusty.manifold", joined)
+        self.assertIn("manifest status must be candidate", joined)
+        self.assertIn("handoff_acceptance_status must be not_accepted", joined)
+        self.assertIn("downstream_intake_response_status must be not_created", joined)
+        self.assertIn("downstream_accepted_state_status must be not_created", joined)
+        self.assertIn("missing source artifacts", joined)
+        self.assertIn("missing artifact kinds", joined)
+        self.assertIn("owner must be Manifold-owned", joined)
+        self.assertIn("missing validation slots", joined)
+        self.assertIn("missing revision terms", joined)
+        self.assertIn("missing audit terms", joined)
+        self.assertIn("route boundary input_payload_class must be low_rate_descriptor", joined)
+        self.assertIn("route boundary creates_response_by_sidecar must be False", joined)
+        self.assertIn("Hostess status must be future_lane_not_requested", joined)
+        self.assertIn("privacy_boundary.contains_endpoint_values must be false", joined)
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -72,6 +72,7 @@ def build_scorecard(repo_root: Path, now: str) -> dict[str, Any]:
     manifold_public_derivative_schema_slice_response_submission_envelope_expectation = load_json(repo_root / "fixtures" / "valid" / "manifold-public-derivative-schema-slice-response-submission-envelope-expectation.synthetic.json")
     manifold_public_derivative_schema_slice_response_submission_intake_response_expectation = load_json(repo_root / "fixtures" / "valid" / "manifold-public-derivative-schema-slice-response-submission-intake-response-expectation.synthetic.json")
     manifold_public_derivative_schema_slice_response_submission_intake_response_implementation_preflight = load_json(repo_root / "fixtures" / "valid" / "manifold-public-derivative-schema-slice-response-submission-intake-response-implementation-preflight.synthetic.json")
+    manifold_public_derivative_schema_slice_response_submission_intake_response_handoff_package = load_json(repo_root / "fixtures" / "valid" / "manifold-public-derivative-schema-slice-response-submission-intake-response-handoff-package.synthetic.json")
     missing, valid_results, damaged_results = validate_repo.validate_repo(repo_root)
 
     intake_summary = intake.get("summary", {})
@@ -113,6 +114,11 @@ def build_scorecard(repo_root: Path, now: str) -> dict[str, Any]:
     public_derivative_slice_response_submission_intake_preflight_artifacts = public_derivative_slice_response_submission_intake_preflight_requirements.get("required_manifold_owned_artifacts", [])
     public_derivative_slice_response_submission_intake_preflight_route_boundaries = public_derivative_slice_response_submission_intake_preflight_requirements.get("required_route_boundaries", {})
     public_derivative_slice_response_submission_intake_preflight_hostess_gate = manifold_public_derivative_schema_slice_response_submission_intake_response_implementation_preflight.get("hostess_boundary_preflight", {})
+    public_derivative_slice_response_submission_intake_handoff_scope = manifold_public_derivative_schema_slice_response_submission_intake_response_handoff_package.get("package_scope", {})
+    public_derivative_slice_response_submission_intake_handoff_manifest = manifold_public_derivative_schema_slice_response_submission_intake_response_handoff_package.get("handoff_manifest", {})
+    public_derivative_slice_response_submission_intake_handoff_artifacts = public_derivative_slice_response_submission_intake_handoff_manifest.get("required_downstream_artifacts", [])
+    public_derivative_slice_response_submission_intake_handoff_route_boundaries = public_derivative_slice_response_submission_intake_handoff_manifest.get("required_route_boundaries", {})
+    public_derivative_slice_response_submission_intake_handoff_hostess_gate = manifold_public_derivative_schema_slice_response_submission_intake_response_handoff_package.get("hostess_boundary_handoff", {})
 
     checks = [
         check(
@@ -3108,6 +3114,170 @@ def build_scorecard(repo_root: Path, now: str) -> dict[str, Any]:
             },
             "Manifold public derivative schema slice response submission intake response implementation preflight preserves Manifold-owned implementation artifacts and Hostess deferral",
         ),
+        check(
+            "manifold_public_derivative_schema_slice_response_submission_intake_response_handoff_package.ready_for_manifold_handoff",
+            manifold_public_derivative_schema_slice_response_submission_intake_response_handoff_package.get("package_status") == "submission_intake_response_handoff_package_ready"
+            and manifold_public_derivative_schema_slice_response_submission_intake_response_handoff_package.get("summary", {}).get("fail_count") == 0
+            and manifold_public_derivative_schema_slice_response_submission_intake_response_handoff_package.get("source_manifold_public_derivative_schema_slice_response_submission_intake_response_implementation_preflight", {}).get("preflight_status") == "ready_for_manifold_submission_intake_response_implementation_planning"
+            and public_derivative_slice_response_submission_intake_handoff_scope.get("repo_touch_status") == "not_touched"
+            and public_derivative_slice_response_submission_intake_handoff_scope.get("branch_status") == "not_created"
+            and public_derivative_slice_response_submission_intake_handoff_scope.get("implementation_plan_status") == "not_created"
+            and public_derivative_slice_response_submission_intake_handoff_scope.get("submission_envelope_status") == "not_created"
+            and public_derivative_slice_response_submission_intake_handoff_scope.get("submission_status") == "not_submitted"
+            and public_derivative_slice_response_submission_intake_handoff_scope.get("intake_response_status") == "not_created"
+            and public_derivative_slice_response_submission_intake_handoff_scope.get("decision_status") == "not_decided"
+            and public_derivative_slice_response_submission_intake_handoff_scope.get("response_schema_status") == "not_created"
+            and public_derivative_slice_response_submission_intake_handoff_scope.get("route_status") == "not_created"
+            and public_derivative_slice_response_submission_intake_handoff_scope.get("accepted_state_status") == "not_created"
+            and public_derivative_slice_response_submission_intake_handoff_scope.get("audit_record_status") == "not_created"
+            and public_derivative_slice_response_submission_intake_handoff_scope.get("validation_report_status") == "not_created"
+            and public_derivative_slice_response_submission_intake_handoff_scope.get("hostess_boundary_descriptor_status") == "not_created"
+            and public_derivative_slice_response_submission_intake_handoff_scope.get("hostess_route_status") == "not_created"
+            and public_derivative_slice_response_submission_intake_handoff_scope.get("hostess_input_status") == "not_created"
+            and public_derivative_slice_response_submission_intake_handoff_scope.get("adb_status") == "not_used"
+            and public_derivative_slice_response_submission_intake_handoff_scope.get("command_status") == "no_commands"
+            and public_derivative_slice_response_submission_intake_handoff_manifest.get("handoff_acceptance_status") == "not_accepted"
+            and public_derivative_slice_response_submission_intake_handoff_manifest.get("downstream_intake_response_status") == "not_created"
+            and public_derivative_slice_response_submission_intake_handoff_manifest.get("downstream_accepted_state_status") == "not_created"
+            and public_derivative_slice_response_submission_intake_handoff_manifest.get("downstream_audit_status") == "not_created"
+            and public_derivative_slice_response_submission_intake_handoff_manifest.get("downstream_validation_report_status") == "not_created"
+            and manifold_public_derivative_schema_slice_response_submission_intake_response_handoff_package.get("next_gate") == "manifold_repo_submission_intake_response_or_operator_submission_envelope",
+            {
+                "package_status": manifold_public_derivative_schema_slice_response_submission_intake_response_handoff_package.get("package_status"),
+                "fail_count": manifold_public_derivative_schema_slice_response_submission_intake_response_handoff_package.get("summary", {}).get("fail_count"),
+                "source_status": manifold_public_derivative_schema_slice_response_submission_intake_response_handoff_package.get("source_manifold_public_derivative_schema_slice_response_submission_intake_response_implementation_preflight", {}).get("preflight_status"),
+                "package_scope": public_derivative_slice_response_submission_intake_handoff_scope,
+                "handoff_manifest_statuses": {
+                    "handoff_acceptance_status": public_derivative_slice_response_submission_intake_handoff_manifest.get("handoff_acceptance_status"),
+                    "downstream_intake_response_status": public_derivative_slice_response_submission_intake_handoff_manifest.get("downstream_intake_response_status"),
+                    "downstream_accepted_state_status": public_derivative_slice_response_submission_intake_handoff_manifest.get("downstream_accepted_state_status"),
+                    "downstream_audit_status": public_derivative_slice_response_submission_intake_handoff_manifest.get("downstream_audit_status"),
+                    "downstream_validation_report_status": public_derivative_slice_response_submission_intake_handoff_manifest.get("downstream_validation_report_status"),
+                },
+                "next_gate": manifold_public_derivative_schema_slice_response_submission_intake_response_handoff_package.get("next_gate"),
+            },
+            {
+                "package_status": "submission_intake_response_handoff_package_ready",
+                "fail_count": 0,
+                "source_status": "ready_for_manifold_submission_intake_response_implementation_planning",
+                "repo_touch_status": "not_touched",
+                "submission_status": "not_submitted",
+                "intake_response_status": "not_created",
+                "accepted_state_status": "not_created",
+                "audit_record_status": "not_created",
+                "validation_report_status": "not_created",
+                "hostess_input_status": "not_created",
+                "adb_status": "not_used",
+                "command_status": "no_commands",
+                "handoff_acceptance_status": "not_accepted",
+                "next_gate": "manifold_repo_submission_intake_response_or_operator_submission_envelope",
+            },
+            "Manifold public derivative schema slice response submission intake response handoff package is ready without creating submission, response, state, audit, validation report, Hostess input, ADB, or commands",
+        ),
+        check(
+            "manifold_public_derivative_schema_slice_response_submission_intake_response_handoff_package.preserves_manifold_hostess_authority",
+            manifold_public_derivative_schema_slice_response_submission_intake_response_handoff_package.get("authority", {}).get("handoff_acceptance_owner") == "rusty.manifold"
+            and manifold_public_derivative_schema_slice_response_submission_intake_response_handoff_package.get("authority", {}).get("submission_envelope_owner") == "operator"
+            and manifold_public_derivative_schema_slice_response_submission_intake_response_handoff_package.get("authority", {}).get("intake_response_implementation_owner") == "rusty.manifold"
+            and manifold_public_derivative_schema_slice_response_submission_intake_response_handoff_package.get("authority", {}).get("intake_response_owner") == "rusty.manifold"
+            and manifold_public_derivative_schema_slice_response_submission_intake_response_handoff_package.get("authority", {}).get("submission_acceptance_owner") == "rusty.manifold"
+            and manifold_public_derivative_schema_slice_response_submission_intake_response_handoff_package.get("authority", {}).get("decision_owner") == "rusty.manifold"
+            and manifold_public_derivative_schema_slice_response_submission_intake_response_handoff_package.get("authority", {}).get("response_schema_owner") == "rusty.manifold"
+            and manifold_public_derivative_schema_slice_response_submission_intake_response_handoff_package.get("authority", {}).get("route_implementation_owner") == "rusty.manifold"
+            and manifold_public_derivative_schema_slice_response_submission_intake_response_handoff_package.get("authority", {}).get("runtime_authority_owner") == "rusty.manifold"
+            and manifold_public_derivative_schema_slice_response_submission_intake_response_handoff_package.get("authority", {}).get("session_authority_owner") == "rusty.manifold"
+            and manifold_public_derivative_schema_slice_response_submission_intake_response_handoff_package.get("authority", {}).get("audit_owner") == "rusty.manifold.audit"
+            and manifold_public_derivative_schema_slice_response_submission_intake_response_handoff_package.get("authority", {}).get("accepted_state_owner") == "rusty.manifold"
+            and manifold_public_derivative_schema_slice_response_submission_intake_response_handoff_package.get("authority", {}).get("validation_report_owner") == "rusty.manifold"
+            and manifold_public_derivative_schema_slice_response_submission_intake_response_handoff_package.get("authority", {}).get("hostess_boundary_descriptor_owner") == "rusty.manifold"
+            and manifold_public_derivative_schema_slice_response_submission_intake_response_handoff_package.get("authority", {}).get("future_hostess_route_owner") == "rusty.hostess"
+            and manifold_public_derivative_schema_slice_response_submission_intake_response_handoff_package.get("authority", {}).get("hostess_device_action_authority") == "not_in_sidecar"
+            and set(public_derivative_slice_response_submission_intake_handoff_manifest.get("required_downstream_decisions", [])) == {"received_for_review", "request_submission_revision", "reject_submission_envelope"}
+            and {"response_schema", "route_handler", "decision_event_schema", "submission_envelope_schema_binding", "accepted_state_candidate_fixture", "audit_fixture", "validation_report_fixture", "rejection_fixture", "revision_fixture", "hostess_boundary_descriptor", "rollback_descriptor"} <= {artifact.get("artifact_kind") for artifact in public_derivative_slice_response_submission_intake_handoff_artifacts}
+            and all(artifact.get("status") == "not_created_by_sidecar" for artifact in public_derivative_slice_response_submission_intake_handoff_artifacts)
+            and all(artifact.get("owner") in {"rusty.manifold", "rusty.manifold.audit"} for artifact in public_derivative_slice_response_submission_intake_handoff_artifacts)
+            and public_derivative_slice_response_submission_intake_handoff_route_boundaries.get("accepts_sanitized_summary_only") is True
+            and public_derivative_slice_response_submission_intake_handoff_route_boundaries.get("requires_operator_submission_envelope") is True
+            and public_derivative_slice_response_submission_intake_handoff_route_boundaries.get("requires_source_chain_digest") is True
+            and public_derivative_slice_response_submission_intake_handoff_route_boundaries.get("requires_redaction_review") is True
+            and public_derivative_slice_response_submission_intake_handoff_route_boundaries.get("allows_endpoint_values") is False
+            and public_derivative_slice_response_submission_intake_handoff_route_boundaries.get("allows_commands") is False
+            and public_derivative_slice_response_submission_intake_handoff_route_boundaries.get("allows_adb") is False
+            and public_derivative_slice_response_submission_intake_handoff_route_boundaries.get("allows_raw_logs") is False
+            and public_derivative_slice_response_submission_intake_handoff_route_boundaries.get("allows_visual_captures") is False
+            and public_derivative_slice_response_submission_intake_handoff_route_boundaries.get("allows_private_device_ids") is False
+            and public_derivative_slice_response_submission_intake_handoff_route_boundaries.get("allows_sidecar_direct_hostess_input") is False
+            and public_derivative_slice_response_submission_intake_handoff_route_boundaries.get("creates_response_by_sidecar") is False
+            and public_derivative_slice_response_submission_intake_handoff_route_boundaries.get("creates_accepted_state_by_sidecar") is False
+            and public_derivative_slice_response_submission_intake_handoff_route_boundaries.get("creates_audit_by_sidecar") is False
+            and public_derivative_slice_response_submission_intake_handoff_route_boundaries.get("creates_validation_report_by_sidecar") is False
+            and public_derivative_slice_response_submission_intake_handoff_route_boundaries.get("creates_hostess_input") is False
+            and public_derivative_slice_response_submission_intake_handoff_hostess_gate.get("status") == "future_lane_not_requested"
+            and public_derivative_slice_response_submission_intake_handoff_hostess_gate.get("route_status") == "not_created"
+            and public_derivative_slice_response_submission_intake_handoff_hostess_gate.get("input_status") == "not_created"
+            and public_derivative_slice_response_submission_intake_handoff_hostess_gate.get("consumes_only") == "manifold_accepted_state_or_explicit_operator_request_descriptor"
+            and public_derivative_slice_response_submission_intake_handoff_hostess_gate.get("sidecar_direct_input_allowed") is False
+            and not any(
+                manifold_public_derivative_schema_slice_response_submission_intake_response_handoff_package.get("privacy_boundary", {}).get(key)
+                for key in [
+                    "contains_endpoint_values",
+                    "contains_pairing_material",
+                    "contains_commands",
+                    "contains_raw_logs",
+                    "contains_visual_captures",
+                    "contains_private_device_ids",
+                ]
+            ),
+            {
+                "authority": manifold_public_derivative_schema_slice_response_submission_intake_response_handoff_package.get("authority", {}),
+                "artifact_kinds": sorted({artifact.get("artifact_kind") for artifact in public_derivative_slice_response_submission_intake_handoff_artifacts}),
+                "artifact_owners": sorted({artifact.get("owner") for artifact in public_derivative_slice_response_submission_intake_handoff_artifacts}),
+                "artifact_statuses": sorted({artifact.get("status") for artifact in public_derivative_slice_response_submission_intake_handoff_artifacts}),
+                "required_route_boundaries": public_derivative_slice_response_submission_intake_handoff_route_boundaries,
+                "hostess_boundary_handoff": public_derivative_slice_response_submission_intake_handoff_hostess_gate,
+                "privacy_boundary": manifold_public_derivative_schema_slice_response_submission_intake_response_handoff_package.get("privacy_boundary", {}),
+            },
+            {
+                "submission_envelope_owner": "operator",
+                "intake_response_implementation_owner": "rusty.manifold",
+                "intake_response_owner": "rusty.manifold",
+                "submission_acceptance_owner": "rusty.manifold",
+                "decision_owner": "rusty.manifold",
+                "response_schema_owner": "rusty.manifold",
+                "route_implementation_owner": "rusty.manifold",
+                "audit_owner": "rusty.manifold.audit",
+                "accepted_state_owner": "rusty.manifold",
+                "validation_report_owner": "rusty.manifold",
+                "hostess_boundary_descriptor_owner": "rusty.manifold",
+                "future_hostess_route_owner": "rusty.hostess",
+                "hostess_device_action_authority": "not_in_sidecar",
+                "required_response_decisions": ["received_for_review", "request_submission_revision", "reject_submission_envelope"],
+                "artifacts_manifold_owned_not_created": True,
+                "accepts_sanitized_summary_only": True,
+                "requires_operator_submission_envelope": True,
+                "requires_source_chain_digest": True,
+                "requires_redaction_review": True,
+                "allows_endpoint_values": False,
+                "allows_commands": False,
+                "allows_adb": False,
+                "allows_raw_logs": False,
+                "allows_visual_captures": False,
+                "allows_private_device_ids": False,
+                "allows_sidecar_direct_hostess_input": False,
+                "creates_response_by_sidecar": False,
+                "creates_accepted_state_by_sidecar": False,
+                "creates_audit_by_sidecar": False,
+                "creates_validation_report_by_sidecar": False,
+                "creates_hostess_input": False,
+                "hostess_status": "future_lane_not_requested",
+                "hostess_route_status": "not_created",
+                "hostess_input_status": "not_created",
+                "hostess_consumes_only": "manifold_accepted_state_or_explicit_operator_request_descriptor",
+                "sidecar_direct_input_allowed": False,
+                "privacy_flags_all_false": True,
+            },
+            "Manifold public derivative schema slice response submission intake response handoff package preserves Manifold-owned response, accepted-state, audit, validation, and Hostess deferral",
+        ),
     ]
 
     fail_count = sum(1 for row in checks if row["status"] == "fail")
@@ -3139,7 +3309,7 @@ def build_scorecard(repo_root: Path, now: str) -> dict[str, Any]:
             "Integration acceptance scorecards do not approve live work, select endpoints, open sockets, use ADB, install apps, launch apps, execute commands, or mutate Manifold state.",
             "Integration acceptance scorecards are proposal evidence; Manifold remains the future owner of acceptance, rejection, revision, lease, and audit records.",
         ],
-        "next_gate": "manifold_submission_intake_response_handoff_or_manifold_repo_submission_intake_response",
+        "next_gate": "manifold_repo_submission_intake_response_or_operator_submission_envelope",
     }
 
 

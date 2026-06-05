@@ -65,6 +65,10 @@ This repository owns private integration contracts for:
   intake response implementation preflights for the future Manifold-owned
   response implementation artifacts, route boundaries, validation slots,
   accepted-state/audit/validation report ownership, and Hostess deferral rules;
+- descriptor-only Manifold public derivative schema slice response submission
+  intake response handoff packages for future repo-owned review of the intake
+  response implementation preflight, source-chain, validation, audit, rollback,
+  and Hostess boundary requirements;
 - scorecards that decide whether a sidecar mesh slice is safe to promote.
 
 ## Non-Scope
@@ -201,6 +205,11 @@ The first interfaces are JSON fixtures, not runtime services:
   implementation artifacts, validation slots, route boundaries,
   accepted-state/audit/validation report requirements, and Hostess deferral
   rules without touching Manifold or Hostess repos.
+- `manifold_public_derivative_schema_slice_response_submission_intake_response_handoff_package`:
+  generated descriptor that binds the intake response implementation preflight
+  and sidecar evidence chain into a future Manifold repo review unit while
+  keeping submission, response, accepted state, audit, validation report,
+  Hostess route, and Hostess input uncreated.
 - `validation_scorecard`: compact promotion and pressure-point summary.
 
 The schema namespace is `rusty.quest.sidecar.*`. Manifold references stay in

@@ -39,6 +39,7 @@ SCHEMA_IDS = {
     "rusty.quest.sidecar.manifold_public_derivative_schema_slice_response_operator_decision_request.v1": "schemas/rusty.quest.sidecar.manifold_public_derivative_schema_slice_response_operator_decision_request.v1.schema.json",
     "rusty.quest.sidecar.manifold_public_derivative_schema_slice_response_submission_envelope_expectation.v1": "schemas/rusty.quest.sidecar.manifold_public_derivative_schema_slice_response_submission_envelope_expectation.v1.schema.json",
     "rusty.quest.sidecar.manifold_public_derivative_schema_slice_response_submission_intake_response_expectation.v1": "schemas/rusty.quest.sidecar.manifold_public_derivative_schema_slice_response_submission_intake_response_expectation.v1.schema.json",
+    "rusty.quest.sidecar.manifold_public_derivative_schema_slice_response_submission_intake_response_handoff_package.v1": "schemas/rusty.quest.sidecar.manifold_public_derivative_schema_slice_response_submission_intake_response_handoff_package.v1.schema.json",
     "rusty.quest.sidecar.manifold_public_derivative_schema_slice_response_submission_intake_response_implementation_preflight.v1": "schemas/rusty.quest.sidecar.manifold_public_derivative_schema_slice_response_submission_intake_response_implementation_preflight.v1.schema.json",
     "rusty.quest.sidecar.manifold_public_derivative_schema_request.v1": "schemas/rusty.quest.sidecar.manifold_public_derivative_schema_request.v1.schema.json",
     "rusty.quest.sidecar.manifold_route_blueprint.v1": "schemas/rusty.quest.sidecar.manifold_route_blueprint.v1.schema.json",
@@ -80,6 +81,7 @@ REQUIRED_FILES = [
     "docs/MANIFOLD_PUBLIC_DERIVATIVE_SCHEMA_SLICE_RESPONSE_OPERATOR_DECISION_REQUEST.md",
     "docs/MANIFOLD_PUBLIC_DERIVATIVE_SCHEMA_SLICE_RESPONSE_SUBMISSION_ENVELOPE_EXPECTATION.md",
     "docs/MANIFOLD_PUBLIC_DERIVATIVE_SCHEMA_SLICE_RESPONSE_SUBMISSION_INTAKE_RESPONSE_EXPECTATION.md",
+    "docs/MANIFOLD_PUBLIC_DERIVATIVE_SCHEMA_SLICE_RESPONSE_SUBMISSION_INTAKE_RESPONSE_HANDOFF_PACKAGE.md",
     "docs/MANIFOLD_PUBLIC_DERIVATIVE_SCHEMA_SLICE_RESPONSE_SUBMISSION_INTAKE_RESPONSE_IMPLEMENTATION_PREFLIGHT.md",
     "docs/MANIFOLD_ROUTE_BLUEPRINT.md",
     "docs/MANIFOLD_ROUTE_DESIGN_RESPONSE_EXPECTATION.md",
@@ -122,6 +124,7 @@ REQUIRED_FILES = [
     "fixtures/valid/manifold-public-derivative-schema-slice-response-operator-decision-record-expectation.synthetic.json",
     "fixtures/valid/manifold-public-derivative-schema-slice-response-operator-decision-request.synthetic.json",
     "fixtures/valid/manifold-public-derivative-schema-slice-response-submission-envelope-expectation.synthetic.json",
+    "fixtures/valid/manifold-public-derivative-schema-slice-response-submission-intake-response-handoff-package.synthetic.json",
     "fixtures/valid/manifold-public-derivative-schema-slice-response-submission-intake-response-expectation.synthetic.json",
     "fixtures/valid/manifold-public-derivative-schema-slice-response-submission-intake-response-implementation-preflight.synthetic.json",
     "fixtures/valid/manifold-public-derivative-schema-request.synthetic.json",
@@ -154,6 +157,7 @@ REQUIRED_FILES = [
     "fixtures/damaged/manifold-public-derivative-schema-slice-response-operator-decision-record-expectation-sidecar-record.damaged.json",
     "fixtures/damaged/manifold-public-derivative-schema-slice-response-operator-decision-request-sidecar-decision.damaged.json",
     "fixtures/damaged/manifold-public-derivative-schema-slice-response-submission-envelope-expectation-sidecar-submission.damaged.json",
+    "fixtures/damaged/manifold-public-derivative-schema-slice-response-submission-intake-response-handoff-package-sidecar-accepted.damaged.json",
     "fixtures/damaged/manifold-public-derivative-schema-slice-response-submission-intake-response-expectation-sidecar-response.damaged.json",
     "fixtures/damaged/manifold-public-derivative-schema-slice-response-submission-intake-response-implementation-preflight-sidecar-implementation.damaged.json",
     "fixtures/damaged/manifold-public-derivative-schema-request-sidecar-owned.damaged.json",
@@ -187,6 +191,7 @@ REQUIRED_FILES = [
     "tools/prepare_manifold_public_derivative_schema_slice_response_operator_decision_record_expectation.py",
     "tools/prepare_manifold_public_derivative_schema_slice_response_operator_decision_request.py",
     "tools/prepare_manifold_public_derivative_schema_slice_response_submission_envelope_expectation.py",
+    "tools/package_manifold_public_derivative_schema_slice_response_submission_intake_response_handoff.py",
     "tools/prepare_manifold_public_derivative_schema_slice_response_submission_intake_response_expectation.py",
     "tools/prepare_manifold_public_derivative_schema_slice_response_submission_intake_response_implementation_preflight.py",
     "tools/prepare_manifold_route_blueprint.py",
@@ -219,6 +224,7 @@ REQUIRED_FILES = [
     "tests/test_prepare_manifold_public_derivative_schema_slice_response_operator_decision_record_expectation.py",
     "tests/test_prepare_manifold_public_derivative_schema_slice_response_operator_decision_request.py",
     "tests/test_prepare_manifold_public_derivative_schema_slice_response_submission_envelope_expectation.py",
+    "tests/test_package_manifold_public_derivative_schema_slice_response_submission_intake_response_handoff.py",
     "tests/test_prepare_manifold_public_derivative_schema_slice_response_submission_intake_response_expectation.py",
     "tests/test_prepare_manifold_public_derivative_schema_slice_response_submission_intake_response_implementation_preflight.py",
     "tests/test_prepare_manifold_route_blueprint.py",
@@ -400,6 +406,8 @@ def validate_fixture(document: Any) -> list[str]:
         errors.extend(validate_manifold_public_derivative_schema_slice_response_submission_envelope_expectation(document))
     elif schema == "rusty.quest.sidecar.manifold_public_derivative_schema_slice_response_submission_intake_response_expectation.v1":
         errors.extend(validate_manifold_public_derivative_schema_slice_response_submission_intake_response_expectation(document))
+    elif schema == "rusty.quest.sidecar.manifold_public_derivative_schema_slice_response_submission_intake_response_handoff_package.v1":
+        errors.extend(validate_manifold_public_derivative_schema_slice_response_submission_intake_response_handoff_package(document))
     elif schema == "rusty.quest.sidecar.manifold_public_derivative_schema_slice_response_submission_intake_response_implementation_preflight.v1":
         errors.extend(validate_manifold_public_derivative_schema_slice_response_submission_intake_response_implementation_preflight(document))
     elif schema == "rusty.quest.sidecar.manifold_public_derivative_schema_request.v1":
@@ -5805,6 +5813,355 @@ def validate_manifold_public_derivative_schema_slice_response_submission_intake_
         errors.append("Manifold public derivative schema slice response submission intake response implementation preflight must preserve implementation, Manifold, and Hostess authority boundaries")
     if document.get("next_gate") != "manifold_submission_intake_response_handoff_or_manifold_repo_submission_intake_response":
         errors.append("Manifold public derivative schema slice response submission intake response implementation preflight next_gate is invalid")
+    return errors
+
+
+def validate_manifold_public_derivative_schema_slice_response_submission_intake_response_handoff_package(document: dict[str, Any]) -> list[str]:
+    errors: list[str] = []
+    if document.get("package_status") not in {
+        "submission_intake_response_handoff_package_ready",
+        "manual_review",
+        "blocked",
+    }:
+        errors.append("Manifold public derivative schema slice response submission intake response handoff package has invalid package_status")
+
+    source = document.get("source_manifold_public_derivative_schema_slice_response_submission_intake_response_implementation_preflight", {})
+    if source.get("path") != "fixtures/valid/manifold-public-derivative-schema-slice-response-submission-intake-response-implementation-preflight.synthetic.json":
+        errors.append("Manifold public derivative schema slice response submission intake response handoff package must point at the submission intake response implementation preflight fixture")
+    if source.get("schema") != "rusty.quest.sidecar.manifold_public_derivative_schema_slice_response_submission_intake_response_implementation_preflight.v1":
+        errors.append("Manifold public derivative schema slice response submission intake response handoff package source preflight schema is invalid")
+    if source.get("preflight_status") != "ready_for_manifold_submission_intake_response_implementation_planning":
+        errors.append("Manifold public derivative schema slice response submission intake response handoff package source preflight must be ready")
+    if source.get("next_gate") != "manifold_submission_intake_response_handoff_or_manifold_repo_submission_intake_response":
+        errors.append("Manifold public derivative schema slice response submission intake response handoff package source preflight next_gate is invalid")
+
+    scope = document.get("package_scope", {})
+    expected_scope = {
+        "package_class": "manifold_submission_intake_response_handoff_package",
+        "source_mode": "synthetic_fixture",
+        "target_repo": "rusty.manifold",
+        "repo_touch_status": "not_touched",
+        "branch_status": "not_created",
+        "implementation_plan_status": "not_created",
+        "submission_envelope_status": "not_created",
+        "submission_status": "not_submitted",
+        "intake_response_status": "not_created",
+        "decision_status": "not_decided",
+        "response_schema_status": "not_created",
+        "route_status": "not_created",
+        "accepted_state_status": "not_created",
+        "audit_record_status": "not_created",
+        "validation_report_status": "not_created",
+        "public_derivative_status": "not_created",
+        "hostess_boundary_descriptor_status": "not_created",
+        "hostess_route_status": "not_created",
+        "hostess_input_status": "not_created",
+        "live_evidence_status": "not_included",
+        "adb_status": "not_used",
+        "command_status": "no_commands",
+    }
+    for key, expected in expected_scope.items():
+        if scope.get(key) != expected:
+            errors.append(f"Manifold public derivative schema slice response submission intake response handoff package package_scope.{key} must be {expected}")
+
+    authority = document.get("authority", {})
+    expected_authority = {
+        "package_owner": "rusty.quest.sidecar_mesh",
+        "handoff_acceptance_owner": "rusty.manifold",
+        "submission_envelope_owner": "operator",
+        "submission_request_owner": "operator",
+        "intake_response_implementation_owner": "rusty.manifold",
+        "intake_response_owner": "rusty.manifold",
+        "submission_acceptance_owner": "rusty.manifold",
+        "decision_owner": "rusty.manifold",
+        "response_schema_owner": "rusty.manifold",
+        "route_implementation_owner": "rusty.manifold",
+        "runtime_authority_owner": "rusty.manifold",
+        "session_authority_owner": "rusty.manifold",
+        "audit_owner": "rusty.manifold.audit",
+        "accepted_state_owner": "rusty.manifold",
+        "validation_report_owner": "rusty.manifold",
+        "rollback_owner": "rusty.manifold",
+        "source_chain_digest_owner": "rusty.manifold",
+        "redaction_review_input_owner": "operator",
+        "redaction_review_validation_owner": "rusty.manifold",
+        "hostess_boundary_descriptor_owner": "rusty.manifold",
+        "future_hostess_route_owner": "rusty.hostess",
+        "hostess_device_action_authority": "not_in_sidecar",
+        "sidecar_role": "observer_proposer",
+        "proposal_status": "not_accepted",
+    }
+    for key, expected in expected_authority.items():
+        if authority.get(key) != expected:
+            errors.append(f"Manifold public derivative schema slice response submission intake response handoff package authority.{key} must be {expected}")
+
+    manifest = document.get("handoff_manifest", {})
+    if manifest.get("status") != "candidate":
+        errors.append("Manifold public derivative schema slice response submission intake response handoff package manifest status must be candidate")
+    if manifest.get("target_repo") != "rusty.manifold":
+        errors.append("Manifold public derivative schema slice response submission intake response handoff package target_repo must be rusty.manifold")
+    expected_manifest_statuses = {
+        "handoff_acceptance_status": "not_accepted",
+        "downstream_implementation_plan_status": "not_created",
+        "downstream_submission_envelope_status": "not_created",
+        "downstream_submission_status": "not_submitted",
+        "downstream_intake_response_status": "not_created",
+        "downstream_decision_status": "not_decided",
+        "downstream_response_schema_status": "not_created",
+        "downstream_route_status": "not_created",
+        "downstream_accepted_state_status": "not_created",
+        "downstream_audit_status": "not_created",
+        "downstream_validation_report_status": "not_created",
+        "downstream_hostess_boundary_status": "not_created",
+    }
+    for key, expected in expected_manifest_statuses.items():
+        if manifest.get(key) != expected:
+            errors.append(f"Manifold public derivative schema slice response submission intake response handoff package {key} must be {expected}")
+
+    required_sources = {
+        "artifact.public_lab_artifact_drift_review",
+        "artifact.no_network_prototype_handoff_review",
+        "artifact.configured_peer_rehearsal_plan",
+        "artifact.manifold_adapter_contract_review",
+        "artifact.manifold_contract_intake_request",
+        "artifact.private_rehearsal_approval_request",
+        "artifact.private_rehearsal_evidence_expectation",
+        "artifact.private_rehearsal_public_derivative_expectation",
+        "artifact.manifold_public_derivative_schema_request",
+        "artifact.manifold_public_derivative_schema_response_expectation",
+        "artifact.manifold_public_derivative_schema_implementation_preflight",
+        "artifact.manifold_public_derivative_schema_handoff_package",
+        "artifact.manifold_public_derivative_schema_slice_response_expectation",
+        "artifact.manifold_public_derivative_schema_slice_response_implementation_preflight",
+        "artifact.manifold_public_derivative_schema_slice_response_handoff_package",
+        "artifact.manifold_public_derivative_schema_slice_response_operator_decision_request",
+        "artifact.manifold_public_derivative_schema_slice_response_operator_decision_record_expectation",
+        "artifact.manifold_public_derivative_schema_slice_response_submission_envelope_expectation",
+        "artifact.manifold_public_derivative_schema_slice_response_submission_intake_response_expectation",
+        "artifact.manifold_public_derivative_schema_slice_response_submission_intake_response_implementation_preflight",
+        "artifact.integration_acceptance_scorecard",
+    }
+    sources = manifest.get("source_chain_artifacts", [])
+    observed_sources = {source.get("artifact_id") for source in sources if isinstance(source, dict)}
+    missing_sources = sorted(required_sources - observed_sources)
+    if missing_sources:
+        errors.append(f"Manifold public derivative schema slice response submission intake response handoff package missing source artifacts: {missing_sources}")
+    for source_artifact in sources:
+        artifact_id = source_artifact.get("artifact_id", "<unknown>")
+        path = source_artifact.get("path", "")
+        if not path or path.startswith("/") or "\\" in path:
+            errors.append(f"Manifold public derivative schema slice response submission intake response handoff package source artifact {artifact_id} path must be relative slash form")
+        if ".." in Path(path).parts:
+            errors.append(f"Manifold public derivative schema slice response submission intake response handoff package source artifact {artifact_id} path must not escape source root")
+        if source_artifact.get("required_for_handoff") is not True:
+            errors.append(f"Manifold public derivative schema slice response submission intake response handoff package source artifact {artifact_id} must be required_for_handoff")
+
+    required_artifact_kinds = {
+        "response_schema",
+        "route_handler",
+        "decision_event_schema",
+        "submission_envelope_schema_binding",
+        "accepted_state_candidate_fixture",
+        "audit_fixture",
+        "validation_report_fixture",
+        "rejection_fixture",
+        "revision_fixture",
+        "hostess_boundary_descriptor",
+        "rollback_descriptor",
+    }
+    downstream_artifacts = manifest.get("required_downstream_artifacts", [])
+    observed_artifact_kinds = {artifact.get("artifact_kind") for artifact in downstream_artifacts if isinstance(artifact, dict)}
+    missing_artifact_kinds = sorted(required_artifact_kinds - observed_artifact_kinds)
+    if missing_artifact_kinds:
+        errors.append(f"Manifold public derivative schema slice response submission intake response handoff package missing artifact kinds: {missing_artifact_kinds}")
+    for artifact in downstream_artifacts:
+        artifact_id = artifact.get("artifact_id", "<unknown>")
+        if artifact.get("owner") not in {"rusty.manifold", "rusty.manifold.audit"}:
+            errors.append(f"Manifold public derivative schema slice response submission intake response handoff package artifact {artifact_id} owner must be Manifold-owned")
+        if artifact.get("status") != "not_created_by_sidecar":
+            errors.append(f"Manifold public derivative schema slice response submission intake response handoff package artifact {artifact_id} status must be not_created_by_sidecar")
+
+    required_slots = {
+        "slot.submission_intake_response_expectation_contract",
+        "slot.submission_intake_response_schema_contract",
+        "slot.submission_intake_received_for_review_fixture",
+        "slot.submission_intake_revision_request_fixture",
+        "slot.submission_intake_rejection_fixture",
+        "slot.submission_intake_audit_fixture",
+        "slot.submission_intake_validation_report_fixture",
+        "slot.source_chain_digest_check",
+        "slot.redaction_review_status_check",
+        "slot.hostess_boundary_descriptor_check",
+        "slot.no_private_endpoint_or_command_content",
+        "slot.sidecar_non_authority_check",
+    }
+    missing_slots = sorted(required_slots - set(manifest.get("required_downstream_validation_slots", [])))
+    if missing_slots:
+        errors.append(f"Manifold public derivative schema slice response submission intake response handoff package missing validation slots: {missing_slots}")
+
+    if set(manifest.get("required_downstream_decisions", [])) != {
+        "received_for_review",
+        "request_submission_revision",
+        "reject_submission_envelope",
+    }:
+        errors.append("Manifold public derivative schema slice response submission intake response handoff package response decisions are invalid")
+
+    required_rejections = {
+        "missing_operator_submission_envelope",
+        "invalid_submission_envelope",
+        "source_chain_incomplete",
+        "redaction_incomplete",
+        "endpoint_values_rejected",
+        "commands_rejected",
+        "adb_rejected",
+        "raw_logs_rejected",
+        "visual_captures_rejected",
+        "private_device_ids_rejected",
+        "hostess_direct_action_rejected",
+        "stale_handoff_package",
+        "untrusted_sidecar",
+    }
+    missing_rejections = sorted(required_rejections - set(manifest.get("required_downstream_rejection_terms", [])))
+    if missing_rejections:
+        errors.append(f"Manifold public derivative schema slice response submission intake response handoff package missing rejection terms: {missing_rejections}")
+
+    required_revisions = {
+        "submission_envelope_revision",
+        "validation_report_revision",
+        "redaction_summary_revision",
+        "source_chain_digest_revision",
+        "hostess_boundary_intent_revision",
+        "reason_revision",
+    }
+    missing_revisions = sorted(required_revisions - set(manifest.get("required_downstream_revision_terms", [])))
+    if missing_revisions:
+        errors.append(f"Manifold public derivative schema slice response submission intake response handoff package missing revision terms: {missing_revisions}")
+
+    required_audit_terms = {
+        "response_id",
+        "submission_envelope_id",
+        "source_handoff_package_id",
+        "decision",
+        "reason",
+        "validation_report_ref",
+        "audit_record_ref",
+        "source_chain_digest_status",
+        "redaction_review_status",
+        "hostess_boundary_intent",
+    }
+    missing_audit_terms = sorted(required_audit_terms - set(manifest.get("required_downstream_audit_terms", [])))
+    if missing_audit_terms:
+        errors.append(f"Manifold public derivative schema slice response submission intake response handoff package missing audit terms: {missing_audit_terms}")
+
+    route = manifest.get("required_route_boundaries", {})
+    expected_route = {
+        "input_payload_class": "low_rate_descriptor",
+        "accepts_sanitized_summary_only": True,
+        "requires_operator_submission_envelope": True,
+        "requires_source_chain_digest": True,
+        "requires_redaction_review": True,
+        "allows_endpoint_values": False,
+        "allows_commands": False,
+        "allows_adb": False,
+        "allows_raw_logs": False,
+        "allows_visual_captures": False,
+        "allows_private_device_ids": False,
+        "allows_high_rate_payloads": False,
+        "allows_sidecar_direct_hostess_input": False,
+        "creates_response_by_sidecar": False,
+        "creates_accepted_state_by_sidecar": False,
+        "creates_audit_by_sidecar": False,
+        "creates_validation_report_by_sidecar": False,
+        "creates_hostess_input": False,
+        "accepted_state_owner": "rusty.manifold",
+        "audit_owner": "rusty.manifold.audit",
+    }
+    for key, expected in expected_route.items():
+        if route.get(key) != expected:
+            errors.append(f"Manifold public derivative schema slice response submission intake response handoff package route boundary {key} must be {expected}")
+    if manifest.get("rollback_policy") != "manifold_owned_reject_submission_or_request_revision":
+        errors.append("Manifold public derivative schema slice response submission intake response handoff package rollback_policy is invalid")
+
+    hostess = document.get("hostess_boundary_handoff", {})
+    expected_hostess = {
+        "status": "future_lane_not_requested",
+        "route_status": "not_created",
+        "input_status": "not_created",
+        "recovery_request_status": "not_created",
+        "device_action_authority": "not_in_sidecar",
+        "future_route_owner": "rusty.hostess",
+        "boundary_descriptor_owner": "rusty.manifold",
+        "consumes_only": "manifold_accepted_state_or_explicit_operator_request_descriptor",
+        "sidecar_direct_input_allowed": False,
+        "requires_manifold_accepted_state": True,
+        "requires_explicit_operator_request": True,
+        "allowed_action_class": "operator_recovery_request_descriptor",
+        "handoff_result": "hostess_deferred_until_manifold_submission_intake_acceptance",
+    }
+    for key, expected in expected_hostess.items():
+        if hostess.get(key) != expected:
+            errors.append(f"Manifold public derivative schema slice response submission intake response handoff package Hostess {key} must be {expected}")
+
+    validation = document.get("validation_evidence", {})
+    if validation.get("local_validation_status") != "expected_pass":
+        errors.append("Manifold public derivative schema slice response submission intake response handoff package local_validation_status must be expected_pass")
+    commands = validation.get("required_commands", [])
+    for required in [
+        "python tools/package_manifold_public_derivative_schema_slice_response_submission_intake_response_handoff.py",
+        "python tools/evaluate_integration_acceptance.py",
+        "python tools/validate_repo.py",
+        "python -m unittest discover -s tests -p test_*.py",
+        "git diff --check",
+    ]:
+        if not any(command.startswith(required) for command in commands):
+            errors.append(f"Manifold public derivative schema slice response submission intake response handoff package missing validation command: {required}")
+    if validation.get("damaged_fixture_policy") != "must_fail_validation":
+        errors.append("Manifold public derivative schema slice response submission intake response handoff package damaged_fixture_policy must be must_fail_validation")
+    if validation.get("future_manifold_gate") != "manifold_repo_owns_submission_intake_response_handoff_acceptance_and_implementation":
+        errors.append("Manifold public derivative schema slice response submission intake response handoff package future_manifold_gate is invalid")
+    if validation.get("future_hostess_gate") != "hostess_route_requires_manifold_state_or_explicit_operator_request_descriptor":
+        errors.append("Manifold public derivative schema slice response submission intake response handoff package future_hostess_gate is invalid")
+
+    privacy = document.get("privacy_boundary", {})
+    for key in [
+        "contains_endpoint_values",
+        "contains_pairing_material",
+        "contains_commands",
+        "contains_raw_logs",
+        "contains_visual_captures",
+        "contains_private_device_ids",
+    ]:
+        if privacy.get(key) is not False:
+            errors.append(f"Manifold public derivative schema slice response submission intake response handoff package privacy_boundary.{key} must be false")
+    if privacy.get("public_fixture_policy") != "synthetic_descriptor_only":
+        errors.append("Manifold public derivative schema slice response submission intake response handoff package public_fixture_policy must be synthetic_descriptor_only")
+
+    checks = document.get("checks", [])
+    if not checks:
+        errors.append("Manifold public derivative schema slice response submission intake response handoff package must include checks")
+    statuses = {check.get("status") for check in checks if isinstance(check, dict)}
+    if not statuses <= {"pass", "manual_review", "fail"}:
+        errors.append("Manifold public derivative schema slice response submission intake response handoff package contains invalid check status")
+    summary = document.get("summary", {})
+    if summary.get("check_count") != len(checks):
+        errors.append("Manifold public derivative schema slice response submission intake response handoff package check_count does not match checks")
+    fail_count = sum(1 for check in checks if isinstance(check, dict) and check.get("status") == "fail")
+    manual_review_count = sum(1 for check in checks if isinstance(check, dict) and check.get("status") == "manual_review")
+    pass_count = sum(1 for check in checks if isinstance(check, dict) and check.get("status") == "pass")
+    if summary.get("fail_count") != fail_count:
+        errors.append("Manifold public derivative schema slice response submission intake response handoff package fail_count does not match checks")
+    if summary.get("manual_review_count") != manual_review_count:
+        errors.append("Manifold public derivative schema slice response submission intake response handoff package manual_review_count does not match checks")
+    if summary.get("pass_count") != pass_count:
+        errors.append("Manifold public derivative schema slice response submission intake response handoff package pass_count does not match checks")
+    if document.get("package_status") == "submission_intake_response_handoff_package_ready" and fail_count != 0:
+        errors.append("ready Manifold public derivative schema slice response submission intake response handoff package must not have failed checks")
+
+    boundary_text = " ".join(document.get("authority_boundary", []))
+    if "submission intake response handoff package" not in boundary_text or "Manifold remains" not in boundary_text or "Hostess remains" not in boundary_text:
+        errors.append("Manifold public derivative schema slice response submission intake response handoff package must preserve handoff, Manifold, and Hostess authority boundaries")
+    if document.get("next_gate") != "manifold_repo_submission_intake_response_or_operator_submission_envelope":
+        errors.append("Manifold public derivative schema slice response submission intake response handoff package next_gate is invalid")
     return errors
 
 

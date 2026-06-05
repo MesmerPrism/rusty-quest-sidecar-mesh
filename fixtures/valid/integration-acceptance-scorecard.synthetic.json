@@ -107,7 +107,7 @@
     {
       "check_id": "damaged.boundary_fixtures",
       "status": "pass",
-      "observed": 34,
+      "observed": 35,
       "expected": ">=3",
       "evidence": "damaged fixtures are expected validation failures"
     },
@@ -4417,20 +4417,220 @@
         "privacy_flags_all_false": true
       },
       "evidence": "Manifold public derivative schema slice response submission intake response implementation preflight preserves Manifold-owned implementation artifacts and Hostess deferral"
+    },
+    {
+      "check_id": "manifold_public_derivative_schema_slice_response_submission_intake_response_handoff_package.ready_for_manifold_handoff",
+      "status": "pass",
+      "observed": {
+        "package_status": "submission_intake_response_handoff_package_ready",
+        "fail_count": 0,
+        "source_status": "ready_for_manifold_submission_intake_response_implementation_planning",
+        "package_scope": {
+          "package_class": "manifold_submission_intake_response_handoff_package",
+          "source_mode": "synthetic_fixture",
+          "target_repo": "rusty.manifold",
+          "repo_touch_status": "not_touched",
+          "branch_status": "not_created",
+          "implementation_plan_status": "not_created",
+          "submission_envelope_status": "not_created",
+          "submission_status": "not_submitted",
+          "intake_response_status": "not_created",
+          "decision_status": "not_decided",
+          "response_schema_status": "not_created",
+          "route_status": "not_created",
+          "accepted_state_status": "not_created",
+          "audit_record_status": "not_created",
+          "validation_report_status": "not_created",
+          "public_derivative_status": "not_created",
+          "hostess_boundary_descriptor_status": "not_created",
+          "hostess_route_status": "not_created",
+          "hostess_input_status": "not_created",
+          "live_evidence_status": "not_included",
+          "adb_status": "not_used",
+          "command_status": "no_commands"
+        },
+        "handoff_manifest_statuses": {
+          "handoff_acceptance_status": "not_accepted",
+          "downstream_intake_response_status": "not_created",
+          "downstream_accepted_state_status": "not_created",
+          "downstream_audit_status": "not_created",
+          "downstream_validation_report_status": "not_created"
+        },
+        "next_gate": "manifold_repo_submission_intake_response_or_operator_submission_envelope"
+      },
+      "expected": {
+        "package_status": "submission_intake_response_handoff_package_ready",
+        "fail_count": 0,
+        "source_status": "ready_for_manifold_submission_intake_response_implementation_planning",
+        "repo_touch_status": "not_touched",
+        "submission_status": "not_submitted",
+        "intake_response_status": "not_created",
+        "accepted_state_status": "not_created",
+        "audit_record_status": "not_created",
+        "validation_report_status": "not_created",
+        "hostess_input_status": "not_created",
+        "adb_status": "not_used",
+        "command_status": "no_commands",
+        "handoff_acceptance_status": "not_accepted",
+        "next_gate": "manifold_repo_submission_intake_response_or_operator_submission_envelope"
+      },
+      "evidence": "Manifold public derivative schema slice response submission intake response handoff package is ready without creating submission, response, state, audit, validation report, Hostess input, ADB, or commands"
+    },
+    {
+      "check_id": "manifold_public_derivative_schema_slice_response_submission_intake_response_handoff_package.preserves_manifold_hostess_authority",
+      "status": "pass",
+      "observed": {
+        "authority": {
+          "package_owner": "rusty.quest.sidecar_mesh",
+          "handoff_acceptance_owner": "rusty.manifold",
+          "submission_envelope_owner": "operator",
+          "submission_request_owner": "operator",
+          "intake_response_implementation_owner": "rusty.manifold",
+          "intake_response_owner": "rusty.manifold",
+          "submission_acceptance_owner": "rusty.manifold",
+          "decision_owner": "rusty.manifold",
+          "response_schema_owner": "rusty.manifold",
+          "route_implementation_owner": "rusty.manifold",
+          "runtime_authority_owner": "rusty.manifold",
+          "session_authority_owner": "rusty.manifold",
+          "audit_owner": "rusty.manifold.audit",
+          "accepted_state_owner": "rusty.manifold",
+          "validation_report_owner": "rusty.manifold",
+          "rollback_owner": "rusty.manifold",
+          "source_chain_digest_owner": "rusty.manifold",
+          "redaction_review_input_owner": "operator",
+          "redaction_review_validation_owner": "rusty.manifold",
+          "hostess_boundary_descriptor_owner": "rusty.manifold",
+          "future_hostess_route_owner": "rusty.hostess",
+          "hostess_device_action_authority": "not_in_sidecar",
+          "sidecar_role": "observer_proposer",
+          "proposal_status": "not_accepted"
+        },
+        "artifact_kinds": [
+          "accepted_state_candidate_fixture",
+          "audit_fixture",
+          "decision_event_schema",
+          "hostess_boundary_descriptor",
+          "rejection_fixture",
+          "response_schema",
+          "revision_fixture",
+          "rollback_descriptor",
+          "route_handler",
+          "submission_envelope_schema_binding",
+          "validation_report_fixture"
+        ],
+        "artifact_owners": [
+          "rusty.manifold",
+          "rusty.manifold.audit"
+        ],
+        "artifact_statuses": [
+          "not_created_by_sidecar"
+        ],
+        "required_route_boundaries": {
+          "input_payload_class": "low_rate_descriptor",
+          "accepts_sanitized_summary_only": true,
+          "requires_operator_submission_envelope": true,
+          "requires_source_chain_digest": true,
+          "requires_redaction_review": true,
+          "allows_endpoint_values": false,
+          "allows_commands": false,
+          "allows_adb": false,
+          "allows_raw_logs": false,
+          "allows_visual_captures": false,
+          "allows_private_device_ids": false,
+          "allows_high_rate_payloads": false,
+          "allows_sidecar_direct_hostess_input": false,
+          "creates_response_by_sidecar": false,
+          "creates_accepted_state_by_sidecar": false,
+          "creates_audit_by_sidecar": false,
+          "creates_validation_report_by_sidecar": false,
+          "creates_hostess_input": false,
+          "accepted_state_owner": "rusty.manifold",
+          "audit_owner": "rusty.manifold.audit"
+        },
+        "hostess_boundary_handoff": {
+          "status": "future_lane_not_requested",
+          "route_status": "not_created",
+          "input_status": "not_created",
+          "recovery_request_status": "not_created",
+          "device_action_authority": "not_in_sidecar",
+          "future_route_owner": "rusty.hostess",
+          "boundary_descriptor_owner": "rusty.manifold",
+          "consumes_only": "manifold_accepted_state_or_explicit_operator_request_descriptor",
+          "sidecar_direct_input_allowed": false,
+          "requires_manifold_accepted_state": true,
+          "requires_explicit_operator_request": true,
+          "allowed_action_class": "operator_recovery_request_descriptor",
+          "handoff_result": "hostess_deferred_until_manifold_submission_intake_acceptance"
+        },
+        "privacy_boundary": {
+          "contains_endpoint_values": false,
+          "contains_pairing_material": false,
+          "contains_commands": false,
+          "contains_raw_logs": false,
+          "contains_visual_captures": false,
+          "contains_private_device_ids": false,
+          "public_fixture_policy": "synthetic_descriptor_only"
+        }
+      },
+      "expected": {
+        "submission_envelope_owner": "operator",
+        "intake_response_implementation_owner": "rusty.manifold",
+        "intake_response_owner": "rusty.manifold",
+        "submission_acceptance_owner": "rusty.manifold",
+        "decision_owner": "rusty.manifold",
+        "response_schema_owner": "rusty.manifold",
+        "route_implementation_owner": "rusty.manifold",
+        "audit_owner": "rusty.manifold.audit",
+        "accepted_state_owner": "rusty.manifold",
+        "validation_report_owner": "rusty.manifold",
+        "hostess_boundary_descriptor_owner": "rusty.manifold",
+        "future_hostess_route_owner": "rusty.hostess",
+        "hostess_device_action_authority": "not_in_sidecar",
+        "required_response_decisions": [
+          "received_for_review",
+          "request_submission_revision",
+          "reject_submission_envelope"
+        ],
+        "artifacts_manifold_owned_not_created": true,
+        "accepts_sanitized_summary_only": true,
+        "requires_operator_submission_envelope": true,
+        "requires_source_chain_digest": true,
+        "requires_redaction_review": true,
+        "allows_endpoint_values": false,
+        "allows_commands": false,
+        "allows_adb": false,
+        "allows_raw_logs": false,
+        "allows_visual_captures": false,
+        "allows_private_device_ids": false,
+        "allows_sidecar_direct_hostess_input": false,
+        "creates_response_by_sidecar": false,
+        "creates_accepted_state_by_sidecar": false,
+        "creates_audit_by_sidecar": false,
+        "creates_validation_report_by_sidecar": false,
+        "creates_hostess_input": false,
+        "hostess_status": "future_lane_not_requested",
+        "hostess_route_status": "not_created",
+        "hostess_input_status": "not_created",
+        "hostess_consumes_only": "manifold_accepted_state_or_explicit_operator_request_descriptor",
+        "sidecar_direct_input_allowed": false,
+        "privacy_flags_all_false": true
+      },
+      "evidence": "Manifold public derivative schema slice response submission intake response handoff package preserves Manifold-owned response, accepted-state, audit, validation, and Hostess deferral"
     }
   ],
   "summary": {
-    "check_count": 67,
-    "pass_count": 67,
+    "check_count": 69,
+    "pass_count": 69,
     "manual_review_count": 0,
     "fail_count": 0,
-    "damaged_expected_failure_count": 34,
-    "valid_fixture_count": 78
+    "damaged_expected_failure_count": 35,
+    "valid_fixture_count": 80
   },
   "authority_boundary": [
     "Integration acceptance scorecards summarize local fixture evidence only.",
     "Integration acceptance scorecards do not approve live work, select endpoints, open sockets, use ADB, install apps, launch apps, execute commands, or mutate Manifold state.",
     "Integration acceptance scorecards are proposal evidence; Manifold remains the future owner of acceptance, rejection, revision, lease, and audit records."
   ],
-  "next_gate": "manifold_submission_intake_response_handoff_or_manifold_repo_submission_intake_response"
+  "next_gate": "manifold_repo_submission_intake_response_or_operator_submission_envelope"
 }

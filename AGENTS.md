@@ -43,6 +43,7 @@ The initial slice is data-only:
 - Manifold public derivative schema slice response submission envelope expectations;
 - Manifold public derivative schema slice response submission intake response expectations;
 - Manifold public derivative schema slice response submission intake response implementation preflights;
+- Manifold public derivative schema slice response submission intake response handoff packages;
 - integration acceptance scorecards;
 - no-network prototype run reports;
 - no-network prototype handoff reviews;
@@ -91,7 +92,8 @@ The initial slice is data-only:
 34. `docs/MANIFOLD_PUBLIC_DERIVATIVE_SCHEMA_SLICE_RESPONSE_SUBMISSION_ENVELOPE_EXPECTATION.md`
 35. `docs/MANIFOLD_PUBLIC_DERIVATIVE_SCHEMA_SLICE_RESPONSE_SUBMISSION_INTAKE_RESPONSE_EXPECTATION.md`
 36. `docs/MANIFOLD_PUBLIC_DERIVATIVE_SCHEMA_SLICE_RESPONSE_SUBMISSION_INTAKE_RESPONSE_IMPLEMENTATION_PREFLIGHT.md`
-37. `fixtures/README.md`
+37. `docs/MANIFOLD_PUBLIC_DERIVATIVE_SCHEMA_SLICE_RESPONSE_SUBMISSION_INTAKE_RESPONSE_HANDOFF_PACKAGE.md`
+38. `fixtures/README.md`
 
 ## Architecture Rules
 
@@ -145,6 +147,7 @@ python tools\prepare_manifold_public_derivative_schema_slice_response_operator_d
 python tools\prepare_manifold_public_derivative_schema_slice_response_submission_envelope_expectation.py --record-expectation fixtures\valid\manifold-public-derivative-schema-slice-response-operator-decision-record-expectation.synthetic.json --now 2026-06-05T01:20:00Z --output fixtures\valid\manifold-public-derivative-schema-slice-response-submission-envelope-expectation.synthetic.json
 python tools\prepare_manifold_public_derivative_schema_slice_response_submission_intake_response_expectation.py --envelope-expectation fixtures\valid\manifold-public-derivative-schema-slice-response-submission-envelope-expectation.synthetic.json --now 2026-06-05T01:28:00Z --output fixtures\valid\manifold-public-derivative-schema-slice-response-submission-intake-response-expectation.synthetic.json
 python tools\prepare_manifold_public_derivative_schema_slice_response_submission_intake_response_implementation_preflight.py --intake-response-expectation fixtures\valid\manifold-public-derivative-schema-slice-response-submission-intake-response-expectation.synthetic.json --now 2026-06-05T01:36:00Z --output fixtures\valid\manifold-public-derivative-schema-slice-response-submission-intake-response-implementation-preflight.synthetic.json
+python tools\package_manifold_public_derivative_schema_slice_response_submission_intake_response_handoff.py --preflight fixtures\valid\manifold-public-derivative-schema-slice-response-submission-intake-response-implementation-preflight.synthetic.json --now 2026-06-05T01:44:00Z --output fixtures\valid\manifold-public-derivative-schema-slice-response-submission-intake-response-handoff-package.synthetic.json
 python tools\evaluate_integration_acceptance.py --repo-root . --now 2026-06-04T21:46:00Z --output fixtures\valid\integration-acceptance-scorecard.synthetic.json
 python tools\validate_repo.py --repo-root .
 python -m unittest discover -s tests -p test_*.py

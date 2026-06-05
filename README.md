@@ -36,6 +36,7 @@ Start with a private, data-only integration surface:
 - `rusty.quest.sidecar.manifold_public_derivative_schema_slice_response_operator_decision_request.v1`
 - `rusty.quest.sidecar.manifold_public_derivative_schema_slice_response_submission_envelope_expectation.v1`
 - `rusty.quest.sidecar.manifold_public_derivative_schema_slice_response_submission_intake_response_expectation.v1`
+- `rusty.quest.sidecar.manifold_public_derivative_schema_slice_response_submission_intake_response_handoff_package.v1`
 - `rusty.quest.sidecar.manifold_public_derivative_schema_slice_response_submission_intake_response_implementation_preflight.v1`
 - `rusty.quest.sidecar.manifold_response_implementation_preflight.v1`
 - `rusty.quest.sidecar.manifold_response_handoff_package.v1`
@@ -151,6 +152,10 @@ launch apps, or mutate Manifold state.
   Manifold-owned response implementation artifacts, validation slots, route
   boundaries, accepted-state/audit/validation report ownership, and Hostess
   deferral rules without touching Manifold or Hostess repos.
+- Generated Manifold public derivative schema slice response submission intake
+  response handoff package fixtures that bind the preflight and sidecar
+  evidence chain into a future Manifold repo review unit while preserving
+  Hostess as a downstream boundary descriptor only.
 - Generated Manifold route blueprint fixtures that name candidate
   Manifold-owned request, decision, accepted-state, and audit contracts while
   keeping Hostess as a future explicit lane.
@@ -215,6 +220,7 @@ python tools\prepare_manifold_public_derivative_schema_slice_response_operator_d
 python tools\prepare_manifold_public_derivative_schema_slice_response_submission_envelope_expectation.py --record-expectation fixtures\valid\manifold-public-derivative-schema-slice-response-operator-decision-record-expectation.synthetic.json --now 2026-06-05T01:20:00Z --output fixtures\valid\manifold-public-derivative-schema-slice-response-submission-envelope-expectation.synthetic.json
 python tools\prepare_manifold_public_derivative_schema_slice_response_submission_intake_response_expectation.py --envelope-expectation fixtures\valid\manifold-public-derivative-schema-slice-response-submission-envelope-expectation.synthetic.json --now 2026-06-05T01:28:00Z --output fixtures\valid\manifold-public-derivative-schema-slice-response-submission-intake-response-expectation.synthetic.json
 python tools\prepare_manifold_public_derivative_schema_slice_response_submission_intake_response_implementation_preflight.py --intake-response-expectation fixtures\valid\manifold-public-derivative-schema-slice-response-submission-intake-response-expectation.synthetic.json --now 2026-06-05T01:36:00Z --output fixtures\valid\manifold-public-derivative-schema-slice-response-submission-intake-response-implementation-preflight.synthetic.json
+python tools\package_manifold_public_derivative_schema_slice_response_submission_intake_response_handoff.py --preflight fixtures\valid\manifold-public-derivative-schema-slice-response-submission-intake-response-implementation-preflight.synthetic.json --now 2026-06-05T01:44:00Z --output fixtures\valid\manifold-public-derivative-schema-slice-response-submission-intake-response-handoff-package.synthetic.json
 python tools\evaluate_integration_acceptance.py --repo-root . --now 2026-06-04T21:46:00Z --output fixtures\valid\integration-acceptance-scorecard.synthetic.json
 python tools\validate_repo.py --repo-root .
 python -m unittest discover -s tests -p test_*.py
@@ -223,8 +229,9 @@ git diff --check
 
 ## Next Slice
 
-After the generated submission intake response implementation preflight remains
-stable, the next safe data-only step is a handoff package for the preflight, or
-a real Manifold-repo-owned submission intake response implementation. Hostess
-integration stays prepared, but it should only consume Manifold accepted state
-or a separate explicit operator request descriptor.
+After the generated submission intake response handoff package remains stable,
+the next safe data-only step is a real Manifold-repo-owned submission intake
+response slice or an operator submission envelope path that Manifold can
+accept, reject, or revise. Hostess integration stays prepared, but it should
+only consume Manifold accepted state or a separate explicit operator request
+descriptor.
