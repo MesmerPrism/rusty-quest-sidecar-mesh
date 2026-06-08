@@ -11,6 +11,12 @@ Use this repository to integrate the Quest Termux outbound-agent and peer-mesh
 research into the refactored Rusty architecture without changing live Hostess,
 Studio, Makepad, PMD, Polar, controller, or public Rusty-XR runtime behavior.
 
+Rusty Lattice is the target lane for generic situated relation contracts:
+spaces, transforms, tracked poses, view sets, spatial input roles, frame-state
+binding, calibration, validity, confidence, and runtime capability snapshots.
+This sidecar repo may propose or rehearse relation evidence, but it must not
+become Lattice contract authority or Manifold command/session authority.
+
 The initial slice is data-only:
 
 - sidecar agent profiles;
