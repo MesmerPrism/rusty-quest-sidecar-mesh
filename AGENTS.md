@@ -5,6 +5,11 @@ work. The first implementation profile is Termux on Quest, but the architecture
 surface is `Rusty Quest sidecar mesh` so Termux remains an adapter profile, not
 a top-level Rusty domain.
 
+Rusty Morphospace is the top-level project/platform umbrella. This repo remains
+a Quest sidecar integration lane inside that umbrella; it may rehearse evidence
+and handoffs but must not become Morphospace, Lattice, Manifold, or Hostess
+authority.
+
 ## Purpose
 
 Use this repository to integrate the Quest Termux outbound-agent and peer-mesh
