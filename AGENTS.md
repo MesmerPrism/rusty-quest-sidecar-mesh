@@ -10,6 +10,12 @@ a Quest sidecar integration lane inside that umbrella; it may rehearse evidence
 and handoffs but must not become Morphospace, Lattice, Manifold, or Hostess
 authority.
 
+Project-owned source in this repo is licensed `AGPL-3.0-or-later`. Keep
+third-party dependencies, Termux or Linux-sidecar packages, generated evidence,
+captured data, private endpoints, device logs, binary releases, APKs, and
+external tools under their own provenance and notice requirements; see
+`docs/LICENSING.md`.
+
 ## Purpose
 
 Use this repository to integrate the Quest Termux outbound-agent and peer-mesh
