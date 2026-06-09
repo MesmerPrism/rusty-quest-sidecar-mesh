@@ -1,7 +1,7 @@
 # Rusty Quest Sidecar Mesh
 
-Private integration repo for Quest-hosted Linux sidecar mesh work in the
-refactored Rusty stack.
+Public-safe integration repository for Quest-hosted Linux sidecar mesh work in
+the refactored Rusty stack.
 
 The first concrete implementation profile is Termux on Quest. The repo name is
 deliberately broader: Termux is a normal Android app and Linux userland sidecar,
@@ -10,7 +10,7 @@ off proposals to Rusty Manifold.
 
 ## Decision
 
-Start with a private, data-only integration surface:
+Start with a bounded, data-only integration surface:
 
 - `rusty.quest.sidecar.agent_profile.v1`
 - `rusty.quest.sidecar.configured_peer_rehearsal_plan.v1`

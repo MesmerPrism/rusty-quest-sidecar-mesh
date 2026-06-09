@@ -1,9 +1,9 @@
 # Rusty Quest Sidecar Mesh Agent Notes
 
-This is a private integration repository for Quest-hosted Linux sidecar mesh
-work. The first implementation profile is Termux on Quest, but the architecture
-surface is `Rusty Quest sidecar mesh` so Termux remains an adapter profile, not
-a top-level Rusty domain.
+This is a public-safe integration repository for Quest-hosted Linux sidecar
+mesh work. The first implementation profile is Termux on Quest, but the
+architecture surface is `Rusty Quest sidecar mesh` so Termux remains an adapter
+profile, not a top-level Rusty domain.
 
 Rusty Morphospace is the top-level project/platform umbrella. This repo remains
 a Quest sidecar integration lane inside that umbrella; it may rehearse evidence

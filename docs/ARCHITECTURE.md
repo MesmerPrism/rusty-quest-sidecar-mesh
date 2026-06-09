@@ -8,7 +8,7 @@ session, lease, registry, and audit authority.
 
 ## Scope
 
-This repository owns private integration contracts for:
+This repository owns bounded integration contracts for:
 
 - sidecar agent identity and capability profiles;
 - advisory observations from sidecar agents;

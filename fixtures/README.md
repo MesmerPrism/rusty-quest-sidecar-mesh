@@ -7,9 +7,9 @@ sidecar boundary validator.
 prove the repository gate catches authority drift before any live adapter work
 starts.
 
-The fixtures are private integration examples. They intentionally avoid raw
-headset serials, package IDs, LAN endpoints, pairing material, screenshots,
-logs, and command payloads.
+The fixtures are synthetic public-safe integration examples. They intentionally
+avoid raw headset serials, package IDs, LAN endpoints, pairing material,
+screenshots, logs, and command payloads.
 
 Generated fixtures should be regenerated before review:
 
